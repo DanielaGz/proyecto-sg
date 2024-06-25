@@ -6,7 +6,6 @@ class Bloom {
 	private $idBloom;
 	private $nombre;
 	private $detalle;
-	private $resultadoAprendizaje;
 	private $bloomDAO;
 	private $connection;
 
@@ -34,20 +33,11 @@ class Bloom {
 		$this -> detalle = $pDetalle;
 	}
 
-	function getResultadoAprendizaje() {
-		return $this -> resultadoAprendizaje;
-	}
-
-	function setResultadoAprendizaje($pResultadoAprendizaje) {
-		$this -> resultadoAprendizaje = $pResultadoAprendizaje;
-	}
-
-	function __construct($pIdBloom = "", $pNombre = "", $pDetalle = "", $pResultadoAprendizaje = ""){
+	function __construct($pIdBloom = "", $pNombre = "", $pDetalle = ""){
 		$this -> idBloom = $pIdBloom;
 		$this -> nombre = $pNombre;
 		$this -> detalle = $pDetalle;
-		$this -> resultadoAprendizaje = $pResultadoAprendizaje;
-		$this -> bloomDAO = new BloomDAO($this -> idBloom, $this -> nombre, $this -> detalle, $this -> resultadoAprendizaje);
+		$this -> bloomDAO = new BloomDAO($this -> idBloom, $this -> nombre, $this -> detalle);
 		$this -> connection = new Connection();
 	}
 
@@ -73,9 +63,6 @@ class Bloom {
 		$this -> idBloom = $result[0];
 		$this -> nombre = $result[1];
 		$this -> detalle = $result[2];
-		$resultadoAprendizaje = new ResultadoAprendizaje($result[3]);
-		$resultadoAprendizaje -> select();
-		$this -> resultadoAprendizaje = $resultadoAprendizaje;
 	}
 
 	function selectAll(){
@@ -83,22 +70,7 @@ class Bloom {
 		$this -> connection -> run($this -> bloomDAO -> selectAll());
 		$blooms = array();
 		while ($result = $this -> connection -> fetchRow()){
-			$resultadoAprendizaje = new ResultadoAprendizaje($result[3]);
-			$resultadoAprendizaje -> select();
-			array_push($blooms, new Bloom($result[0], $result[1], $result[2], $resultadoAprendizaje));
-		}
-		$this -> connection -> close();
-		return $blooms;
-	}
-
-	function selectAllByResultadoAprendizaje(){
-		$this -> connection -> open();
-		$this -> connection -> run($this -> bloomDAO -> selectAllByResultadoAprendizaje());
-		$blooms = array();
-		while ($result = $this -> connection -> fetchRow()){
-			$resultadoAprendizaje = new ResultadoAprendizaje($result[3]);
-			$resultadoAprendizaje -> select();
-			array_push($blooms, new Bloom($result[0], $result[1], $result[2], $resultadoAprendizaje));
+			array_push($blooms, new Bloom($result[0], $result[1], $result[2]));
 		}
 		$this -> connection -> close();
 		return $blooms;
@@ -109,9 +81,7 @@ class Bloom {
 		$this -> connection -> run($this -> bloomDAO -> selectAllOrder($order, $dir));
 		$blooms = array();
 		while ($result = $this -> connection -> fetchRow()){
-			$resultadoAprendizaje = new ResultadoAprendizaje($result[3]);
-			$resultadoAprendizaje -> select();
-			array_push($blooms, new Bloom($result[0], $result[1], $result[2], $resultadoAprendizaje));
+			array_push($blooms, new Bloom($result[0], $result[1], $result[2]));
 		}
 		$this -> connection -> close();
 		return $blooms;
@@ -134,11 +104,6 @@ class Bloom {
 		$this -> connection -> open();
 		$this -> connection -> run($this -> bloomDAO -> search($search));
 		$blooms = array();
-		while ($result = $this -> connection -> fetchRow()){
-			$resultadoAprendizaje = new ResultadoAprendizaje($result[3]);
-			$resultadoAprendizaje -> select();
-			array_push($blooms, new Bloom($result[0], $result[1], $result[2], $resultadoAprendizaje));
-		}
 		$this -> connection -> close();
 		return $blooms;
 	}

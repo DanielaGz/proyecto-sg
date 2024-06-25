@@ -12,7 +12,6 @@ if(isset($_GET['action']) && $_GET['action']=="delete"){
 	$deleteBloom = new Bloom($_GET['idBloom']);
 	$deleteBloom -> select();
 	if($deleteBloom -> delete()){
-		$nameResultadoAprendizaje = $deleteBloom -> getResultadoAprendizaje() -> getNombre();
 		$user_ip = getenv('REMOTE_ADDR');
 		$agent = $_SERVER["HTTP_USER_AGENT"];
 		$browser = "-";
@@ -30,11 +29,11 @@ if(isset($_GET['action']) && $_GET['action']=="delete"){
 			$browser = "Safari";
 		}
 		if($_SESSION['entity'] == 'Administrator'){
-			$logAdministrator = new LogAdministrator("","Delete Bloom", "Nombre: " . $deleteBloom -> getNombre() . ";; Detalle: " . $deleteBloom -> getDetalle() . ";; Resultado Aprendizaje: " . $nameResultadoAprendizaje, date("Y-m-d"), date("H:i:s"), $user_ip, PHP_OS, $browser, $_SESSION['id']);
+			$logAdministrator = new LogAdministrator("","Delete Bloom", "Nombre: " . $deleteBloom -> getNombre() . ";; Detalle: " . $deleteBloom -> getDetalle() . ";" , date("Y-m-d"), date("H:i:s"), $user_ip, PHP_OS, $browser, $_SESSION['id']);
 			$logAdministrator -> insert();
 		}
 		else if($_SESSION['entity'] == 'Usuario'){
-			$logUsuario = new LogUsuario("","Delete Bloom", "Nombre: " . $deleteBloom -> getNombre() . ";; Detalle: " . $deleteBloom -> getDetalle() . ";; Resultado Aprendizaje: " . $nameResultadoAprendizaje, date("Y-m-d"), date("H:i:s"), $user_ip, PHP_OS, $browser, $_SESSION['id']);
+			$logUsuario = new LogUsuario("","Delete Bloom", "Nombre: " . $deleteBloom -> getNombre() . ";; Detalle: " . $deleteBloom -> getDetalle() . ";" , date("Y-m-d"), date("H:i:s"), $user_ip, PHP_OS, $browser, $_SESSION['id']);
 			$logUsuario -> insert();
 		}
 	}else{
@@ -95,7 +94,6 @@ if(isset($_GET['action']) && $_GET['action']=="delete"){
 							<span class='fas fa-sort-amount-down' data-toggle='tooltip' data-placement='right' data-original-title='Sort Descending' ></span></a>
 						<?php } ?>
 						</th>
-						<th>Resultado Aprendizaje</th>
 						<th nowrap></th>
 					</tr>
 				</thead>
@@ -112,7 +110,6 @@ if(isset($_GET['action']) && $_GET['action']=="delete"){
 						echo "<tr><td>" . $counter . "</td>";
 						echo "<td>" . $currentBloom -> getNombre() . "</td>";
 						echo "<td>" . $currentBloom -> getDetalle() . "</td>";
-						echo "<td><a href='modalResultadoAprendizaje.php?idResultadoAprendizaje=" . $currentBloom -> getResultadoAprendizaje() -> getIdResultadoAprendizaje() . "' data-toggle='modal' data-target='#modalBloom' >" . $currentBloom -> getResultadoAprendizaje() -> getNombre() . "</a></td>";
 						echo "<td class='text-right' nowrap>";
 						if($_SESSION['entity'] == 'Administrator') {
 							echo "<a href='index.php?pid=" . base64_encode("ui/bloom/updateBloom.php") . "&idBloom=" . $currentBloom -> getIdBloom() . "'><span class='fas fa-edit' data-toggle='tooltip' data-placement='left' data-original-title='Edit Bloom' ></span></a> ";

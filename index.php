@@ -97,6 +97,7 @@ if(isset($_GET['logOut'])){
 <html lang="en">
 	<head>
 		<title>SVRA</title>
+		<title>SVRA</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<link rel="icon" type="image/png" href="img/logo.png" />
@@ -107,6 +108,11 @@ if(isset($_GET['logOut'])){
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.js"></script>
+		<!-- <script src="assets/vendor/libs/sortablejs/sortable.js"></script> -->
+		<script src="https://code.highcharts.com/highcharts.js"></script>
+		<script src="https://code.highcharts.com/modules/exporting.js"></script>
+		<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 		<script charset="utf-8">
 			$(function () { 
 				$("[data-toggle='tooltip']").tooltip(); 

@@ -28,6 +28,8 @@ if(isset($_POST['insert'])){
 	$objBloom = new Bloom($bloom);
 	$objBloom -> select();
 	$nameBloom = $objBloom -> getNombre() ;
+	echo($nameBloom);
+	echo('a');
 	$objCategoriaRa = new CategoriaRa($categoriaRa);
 	$objCategoriaRa -> select();
 	$nameCategoriaRa = $objCategoriaRa -> getNombre() ;

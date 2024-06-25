@@ -3,60 +3,44 @@ class BloomDAO{
 	private $idBloom;
 	private $nombre;
 	private $detalle;
-	private $resultadoAprendizaje;
 
-	function __construct($pIdBloom = "", $pNombre = "", $pDetalle = "", $pResultadoAprendizaje = ""){
+	function __construct($pIdBloom = "", $pNombre = "", $pDetalle = ""){
 		$this -> idBloom = $pIdBloom;
 		$this -> nombre = $pNombre;
 		$this -> detalle = $pDetalle;
-		$this -> resultadoAprendizaje = $pResultadoAprendizaje;
 	}
 
 	function insert(){
-		return "insert into Bloom(nombre, detalle, resultadoAprendizaje_idResultadoAprendizaje)
-				values('" . $this -> nombre . "', '" . $this -> detalle . "', '" . $this -> resultadoAprendizaje . "')";
+		return "insert into Bloom(nombre, detalle)
+				values('" . $this -> nombre . "', '" . $this -> detalle . "')";
 	}
 
 	function update(){
 		return "update Bloom set 
 				nombre = '" . $this -> nombre . "',
 				detalle = '" . $this -> detalle . "',
-				resultadoAprendizaje_idResultadoAprendizaje = '" . $this -> resultadoAprendizaje . "'	
 				where idBloom = '" . $this -> idBloom . "'";
 	}
 
 	function select() {
-		return "select idBloom, nombre, detalle, resultadoAprendizaje_idResultadoAprendizaje
+		return "select idBloom, nombre, detalle
 				from Bloom
 				where idBloom = '" . $this -> idBloom . "'";
 	}
 
 	function selectAll() {
-		return "select idBloom, nombre, detalle, resultadoAprendizaje_idResultadoAprendizaje
+		return "select idBloom, nombre, detalle
 				from Bloom";
 	}
 
-	function selectAllByResultadoAprendizaje() {
-		return "select idBloom, nombre, detalle, resultadoAprendizaje_idResultadoAprendizaje
-				from Bloom
-				where resultadoAprendizaje_idResultadoAprendizaje = '" . $this -> resultadoAprendizaje . "'";
-	}
-
 	function selectAllOrder($orden, $dir){
-		return "select idBloom, nombre, detalle, resultadoAprendizaje_idResultadoAprendizaje
-				from Bloom
-				order by " . $orden . " " . $dir;
-	}
-
-	function selectAllByResultadoAprendizajeOrder($orden, $dir) {
-		return "select idBloom, nombre, detalle, resultadoAprendizaje_idResultadoAprendizaje
-				from Bloom
-				where resultadoAprendizaje_idResultadoAprendizaje = '" . $this -> resultadoAprendizaje . "'
+		return "select idBloom, nombre, detalle 
+				from Bloom 
 				order by " . $orden . " " . $dir;
 	}
 
 	function search($search) {
-		return "select idBloom, nombre, detalle, resultadoAprendizaje_idResultadoAprendizaje
+		return "select idBloom, nombre, detalle
 				from Bloom
 				where nombre like '%" . $search . "%' or detalle like '%" . $search . "%'";
 	}

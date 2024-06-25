@@ -8,19 +8,9 @@ $detalle="";
 if(isset($_POST['detalle'])){
 	$detalle=$_POST['detalle'];
 }
-$resultadoAprendizaje="";
-if(isset($_POST['resultadoAprendizaje'])){
-	$resultadoAprendizaje=$_POST['resultadoAprendizaje'];
-}
-if(isset($_GET['idResultadoAprendizaje'])){
-	$resultadoAprendizaje=$_GET['idResultadoAprendizaje'];
-}
 if(isset($_POST['insert'])){
-	$newBloom = new Bloom("", $nombre, $detalle, $resultadoAprendizaje);
+	$newBloom = new Bloom("", $nombre, $detalle);
 	$newBloom -> insert();
-	$objResultadoAprendizaje = new ResultadoAprendizaje($resultadoAprendizaje);
-	$objResultadoAprendizaje -> select();
-	$nameResultadoAprendizaje = $objResultadoAprendizaje -> getNombre() ;
 	$user_ip = getenv('REMOTE_ADDR');
 	$agent = $_SERVER["HTTP_USER_AGENT"];
 	$browser = "-";
@@ -38,11 +28,11 @@ if(isset($_POST['insert'])){
 		$browser = "Safari";
 	}
 	if($_SESSION['entity'] == 'Administrator'){
-		$logAdministrator = new LogAdministrator("","Create Bloom", "Nombre: " . $nombre . "; Detalle: " . $detalle . "; Resultado Aprendizaje: " . $nameResultadoAprendizaje , date("Y-m-d"), date("H:i:s"), $user_ip, PHP_OS, $browser, $_SESSION['id']);
+		$logAdministrator = new LogAdministrator("","Create Bloom", "Nombre: " . $nombre . "; Detalle: " . $detalle . ";" , date("Y-m-d"), date("H:i:s"), $user_ip, PHP_OS, $browser, $_SESSION['id']);
 		$logAdministrator -> insert();
 	}
 	else if($_SESSION['entity'] == 'Usuario'){
-		$logUsuario = new LogUsuario("","Create Bloom", "Nombre: " . $nombre . "; Detalle: " . $detalle . "; Resultado Aprendizaje: " . $nameResultadoAprendizaje , date("Y-m-d"), date("H:i:s"), $user_ip, PHP_OS, $browser, $_SESSION['id']);
+		$logUsuario = new LogUsuario("","Create Bloom", "Nombre: " . $nombre . "; Detalle: " . $detalle . ";" , date("Y-m-d"), date("H:i:s"), $user_ip, PHP_OS, $browser, $_SESSION['id']);
 		$logUsuario -> insert();
 	}
 	$processed=true;
@@ -72,22 +62,6 @@ if(isset($_POST['insert'])){
 						<div class="form-group">
 							<label>Detalle</label>
 							<input type="text" class="form-control" name="detalle" value="<?php echo $detalle ?>"/>
-						</div>
-						<div class="form-group">
-							<label>Resultado Aprendizaje*</label>
-							<select class="form-control" name="resultadoAprendizaje">
-								<?php
-								$objResultadoAprendizaje = new ResultadoAprendizaje();
-								$resultadoAprendizajes = $objResultadoAprendizaje -> selectAllOrder("nombre", "asc");
-								foreach($resultadoAprendizajes as $currentResultadoAprendizaje){
-									echo "<option value='" . $currentResultadoAprendizaje -> getIdResultadoAprendizaje() . "'";
-									if($currentResultadoAprendizaje -> getIdResultadoAprendizaje() == $resultadoAprendizaje){
-										echo " selected";
-									}
-									echo ">" . $currentResultadoAprendizaje -> getNombre() . "</option>";
-								}
-								?>
-							</select>
 						</div>
 						<button type="submit" class="btn btn-info" name="insert">Create</button>
 					</form>
