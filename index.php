@@ -111,13 +111,35 @@ if(isset($_GET['logOut'])){
 		<!-- <script src="assets/vendor/libs/sortablejs/sortable.js"></script> -->
 		<script src="https://code.highcharts.com/highcharts.js"></script>
 		<script src="https://code.highcharts.com/modules/exporting.js"></script>
+		<script src="https://code.highcharts.com/modules/offline-exporting.js"></script>
 		<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+		<script src="https://code.highcharts.com/modules/treemap.js"></script>
+		<script src="https://code.highcharts.com/modules/treegraph.js"></script>
+		<script src="https://code.highcharts.com/highcharts-more.js"></script>
+		<script src="https://code.highcharts.com/modules/networkgraph.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
+
+		<script type="text/javascript" src="core/config/config.js"></script>
+		<script type="text/javascript" src="core/config/createChart.js"></script>
 		<script charset="utf-8">
 			$(function () { 
 				$("[data-toggle='tooltip']").tooltip(); 
 			});
 		</script>
+		<style>
+			body{
+				background-color: #e9ecef;
+			}
+
+			.round{
+				border-radius: 20px !important;
+			}
+
+			.h-full{
+				height: 100%;
+			}
+		</style>
 	</head>
 	<body>
 		<?php
@@ -146,6 +168,6 @@ if(isset($_GET['logOut'])){
 			}
 		}
 		?>
-		<div class="text-center text-muted">ITI &copy; <?php echo date("Y")?></div>
+		<!-- <div class="text-center text-muted">ITI &copy; <?php echo date("Y")?></div> -->
 	</body>
 </html>

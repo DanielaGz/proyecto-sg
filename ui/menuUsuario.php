@@ -22,6 +22,9 @@ $usuario -> select();
 					<a class="dropdown-item" href="index.php?pid=<?php echo base64_encode("ui/calificacion/insertCalificacion.php") ?>">Calificacion</a>
 				</div>
 			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="index.php?pid=<?php echo base64_encode("ui/administrator/insertAdministrator.php") ?>">Administrator</a>
+			</li>
 		</ul>
 		<ul class="navbar-nav">
 			<li class="nav-item dropdown">
