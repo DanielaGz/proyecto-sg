@@ -37,9 +37,5 @@ $bloom -> select();
 			<th>Detalle</th>
 			<td><?php echo $bloom -> getDetalle() ?></td>
 		</tr>
-		<tr>
-			<th>Resultado Aprendizaje</th>
-			<td><?php echo $bloom -> getResultadoAprendizaje() -> getNombre() ?></td>
-		</tr>
 	</table>
 </div>

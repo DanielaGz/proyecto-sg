@@ -43,12 +43,10 @@ if(isset($_GET['action']) && $_GET['action']=="delete"){
 	}
 }
 ?>
-<div class="container-fluid">
-	<div class="card">
-		<div class="card-header">
-			<h4 class="card-title">Get All Resultado Aprendizaje</h4>
-		</div>
+<div class="container">
+	<div class="card round">
 		<div class="card-body">
+		<h3 class="card-title">Resultados de aprendizaje</h3>
 		<?php if(isset($_GET['action']) && $_GET['action']=="delete"){ ?>
 			<?php if($error == 0){ ?>
 				<div class="alert alert-success" >The registry was succesfully deleted.
@@ -65,7 +63,7 @@ if(isset($_GET['action']) && $_GET['action']=="delete"){
 				<?php }
 			} ?>
 		<div class="table-responsive">
-			<table class="table table-striped table-hover">
+			<table class="table table-hover">
 				<thead>
 					<tr><th></th>
 						<th nowrap>Nombre 
@@ -140,7 +138,7 @@ if(isset($_GET['action']) && $_GET['action']=="delete"){
 </div>
 <div class="modal fade" id="modalResultadoAprendizaje" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog modal-lg" >
-		<div class="modal-content" id="modalContent">
+		<div class="modal-content round" id="modalContent">
 		</div>
 	</div>
 </div>

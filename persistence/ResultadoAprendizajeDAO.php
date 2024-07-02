@@ -45,6 +45,14 @@ class ResultadoAprendizajeDAO{
 				where bloom_idBloom = '" . $this -> bloom . "'";
 	}
 
+	function selectAllByBloomCategoria() {
+		return "select idResultadoAprendizaje, nombre, detalle, bloom_idBloom, categoriaRa_idCategoriaRa
+				from ResultadoAprendizaje
+				where bloom_idBloom = '" . $this -> bloom . "'
+				and categoriaRa_idCategoriaRa = '" . $this -> categoriaRa . "'";
+	}
+
+
 	function selectAllByCategoriaRa() {
 		return "select idResultadoAprendizaje, nombre, detalle, bloom_idBloom, categoriaRa_idCategoriaRa
 				from ResultadoAprendizaje

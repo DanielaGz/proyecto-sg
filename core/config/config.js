@@ -1,3 +1,74 @@
+const darkenedColors = [
+  "#B24E4F", // Darkened Light Pink
+  "#B2946C", // Darkened Peach
+  "#BFB36C", // Darkened Light Yellow
+  "#6EBF85", // Darkened Mint Green
+  "#6EA9BF", // Darkened Light Blue
+  "#7A7F8E", // Darkened Periwinkle
+  "#966B74", // Darkened Pink
+  "#6E996E", // Darkened Light Green
+  "#B24E47", // Darkened Soft Red
+  "#B27E6C", // Darkened Light Apricot
+  "#9BAE9A", // Darkened Light Lime
+  "#8080B2", // Darkened Pale Lilac
+  "#947D7D", // Darkened Pastel Rose
+  "#B27A72", // Darkened Light Coral
+  "#728D7A", // Darkened Aqua
+  "#966B86", // Darkened Pink Lavender
+  "#B25B5D", // Darkened Salmon Pink
+  "#A7789F", // Darkened Pastel Purple
+  "#B27A72", // Darkened Pastel Orange
+  "#966B86"  // Darkened Lavender
+];
+
+
+const colors = [
+  "#E6999A", // Darkened Light Pink
+  "#E6C5A3", // Darkened Peach
+  "#E6E699", // Darkened Light Yellow
+  "#99E6A3", // Darkened Mint Green
+  "#99CCE6", // Darkened Light Blue
+  "#A3A8CC", // Darkened Periwinkle
+  "#CC9BA6", // Darkened Pink
+  "#99CC99", // Darkened Light Green
+  "#E69988", // Darkened Soft Red
+  "#E6B8A3", // Darkened Light Apricot
+  "#C2D1A1", // Darkened Light Lime
+  "#9999E6", // Darkened Pale Lilac
+  "#B38888", // Darkened Pastel Rose
+  "#E6B2A1", // Darkened Light Coral
+  "#8CB39A", // Darkened Aqua
+  "#CC99B8", // Darkened Pink Lavender
+  "#E68088", // Darkened Salmon Pink
+  "#D18EB3", // Darkened Pastel Purple
+  "#E6B2A3", // Darkened Pastel Orange
+  "#CC8CB3", // Darkened Lavender
+];
+
+
+const pastelColors = [
+  "#FFCCCC", // Light Pink
+  "#FFE8CC", // Peach
+  "#FFFFCC", // Light Yellow
+  "#C9FFDB", // Mint Green
+  "#CCEDFF", // Light Blue
+  "#D6DBF2", // Periwinkle
+  "#FFECF0", // Pink
+  "#D5EFD5", // Light Green
+  "#FFCCCC", // Soft Red
+  "#FFE8D5", // Light Apricot
+  "#EAF7D5", // Light Lime
+  "#D6D6FF", // Pale Lilac
+  "#E8B9B9", // Pastel Rose
+  "#FCE3D3", // Light Coral
+  "#C3F1E6", // Aqua
+  "#EAD4E5", // Pink Lavender
+  "#FFB3B8", // Salmon Pink
+  "#F5D6EB", // Pastel Purple
+  "#FFE8E0",  // Pastel Orange
+  "#F0BBE8", // Lavender
+];
+
 /**
  * Create a global getSVG method that takes an array of charts as an argument.
  * The SVG is returned as an argument in the callback.
@@ -124,25 +195,35 @@ Highcharts.setOptions({
   },
 });
 
-const colors = [
-  "#E6999A", // Darkened Light Pink
-  "#E6C5A3", // Darkened Peach
-  "#E6E699", // Darkened Light Yellow
-  "#99E6A3", // Darkened Mint Green
-  "#99CCE6", // Darkened Light Blue
-  "#CC8CB3", // Darkened Lavender
-  "#A3A8CC", // Darkened Periwinkle
-  "#CC9BA6", // Darkened Pink
-  "#99CC99", // Darkened Light Green
-  "#E69988", // Darkened Soft Red
-  "#E6B8A3", // Darkened Light Apricot
-  "#C2D1A1", // Darkened Light Lime
-  "#9999E6", // Darkened Pale Lilac
-  "#B38888", // Darkened Pastel Rose
-  "#E6B2A1", // Darkened Light Coral
-  "#8CB39A", // Darkened Aqua
-  "#CC99B8", // Darkened Pink Lavender
-  "#E68088", // Darkened Salmon Pink
-  "#D18EB3", // Darkened Pastel Purple
-  "#E6B2A3", // Darkened Pastel Orange
-];
+
+function generatePDF(id){
+  html2canvas(document.getElementById(id), {
+    scrollY: -window.scrollY, // Captura todo el contenido, incluido el que está fuera de la vista
+    logging: true, // Activa los registros para ver posibles problemas
+    useCORS: true // Activa el uso de CORS para capturar imágenes de otros orígenes
+}).then(canvas => {
+    const imgData = canvas.toDataURL('image/png');
+    const pdf = new jsPDF('p', 'mm', 'a4'); // Crea una instancia de jsPDF en orientación portrait ('p') y tamaño A4 ('a4')
+    const imgWidth = pdf.internal.pageSize.width;
+    let imgHeight = canvas.height * imgWidth / canvas.width;
+    
+    let yOffset = 0;
+    const pageHeight = pdf.internal.pageSize.height;
+
+    while (yOffset < imgHeight) {
+        /* if (yOffset !== 0) {
+            pdf.addPage();
+        } */
+        pdf.setFillColor('#e9ecef');
+        pdf.rect(0, 0, imgWidth, pageHeight, 'F');
+        pdf.addImage(imgData, 'PNG', 0, -yOffset, imgWidth, imgHeight);
+        yOffset += pageHeight;
+        if (yOffset < imgHeight) {
+            pdf.addPage();
+        }
+    }
+    
+    // Guarda el documento PDF
+    pdf.save('document.pdf');
+});
+}

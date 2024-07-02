@@ -24,7 +24,7 @@ $categoriaRa -> select();
 	}); 
 </script>
 <div class="modal-header">
-	<h4 class="modal-title">Categoria Ra</h4>
+	<h4 class="modal-title">Categoría</h4>
 	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 </div>
 <div class="modal-body">

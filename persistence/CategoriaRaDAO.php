@@ -22,7 +22,7 @@ class CategoriaRaDAO{
 	function select() {
 		return "select idCategoriaRa, nombre
 				from CategoriaRa
-				where idCategoriaRa = '" . $this -> idCategoriaRa . "'";
+				where idCategoriaRa = '" . $this -> idCategoriaRa . "';";
 	}
 
 	function selectAll() {

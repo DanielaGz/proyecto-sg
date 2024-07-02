@@ -42,12 +42,10 @@ if(isset($_GET['action']) && $_GET['action']=="delete"){
 	}
 }
 ?>
-<div class="container-fluid">
-	<div class="card">
-		<div class="card-header">
-			<h4 class="card-title">Get All Estrategia</h4>
-		</div>
+<div class="container">
+	<div class="card round">
 		<div class="card-body">
+		<h3 class="card-title">Estrategias</h3>
 		<?php if(isset($_GET['action']) && $_GET['action']=="delete"){ ?>
 			<?php if($error == 0){ ?>
 				<div class="alert alert-success" >The registry was succesfully deleted.
@@ -64,7 +62,7 @@ if(isset($_GET['action']) && $_GET['action']=="delete"){
 				<?php }
 			} ?>
 		<div class="table-responsive">
-			<table class="table table-striped table-hover">
+			<table class="table table-hover">
 				<thead>
 					<tr><th></th>
 						<th nowrap>Nombre 
@@ -120,7 +118,9 @@ if(isset($_GET['action']) && $_GET['action']=="delete"){
 						if($_SESSION['entity'] == 'Administrator') {
 							echo "<a href='index.php?pid=" . base64_encode("ui/estrategia/selectAllEstrategia.php") . "&idEstrategia=" . $currentEstrategia -> getIdEstrategia() . "&action=delete' onclick='return confirm(\"Confirm to delete Estrategia: " . $currentEstrategia -> getNombre() . "\")'><span class='fas fa-backspace' data-toggle='tooltip' data-placement='left' data-original-title='Delete Estrategia' ></span></a> ";
 						}
-						echo "<a href='index.php?pid=" . base64_encode("ui/estrategiaCriterio/selectAllEstrategiaCriterioByEstrategia.php") . "&idEstrategia=" . $currentEstrategia -> getIdEstrategia() . "'><span class='fas fa-search-plus' data-toggle='tooltip' data-placement='left' data-original-title='Get All Estrategia Criterio' ></span></a> ";
+						if($_SESSION['entity'] == 'Administrator') {
+							echo "<a href='index.php?pid=" . base64_encode("ui/estrategiaCriterio/selectAllEstrategiaCriterioByEstrategia.php") . "&idEstrategia=" . $currentEstrategia -> getIdEstrategia() . "'><span class='fas fa-search-plus' data-toggle='tooltip' data-placement='left' data-original-title='Get All Estrategia Criterio' ></span></a> ";
+						}
 						if($_SESSION['entity'] == 'Administrator') {
 							echo "<a href='index.php?pid=" . base64_encode("ui/estrategiaCriterio/insertEstrategiaCriterio.php") . "&idEstrategia=" . $currentEstrategia -> getIdEstrategia() . "'><span class='fas fa-pen' data-toggle='tooltip' data-placement='left' data-original-title='Create Estrategia Criterio' ></span></a> ";
 						}
@@ -137,7 +137,7 @@ if(isset($_GET['action']) && $_GET['action']=="delete"){
 </div>
 <div class="modal fade" id="modalEstrategia" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog modal-lg" >
-		<div class="modal-content" id="modalContent">
+		<div class="modal-content round" id="modalContent">
 		</div>
 	</div>
 </div>

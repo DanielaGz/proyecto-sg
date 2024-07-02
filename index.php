@@ -59,6 +59,7 @@ $webPages = array(
 	'ui/categoriaRa/updateCategoriaRa.php',
 	'ui/categoriaRa/selectAllCategoriaRa.php',
 	'ui/categoriaRa/searchCategoriaRa.php',
+	'ui/categoriaRa/dashboardCategoria.php',
 	'ui/resultadoAprendizaje/selectAllResultadoAprendizajeByCategoriaRa.php',
 	'ui/bloom/insertBloom.php',
 	'ui/bloom/updateBloom.php',
@@ -88,6 +89,7 @@ $webPages = array(
 	'ui/calificacion/updateCalificacion.php',
 	'ui/calificacion/selectAllCalificacion.php',
 	'ui/calificacion/searchCalificacion.php',
+	'ui/loader.php'
 );
 if(isset($_GET['logOut'])){
 	$_SESSION['id']="";
@@ -101,12 +103,12 @@ if(isset($_GET['logOut'])){
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<link rel="icon" type="image/png" href="img/logo.png" />
-		<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" />
+		<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 		<link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.css" rel="stylesheet">
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.1/css/all.css" />
 		<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.js"></script>
 		<!-- <script src="assets/vendor/libs/sortablejs/sortable.js"></script> -->
 		<script src="https://code.highcharts.com/highcharts.js"></script>
@@ -117,8 +119,13 @@ if(isset($_GET['logOut'])){
 		<script src="https://code.highcharts.com/modules/treegraph.js"></script>
 		<script src="https://code.highcharts.com/highcharts-more.js"></script>
 		<script src="https://code.highcharts.com/modules/networkgraph.js"></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+		<script src="https://code.highcharts.com/modules/sankey.js"></script>
+		<script src="https://code.highcharts.com/modules/dependency-wheel.js"></script>
+		<script src="https://code.highcharts.com/highcharts-more.js"></script>
+		<script src="https://code.highcharts.com/modules/solid-gauge.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js"></script>
 
 		<script type="text/javascript" src="core/config/config.js"></script>
 		<script type="text/javascript" src="core/config/createChart.js"></script>

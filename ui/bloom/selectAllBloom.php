@@ -41,12 +41,10 @@ if(isset($_GET['action']) && $_GET['action']=="delete"){
 	}
 }
 ?>
-<div class="container-fluid">
-	<div class="card">
-		<div class="card-header">
-			<h4 class="card-title">Get All Bloom</h4>
-		</div>
+<div class="container">
+	<div class="card round">
 		<div class="card-body">
+		<h3 class="card-title">Bloom</h3>
 		<?php if(isset($_GET['action']) && $_GET['action']=="delete"){ ?>
 			<?php if($error == 0){ ?>
 				<div class="alert alert-success" >The registry was succesfully deleted.
@@ -63,7 +61,7 @@ if(isset($_GET['action']) && $_GET['action']=="delete"){
 				<?php }
 			} ?>
 		<div class="table-responsive">
-			<table class="table table-striped table-hover">
+			<table class="table table-hover">
 				<thead>
 					<tr><th></th>
 						<th nowrap>Nombre 

@@ -121,6 +121,21 @@ class ResultadoAprendizaje {
 		return $resultadoAprendizajes;
 	}
 
+	function selectAllByBloomCategoria(){
+		$this -> connection -> open();
+		$this -> connection -> run($this -> resultadoAprendizajeDAO -> selectAllByBloomCategoria());
+		$resultadoAprendizajes = array();
+		while ($result = $this -> connection -> fetchRow()){
+			$bloom = new Bloom($result[3]);
+			$bloom -> select();
+			$categoriaRa = new CategoriaRa($result[4]);
+			$categoriaRa -> select();
+			array_push($resultadoAprendizajes, new ResultadoAprendizaje($result[0], $result[1], $result[2], $bloom, $categoriaRa));
+		}
+		$this -> connection -> close();
+		return $resultadoAprendizajes;
+	}
+
 	function selectAllByCategoriaRa(){
 		$this -> connection -> open();
 		$this -> connection -> run($this -> resultadoAprendizajeDAO -> selectAllByCategoriaRa());

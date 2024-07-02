@@ -6,6 +6,29 @@ $categories = [];
 $nivelBar = "[";
 $countRa = 0 ; 
 $network = [];
+$colors = [
+    "#E6999A", // Darkened Light Pink
+    "#E6C5A3", // Darkened Peach
+    "#E6E699", // Darkened Light Yellow
+    "#99E6A3", // Darkened Mint Green
+    "#99CCE6", // Darkened Light Blue
+    "#A3A8CC", // Darkened Periwinkle
+    "#CC9BA6", // Darkened Pink
+    "#99CC99", // Darkened Light Green
+    "#E69988", // Darkened Soft Red
+    "#E6B8A3", // Darkened Light Apricot
+    "#C2D1A1", // Darkened Light Lime
+    "#9999E6", // Darkened Pale Lilac
+    "#B38888", // Darkened Pastel Rose
+    "#E6B2A1", // Darkened Light Coral
+    "#8CB39A", // Darkened Aqua
+    "#CC99B8", // Darkened Pink Lavender
+    "#E68088", // Darkened Salmon Pink
+    "#D18EB3", // Darkened Pastel Purple
+    "#E6B2A3", // Darkened Pastel Orange
+    "#CC8CB3", // Darkened Lavender
+];
+$buble = '[';
 foreach ($categoriaRas as $currentCategoriaRa) {
 	$resultadoAp = new resultadoAprendizaje("","","","",$currentCategoriaRa -> getIdCategoriaRa());
 	$resultadoAps = $resultadoAp -> selectAllByCategoriaRa();
@@ -45,19 +68,20 @@ foreach ($bloms as $currentBlom) {
 $nivel .= "]";
 $nivelPie .= "]";
 ?>
-<div class="">
+<div class="container">
 	<div class="">
         <div class="d-flex flex-row-reverse bd-highlight">
             <button type="button" id="export-pdf" class="btn btn-info m-2 round">
                 Descargar PDF
                 <span class="fas fa-file-pdf" aria-hidden="true"></span>
             </button>
-            <button type="button" id="export-png" class="btn btn-info m-2 round">
+            <!-- <button type="button" id="export-png" class="btn btn-info m-2 round">
                 Descargar PNG
                 <span class="fas fa-file-image" aria-hidden="true"></span>
-            </button>
+            </button> -->
         </div>
-		<div class="card-body">
+		<div class="card-body" id="pdf" style="background-color: #e9ecef;">
+            <h2><?php echo strtoupper("Resultados de aprendizaje"); ?></h2>
 			<div class="row">
             <div class="col-lg-4 col-md-4 col-sm-12 p-3">
 				<div class="card drag-item cursor-move mb-lg-0 mb-4 border-0 round h-full">
@@ -83,24 +107,99 @@ $nivelPie .= "]";
 				</div>
 				</div>
 			</div>
-            <div class="col-lg-12 col-md-12 col-sm-12 p-3">
-				<div class="card drag-item cursor-move mb-lg-0 mb-4 border-0 round h-full">
-				<div class="card-body text-center">
-                    <div id="bar"></div>
-				</div>
-				</div>
-			</div>
-			<div class="col-lg-6 col-md-6 col-sm-12 p-3">
-				<div class="card drag-item cursor-move mb-lg-0 mb-4 border-0 round h-full">
-				<div class="card-body text-center">
-                <div id="pie"></div>
-				</div>
-				</div>
-			</div>
-			<div class="col-lg-6 col-md-6 col-sm-12 p-3">
+            <div class="col-lg-7 col-md-12 col-sm-12 p-3">
 				<div class="card drag-item cursor-move mb-lg-0 mb-4 border-0 round h-full">
 				<div class="card-body text-center">
                     <div id="networkgraph"></div>
+				</div>
+				</div>
+			</div>
+            <div class="col-lg-5 col-md-12 col-sm-12 p-3" >
+            <div class="card drag-item cursor-move mb-lg-0 mb-4 border-0 round p-4" >
+            <h6 class="font-weight-bold">Resultados de aprendizaje</h6>
+            <div class="table-responsive">
+            <table class="table text-center">
+                <thead>
+                    <tr>
+                    <th scope="col">Categoría</th>
+                    <th scope="col">Cantidad de Ra</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <?php 
+                    $count = 0;
+                    foreach ($categoriaRas as $currentCategoriaRa) {
+                        $resultadoAp = new resultadoAprendizaje("","","","",$currentCategoriaRa -> getIdCategoriaRa());
+                        $resultadoAps = $resultadoAp -> selectAllByCategoriaRa();
+                        echo "<tr>";
+                        echo "<td style='display: flex; justify-content: center; align-items: center;'>".$currentCategoriaRa -> getNombre()." <div class='m-1' style='background-color: ".$colors[$count]."; width: 15px; height: 15px;'>   </div></td>";
+                        echo "<td>".count($resultadoAps)."</td>";
+                        echo "</tr>";
+                        $count++;
+                    }
+                
+                ?>
+                </tbody>
+            </table>
+            </div>
+            </div>
+        </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 p-3">
+				<div class="card drag-item cursor-move mb-lg-0 mb-4 border-0 round h-full">
+				<div class="card-body text-center">
+                <div id="packedbubble"></div>
+				</div>
+                
+				</div>
+			</div>
+            <div class="col-lg-12 col-md-12 col-sm-12 p-3" style="min-height: 400px;">
+            <div class="card drag-item cursor-move mb-lg-0 mb-4 border-0 round h-full p-4">
+            <h6 class="font-weight-bold">Resultados de aprendizaje</h6>
+            <div class="table-responsive">
+            <table class="table text-center">
+                <thead>
+                    <tr>
+                    <th scope="col">Identificador</th>
+                    <th scope="col">Resultado Aprendizaje</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <?php 
+                    $count = 1;
+                    $countC = 0;
+                    foreach ($categoriaRas as $currentCategoriaRa) {
+                        $resultadoAp = new resultadoAprendizaje("","","","",$currentCategoriaRa -> getIdCategoriaRa());
+                        $resultadoAps = $resultadoAp -> selectAllByCategoriaRa();
+                        $buble .='{"name": "'.$currentCategoriaRa -> getNombre().'","data": [';
+                        foreach ($resultadoAps as $currentResultadoAp) {
+                            $buble .= '{"name": "R'.$count.'","value": 200},';
+                            echo "<tr>";
+                            echo "<td style='display: flex; justify-content: center; align-items: center;'>R".$count." <div class='m-1' style='background-color: ".$colors[$countC]."; width: 15px; height: 15px;'>   </div></td>";
+                            echo "<td>".$currentResultadoAp -> getNombre()."</td>";
+                            echo "</tr>";
+                            $count++;
+                        }
+                        $countC++;
+                        $buble .= ']},';
+                    }
+                    $buble .= ']';
+                ?>
+                </tbody>
+            </table>
+            </div>
+            </div>
+        </div>
+			<div class="col-lg-7 col-md-6 col-sm-12 p-3">
+				<div class="card drag-item cursor-move mb-lg-0 mb-4 border-0 round h-full">
+				<div class="card-body text-center">
+                    <div id="bar"></div>                    
+				</div>
+				</div>
+			</div>
+            <div class="col-lg-5 col-md-6 col-sm-12 p-3">
+				<div class="card drag-item cursor-move mb-lg-0 mb-4 border-0 round h-full">
+				<div class="card-body text-center">
+                <div id="pie"></div>
 				</div>
 				</div>
 			</div>
@@ -123,62 +222,8 @@ $nivelPie .= "]";
     let nivel = <?php echo ($nivel); ?>;
     let nivelPie = <?php echo ($nivelPie); ?>;
     let nivelBar = <?php echo ($nivelBar); ?>;
-    console.log(network)
+    let buble = <?php echo ($buble); ?>;
     const graphics = [];
-
-    /* graphics.push(Highcharts.chart('bar', {
-        chart: {
-            type: 'column'
-        },
-        colors: colors,
-        credits: {
-        enabled: false
-    },
-        title: {
-            text: 'Cantidad de RA por categoría',
-            align: 'left'
-        },
-        xAxis: {
-            type: 'category',
-            labels: {
-                autoRotation: [-45, -90],
-                style: {
-                    fontSize: '13px',
-                    fontFamily: 'Verdana, sans-serif'
-                }
-            }
-        },
-        yAxis: {
-            min: 0,
-            title: {
-                text: 'Cantidad RA'
-            }
-        },
-        legend: {
-            enabled: false
-        },
-        tooltip: {
-            pointFormat: 'RA {point.y:.1f}'
-        },
-        series: [{
-            name: 'Population',
-            colorByPoint: true,
-            groupPadding: 0,
-            data: [...nivelBar],
-            dataLabels: {
-                enabled: false,
-                rotation: -90,
-                color: '#FFFFFF',
-                inside: true,
-                verticalAlign: 'top',
-                y: 10, // 10 pixels down from the top
-                style: {
-                    fontSize: '13px',
-                    fontFamily: 'Verdana, sans-serif'
-                }
-            }
-        }],
-    })); */
 
     graphics.push(Highcharts.chart('bar',
         createChart(
@@ -189,162 +234,58 @@ $nivelPie .= "]";
             "Cantidad RA")
     ));
 
-    graphics.push(Highcharts.chart('pie', {
-        chart: {
-            plotBackgroundColor: null,
-            plotBorderWidth: null,
-            plotShadow: false,
-            type: 'pie'
-        },
-        colors: colors,
-        title: {
-            text: 'Porcentaje RA por categoría',
-            align: 'left'
-        },
-        tooltip: {
-            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-        },
-        accessibility: {
-            point: {
-                valueSuffix: '%'
-            }
-        },
-        plotOptions: {
-            pie: {
-                allowPointSelect: true,
-                cursor: 'pointer',
-                dataLabels: {
-                    enabled: false
-                },
-                showInLegend: true
-            },
-            series: {
-                borderRadius: 5,
-                dataLabels: [{
-                    enabled: false,
-                    distance: 15,
-                    format: '{point.name}'
-                }, {
-                    enabled: false,
-                    distance: '-30%',
-                    filter: {
-                        property: 'percentage',
-                        operator: '>',
-                        value: 5
-                    },
-                    style: {
-                        fontSize: '0.9em',
-                        textOutline: 'none'
-                    }
-                }]
-            }
-        },
-        series: [{
-            name: 'Porcentaje',
-            colorByPoint: true,
-            data: pie
-        }]
-    }));
+    graphics.push(
+        Highcharts.chart('pie',
+        createChart(
+            "Porcentaje RA por categoría", 
+            "pie", 
+            pie)
+        )
+    );networkgraph
 
-    graphics.push(Highcharts.chart('networkgraph', {
-        chart: {
-            type: 'networkgraph'
-        },
-        colors: colors,
-        title: {
-            text: 'Resultados de aprendizaje',
-            align: 'left'
-        },
-        exporting: {
-        allowHTML: true
-    },plotOptions: {
-            networkgraph: {
-                keys: ['from', 'to'],
-                layoutAlgorithm: {
-                    enableSimulation: true,
-                    friction: -0.9
-                },
-                dataLabels: {
-                    enabled: true,
-                linkFormat: '',
-                style: {
-                    fontSize: '12px'
-                },
-                formatter: function() {
-                    // Inicialmente retorna una cadena vacía para ocultar los labels
-                    return '';
-                }
-                },
-            },
-            series: {
-                dataLabels: {
-                    enabled: true
-                }
-            }
-        },
-        series: [{
-            accessibility: {
-                enabled: false
-            },
-            dataLabels: {
-                enabled: true,
-                linkFormat: '',
-                style: {
-                    fontSize: '0.9em',
-                    fontWeight: 'normal'
-                }
-            },
-            id: 'lang-tree',
-            data: [
-                ...network
-            ]
-        }]
-    }));
+    graphics.push(
+        Highcharts.chart('networkgraph',
+        createChart(
+            "Resultados de aprendizaje", 
+            "networkgraph", 
+            network)
+        )
+    );
 
-    graphics.push(Highcharts.chart('column-line', {
-        title: {
-            text: 'Resultados de aprendizaje por bloom',
-            align: 'left'
-        },
-        colors: colors,
-        xAxis: {
-            categories: categories
-        },
-        yAxis: {
-            title: {
-                text: 'Cantidad RA'
-            }
-        },
-        tooltip: {
-            valueSuffix: ''
-        },
-        plotOptions: {
-            series: {
-                borderRadius: '25%'
-            }
-        },
-        series: [...nivel,{
-            type: 'pie',
-            name: 'Total',
-            data: [...nivelPie],
-            center: [20, 20],
-            size: 100,
-            innerSize: '70%',
-            showInLegend: false,
-            dataLabels: {
-                enabled: false
-            }
-        }]
-    }));
+    graphics.push(
+        Highcharts.chart('column-line',
+        createChart(
+            "'Resultados de aprendizaje por bloom", 
+            "column-line", 
+            nivelPie,
+            'Cantidad RA',
+            categories,
+            nivel)
+        )
+    );
 
-    document.getElementById('export-png').addEventListener('click', () => {
+    graphics.push(
+        Highcharts.chart('packedbubble',
+        createChart(
+            "Resultados de aprendizaje por categoría", 
+            "packedbubble", 
+            buble)
+        )
+    );
+
+    /* document.getElementById('export-png').addEventListener('click', () => {
         Highcharts.exportCharts(graphics);
-    });
+    }); */
 
-    document.getElementById('export-pdf').addEventListener('click', () => {
+   /*  document.getElementById('export-pdf').addEventListener('click', () => {
         Highcharts.exportCharts(graphics, {
             type: 'application/pdf'
         });
+    }); */
+
+    // Función para generar el PDF
+    document.getElementById('export-pdf').addEventListener('click', function() {
+        generatePDF('pdf');
     });
 
 </script>
