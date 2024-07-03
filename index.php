@@ -49,6 +49,7 @@ $webPages = array(
 	'ui/dashboard/updateDashboard.php',
 	'ui/dashboard/selectAllDashboard.php',
 	'ui/dashboard/searchDashboard.php',
+	'ui/dashboard/dashboardCustom.php',
 	'ui/usuarioDashboard/selectAllUsuarioDashboardByDashboard.php',
 	'ui/grafica/selectAllGraficaByDashboard.php',
 	'ui/grafica/insertGrafica.php',
@@ -110,6 +111,7 @@ if(isset($_GET['logOut'])){
 		<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.js"></script>
+		<script src="https://cdn.jsdelivr.net/gh/RubaXa/Sortable/Sortable.min.js"></script>
 		<!-- <script src="assets/vendor/libs/sortablejs/sortable.js"></script> -->
 		<script src="https://code.highcharts.com/highcharts.js"></script>
 		<script src="https://code.highcharts.com/modules/exporting.js"></script>
@@ -145,6 +147,47 @@ if(isset($_GET['logOut'])){
 
 			.h-full{
 				height: 100%;
+			}
+
+			/* Estilos adicionales para los elementos del grid */
+			.elemento {
+				border: 1px solid #ccc;
+				padding: 10px;
+				margin-bottom: 10px;
+				position: relative; /* Para posicionar correctamente el botón de cerrar */
+			}
+
+			/* Estilos para el botón de cerrar */
+			.close {
+				position: absolute;
+				right: 5px;
+				top: 5px;
+				z-index: 999;
+			}
+
+			.grid-item {
+				cursor: move;
+			}
+
+			.not-draggable {
+				cursor: default;
+			}
+
+			.tilt {
+				animation: tilt 0.25s infinite alternate;
+			}
+
+			@keyframes tilt {
+				0% { transform: rotate(0.3deg); }
+				100% { transform: rotate(-0.3deg); }
+			}
+
+			.round-left {
+				border-radius: 16px 0px 0px 16px;
+			}
+
+			.round-right {
+				border-radius: 0px 16px 16px 0px;
 			}
 		</style>
 	</head>

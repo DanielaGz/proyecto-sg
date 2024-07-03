@@ -3,16 +3,18 @@ class DashboardDAO{
 	private $idDashboard;
 	private $nombre;
 	private $detalle;
+	private $usuario;
 
-	function __construct($pIdDashboard = "", $pNombre = "", $pDetalle = ""){
+	function __construct($pIdDashboard = "", $pNombre = "", $pDetalle = "", $pUsuario = ""){
 		$this -> idDashboard = $pIdDashboard;
 		$this -> nombre = $pNombre;
 		$this -> detalle = $pDetalle;
+		$this -> usuario = $pUsuario;
 	}
 
 	function insert(){
-		return "insert into Dashboard(nombre, detalle)
-				values('" . $this -> nombre . "', '" . $this -> detalle . "')";
+		return "insert into Dashboard(nombre, detalle, usuario_idUsuario)
+				values('" . $this -> nombre . "', '" . $this -> detalle . "','".$this -> usuario."')";
 	}
 
 	function update(){
@@ -31,6 +33,12 @@ class DashboardDAO{
 	function selectAll() {
 		return "select idDashboard, nombre, detalle
 				from Dashboard";
+	}
+
+	function selectAllByUsuario() {
+		return "select idDashboard, nombre, detalle, usuario_idUsuario
+				from Dashboard
+				where usuario_idUsuario = '" . $this -> usuario . "'";
 	}
 
 	function selectAllOrder($orden, $dir){

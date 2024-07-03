@@ -22,6 +22,7 @@ $usuario -> select();
 				<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Dashboard</a>
 				<div class="dropdown-menu">
 					<a class="dropdown-item" href="index.php?pid=<?php echo base64_encode('ui/categoriaRa/dashboardCategoria.php') ?>">Categorias</a>
+					<a class="dropdown-item" href="index.php?pid=<?php echo base64_encode('ui/dashboard/dashboardCustom.php') ?>">Personalizado</a>
 				</div>
 			</li>
 		</ul>

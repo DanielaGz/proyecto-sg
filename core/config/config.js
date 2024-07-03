@@ -69,6 +69,21 @@ const pastelColors = [
   "#F0BBE8", // Lavender
 ];
 
+
+const graficas = {
+  'general' : [
+       'bar',
+       'pie',
+       'networkgraph',
+       'column-line',
+       'packedbubble'
+  ],
+  'categoria' : [
+    'bar',
+    'pie',
+    'packedbubble'
+  ],
+};
 /**
  * Create a global getSVG method that takes an array of charts as an argument.
  * The SVG is returned as an argument in the callback.

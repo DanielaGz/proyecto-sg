@@ -8,6 +8,7 @@ class Dashboard {
 	private $detalle;
 	private $dashboardDAO;
 	private $connection;
+	private $usuario;
 
 	function getIdDashboard() {
 		return $this -> idDashboard;
@@ -33,11 +34,20 @@ class Dashboard {
 		$this -> detalle = $pDetalle;
 	}
 
-	function __construct($pIdDashboard = "", $pNombre = "", $pDetalle = ""){
+	function getUsuario() {
+		return $this -> usuario;
+	}
+
+	function setUsuario($pUsuario) {
+		$this -> usuario = $pUsuario;
+	}
+
+	function __construct($pIdDashboard = "", $pNombre = "", $pDetalle = "", $pUsuario = ""){
 		$this -> idDashboard = $pIdDashboard;
 		$this -> nombre = $pNombre;
 		$this -> detalle = $pDetalle;
-		$this -> dashboardDAO = new DashboardDAO($this -> idDashboard, $this -> nombre, $this -> detalle);
+		$this -> usuario = $pUsuario;
+		$this -> dashboardDAO = new DashboardDAO($this -> idDashboard, $this -> nombre, $this -> detalle, $this -> usuario);
 		$this -> connection = new Connection();
 	}
 
@@ -71,6 +81,19 @@ class Dashboard {
 		$dashboards = array();
 		while ($result = $this -> connection -> fetchRow()){
 			array_push($dashboards, new Dashboard($result[0], $result[1], $result[2]));
+		}
+		$this -> connection -> close();
+		return $dashboards;
+	}
+
+	function selectAllByUsuario(){
+		$this -> connection -> open();
+		$this -> connection -> run($this -> dashboardDAO -> selectAllByUsuario());
+		$dashboards = array();
+		while ($result = $this -> connection -> fetchRow()){
+			$usuario = new Usuario($result[3]);
+			$usuario -> select();
+			array_push($dashboards, new Dashboard($result[0], $result[1], $result[2], $usuario));
 		}
 		$this -> connection -> close();
 		return $dashboards;

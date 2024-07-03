@@ -15,4 +15,5 @@ require("business/Criterio.php");
 require("business/Calificacion.php");
 $pid=base64_decode($_GET['pid']);
 include($pid);
+
 ?>

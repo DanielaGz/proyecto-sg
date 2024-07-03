@@ -8,8 +8,12 @@ $detalle="";
 if(isset($_POST['detalle'])){
 	$detalle=$_POST['detalle'];
 }
+$usuario="";
+if(isset($_POST['usuario'])){
+	$usuario=$_POST['usuario'];
+}
 if(isset($_POST['insert'])){
-	$newDashboard = new Dashboard("", $nombre, $detalle);
+	$newDashboard = new Dashboard("", $nombre, $detalle, $usuario);
 	$newDashboard -> insert();
 	$user_ip = getenv('REMOTE_ADDR');
 	$agent = $_SERVER["HTTP_USER_AGENT"];
@@ -62,6 +66,22 @@ if(isset($_POST['insert'])){
 						<div class="form-group">
 							<label>Detalle</label>
 							<input type="text" class="form-control" name="detalle" value="<?php echo $detalle ?>"/>
+						</div>
+						<div class="form-group">
+							<label>Usuario*</label>
+							<select class="form-control" name="usuario">
+								<?php
+								$objUsuario = new Usuario();
+								$usuarios = $objUsuario -> selectAllOrder("name", "asc");
+								foreach($usuarios as $currentUsuario){
+									echo "<option value='" . $currentUsuario -> getIdUsuario() . "'";
+									if($currentUsuario -> getIdUsuario() == $usuario){
+										echo " selected";
+									}
+									echo ">" . $currentUsuario -> getName() . "</option>";
+								}
+								?>
+							</select>
 						</div>
 						<button type="submit" class="btn btn-info" name="insert">Create</button>
 					</form>
