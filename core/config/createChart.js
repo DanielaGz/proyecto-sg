@@ -13,12 +13,17 @@ const default_config = {
     text: "",
     align: "left",
   },
+  subtitle: {
+      text: '',
+      align: 'left'
+  },
 };
 
-function createChart(title, type, data, yAxis = "", xAxis = "", nivel=[]) {
+function createChart(title, type, data, yAxis = "", xAxis = "", nivel=[], subtitle="") {
   let default_chart = default_config;
   default_chart.chart.type = type;
   default_chart.title.text = title;
+  default_chart.subtitle.text = subtitle;
   default_chart.colors = colors;
   switch (type) {
     case "column":

@@ -19,12 +19,17 @@ $grafica = new Grafica($id);
 $grafica -> select('posicion','asc');
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-   echo $_POST['nombre'];
-   echo $_POST['detalle'];
-   echo $_POST['filas'];
-   echo $_POST['section'];
-   echo $_POST['typeG'];
-   echo "ci";
+    $graficaUpdate = new Grafica(
+        $id, 
+        $_POST['nombre'], 
+        $_POST['detalle'], 
+        $_POST['typeG'],
+        $_POST['section'],
+        $grafica -> getPosicion(),
+        $_POST['filas'],
+        $grafica -> getDashboard() -> getIdDashboard()
+        );
+    $graficaUpdate -> update();
 }
 ?>
 <script charset="utf-8">
@@ -53,7 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <div>
             <p>Filas*</p>
             <select class="form-control round" id="filas">
-               <option value="3" <?php echo ($grafica -> getTam() == '3' ? 'selected': '');?>>1</option>
+               <option value="4" <?php echo ($grafica -> getTam() == '3' ? 'selected': '');?>>1</option>
                <option value="6" <?php echo ($grafica -> getTam() == '6' ? 'selected': '');?>>2</option>
                <option value="12" <?php echo ($grafica -> getTam() == '12' ? 'selected': '');?>>3</option>
             </select>
@@ -116,9 +121,8 @@ if(section !== ''){
 }
 
 $('#save').click(function() {
-    console.log($("#name").val())
     $.ajax({
-        url: 'modalUpdateGrafica.php',
+        url: 'modalUpdateGrafica.php?id=<?php echo $id ?>',
         type: 'POST',
         data: { 
             nombre: $("#name").val(), 
@@ -128,8 +132,8 @@ $('#save').click(function() {
             typeG: typeG
         },
         success: function(response) {
-            console.log(response);
             $("#close").click();
+            change = true;
         },
         error: function(jqXHR, textStatus, errorThrown) {
             console.error(textStatus, errorThrown);

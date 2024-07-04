@@ -26,6 +26,15 @@ class GraficaDAO{
 	}
 
 	function update(){
+		echo ("update Grafica set 
+		nombre = '" . $this -> nombre . "',
+		detalle = '" . $this -> detalle . "',
+		config = '" . $this -> config . "',
+		fila = '" . $this -> fila . "',
+		posicion = '" . $this -> posicion . "',
+		tam = '" . $this -> tam . "',
+		dashboard_idDashboard = '" . $this -> dashboard . "'	
+		where idGrafica = '" . $this -> idGrafica . "'");
 		return "update Grafica set 
 				nombre = '" . $this -> nombre . "',
 				detalle = '" . $this -> detalle . "',

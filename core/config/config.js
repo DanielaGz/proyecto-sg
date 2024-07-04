@@ -84,6 +84,25 @@ const graficas = {
     'packedbubble'
   ],
 };
+
+const typeCharts = {
+  'generalpie': {
+    'nombre': "Porcentaje RA por categoría",
+    "detalle": "",
+    "config": "generalpie",
+    "posicion": 1,
+    "tam": 6,
+  },
+  'generalbar': {
+    'nombre': "Cantidad de RA por categoría",
+    "detalle": "",
+    "config": "generalbar",
+    "posicion": 1,
+    "tam": 6,
+  }
+}
+
+
 /**
  * Create a global getSVG method that takes an array of charts as an argument.
  * The SVG is returned as an argument in the callback.

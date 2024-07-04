@@ -174,7 +174,7 @@ if(isset($_GET['logOut'])){
 			}
 
 			.tilt {
-				animation: tilt 0.25s infinite alternate;
+				animation: tilt 0.15s infinite alternate;
 			}
 
 			@keyframes tilt {
