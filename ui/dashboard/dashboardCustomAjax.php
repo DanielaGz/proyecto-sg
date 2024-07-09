@@ -4,20 +4,6 @@ $dashboard = new Dashboard($id);
 $dashboard -> select();
 $grafica = new Grafica( "", "","", "", "", "", "", $id);
 $graficas = $grafica -> selectAllByDashboardOrder('posicion','asc');
-
-$categoriaRa = new CategoriaRa();
-$categoriaRas = $categoriaRa -> selectAll();
-$nivelBar = "[";
-$pie = "[";
-foreach ($categoriaRas as $currentCategoriaRa) {
-    $resultadoAp = new resultadoAprendizaje("","","","",$currentCategoriaRa -> getIdCategoriaRa());
-	$resultadoAps = $resultadoAp -> selectAllByCategoriaRa();
-    $countRa += count($resultadoAps);
-    $pie .= '{"name": "'.$currentCategoriaRa -> getNombre().'","y": '.count($resultadoAps)."},";
-    $nivelBar .='["'.$currentCategoriaRa -> getNombre().'", '.count($resultadoAps).'],';
-}
-$pie .= "]";
-$nivelBar .= "]";
 ?>
 <div class="container">
 <div class="card round mt-3">
@@ -41,7 +27,7 @@ $nivelBar .= "]";
 
 <div class="container mt-3" id="pdf-document" style="background-color: #e9ecef;">
 <h3>
-    <?php echo $dashboard -> getNombre() ?>
+    <?php echo strtoupper($dashboard -> getNombre()); ?>
 </h3>
 <p>
     <?php echo $dashboard -> getDetalle() ?>
@@ -49,6 +35,8 @@ $nivelBar .= "]";
 <div class="row grid" id="demoGrid">
     <?php 
     foreach($graficas as $currentGrafica){
+        $currentGraficaConfig = $currentGrafica->getConfig();
+        $id = $currentGraficaConfig;  // Establecer el parámetro
         ?>
         <div class="col-lg-<?php echo $currentGrafica -> getTam();?> col-md-12 col-sm-12 p-3 not-draggable" id="<?php echo $currentGrafica -> getIdGrafica();?>">
             <div class="card drag-item cursor-move mb-lg-0 mb-4 border-0 round h-full">
@@ -74,7 +62,9 @@ $nivelBar .= "]";
 </div>
 </div>
 
-
+<?php 
+include('ui/grafica/customGrapich.php');
+?>
 <div class="modal fade" id="modalAddGra" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog modal-lg" >
 		<div class="modal-content round" id="modalContent">
@@ -83,8 +73,6 @@ $nivelBar .= "]";
 </div>
 
 <script>
-nivelBar = <?php echo ($nivelBar); ?>;
-pie = <?php echo ($pie); ?>;
 
 $(document).ready(function(){
 
@@ -152,27 +140,6 @@ function savePositions(id, posicion){
     });
 }
 
-if ($("#generalbar").length) {
-    Highcharts.chart('generalbar',
-        createChart(
-            "Cantidad de RA por categoría", 
-            "column", 
-            nivelBar, 
-            "Cantidad RA", 
-            "Cantidad RA")
-    );
-}
-
-if ($("#generalpie").length) {
-    Highcharts.chart('generalpie',
-        createChart(
-            "Porcentaje RA por categoría", 
-            "pie", 
-            pie)
-    );
-}
-
-
 });
 
 document.getElementById('pdf').addEventListener('click', function() {
@@ -180,3 +147,5 @@ document.getElementById('pdf').addEventListener('click', function() {
 });
 
 </script>
+
+<script type="text/javascript" src="core/config/customCreate.js"></script>

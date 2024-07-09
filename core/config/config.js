@@ -99,10 +99,31 @@ const typeCharts = {
     "config": "generalbar",
     "posicion": 1,
     "tam": 6,
+  },
+  'generalnetworkgraph': {
+    'nombre': "Resultados de aprendizaje",
+    "detalle": "",
+    "config": "generalnetworkgraph",
+    "posicion": 1,
+    "tam": 6,
+  },
+  'generalpackedbubble': {
+    'nombre': "Resultados de aprendizaje por categoría",
+    "detalle": "",
+    "config": "generalpackedbubble",
+    "posicion": 1,
+    "tam": 6,
+  },
+  'generalcolumn-line': {
+    'nombre': "Resultados de aprendizaje por bloom",
+    "detalle": "",
+    "config": "generalcolumn-line",
+    "posicion": 1,
+    "tam": 6,
   }
 }
 
-
+let grapich = {};
 /**
  * Create a global getSVG method that takes an array of charts as an argument.
  * The SVG is returned as an argument in the callback.
@@ -261,3 +282,6 @@ function generatePDF(id){
     pdf.save('document.pdf');
 });
 }
+
+
+

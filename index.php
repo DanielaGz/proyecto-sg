@@ -56,6 +56,7 @@ $webPages = array(
 	'ui/grafica/updateGrafica.php',
 	'ui/grafica/selectAllGrafica.php',
 	'ui/grafica/searchGrafica.php',
+	'ui/grafica/customGrapich.php',
 	'ui/categoriaRa/insertCategoriaRa.php',
 	'ui/categoriaRa/updateCategoriaRa.php',
 	'ui/categoriaRa/selectAllCategoriaRa.php',

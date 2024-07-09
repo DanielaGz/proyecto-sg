@@ -48,8 +48,6 @@ $dashboards = $dashboard -> selectAllByUsuario();
     let section = '';
     let typeG = '';
     let idS = 0;
-    let nivelBar = '';
-    let pie = '';
 
 
     $(document).ready(function(){

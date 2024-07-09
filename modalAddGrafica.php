@@ -25,20 +25,6 @@ foreach ($graficas as $currentGrafica) {
     array_push($array_added, $currentGrafica -> getConfig());
 }
 
-//Graficas
-$categoriaRa = new CategoriaRa();
-$categoriaRas = $categoriaRa -> selectAll();
-$nivelBar = "[";
-$pie = "[";
-foreach ($categoriaRas as $currentCategoriaRa) {
-    $resultadoAp = new resultadoAprendizaje("","","","",$currentCategoriaRa -> getIdCategoriaRa());
-	$resultadoAps = $resultadoAp -> selectAllByCategoriaRa();
-    $countRa += count($resultadoAps);
-    $pie .= '{"name": "'.$currentCategoriaRa -> getNombre().'","y": '.count($resultadoAps)."},";
-    $nivelBar .='["'.$currentCategoriaRa -> getNombre().'", '.count($resultadoAps).'],';
-}
-$pie .= "]";
-$nivelBar .= "]";
 ?>
 <script charset="utf-8">
 	$(function () { 
@@ -60,42 +46,17 @@ $nivelBar .= "]";
     </div>
 </div>
 <script>
-
-barshow = <?php echo ($nivelBar); ?>;
-pieshow = <?php echo ($pie); ?>;
 added = <?php echo json_encode($array_added); ?>;
-console.log(added)
 
 for (let [key, value] of Object.entries(typeCharts)) {
     if(!added.includes(key)){
+        /* $("#grapichs").append('<div class="card round m-1"><div id="'+value.config+'"></div><div class="d-flex justify-content-end m-1"><button type="button" class="btn btn-info round mr-1" data-toggle="tooltip" data-placement="bottom" title="Agregar" onclick="Agregar('+"'"+value.config+"'"+')">Seleccionar <span class="fas fa-plus"></span></button></div></div>'); */
         $("#grapichs").append('<div class="card round m-1"><div id="'+value.config+'"></div><div class="d-flex justify-content-end m-1"><button type="button" class="btn btn-info round mr-1" data-toggle="tooltip" data-placement="bottom" title="Agregar" onclick="Agregar('+"'"+value.config+"'"+')">Seleccionar <span class="fas fa-plus"></span></button></div></div>');
-        console.log(key + ": " + value);
     }
 }
 
 if(Object.entries(typeCharts).length === added.length){
     $("#no").removeClass('d-none');
-}
-
-if ($("#generalbar").length) {
-    Highcharts.chart('generalbar',
-        createChart(
-            "Cantidad de RA por categoría", 
-            "column", 
-            nivelBar, 
-            "Cantidad RA", 
-            "Cantidad RA")
-    );
-}
-
-
-if ($("#generalpie").length) {
-    Highcharts.chart('generalpie',
-        createChart(
-            "Porcentaje RA por categoría", 
-            "pie", 
-            pieshow)
-    );
 }
 
 function Agregar(cat){
@@ -118,3 +79,4 @@ function Agregar(cat){
 }
 
 </script>
+<script type="text/javascript" src="core/config/customCreate.js"></script>
