@@ -27,7 +27,7 @@ $dashboards = $dashboard -> selectAllByUsuario();
         </div>
     </div>
 </div>
-
+<div id="menu-dashboard"></div>
 <div id="dashboard"></div>
 
 <div class="modal fade" id="modalEstrategia" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -48,6 +48,8 @@ $dashboards = $dashboard -> selectAllByUsuario();
     let section = '';
     let typeG = '';
     let idS = 0;
+    let sortable = '';
+    let $gridItems = '';
 
 
     $(document).ready(function(){
@@ -76,10 +78,27 @@ $dashboards = $dashboard -> selectAllByUsuario();
             $("#dashboard").load(path, function() {
                 $("#dashboard").fadeIn(300); // Mostrar nuevo contenido con transición
             });
+            $("#menu-dashboard").empty();
+            var menu_path = "indexAjax.php?pid=<?php echo base64_encode("ui/dashboard/menuDashboard.php"); ?>&id="+idS;
+            $("#menu-dashboard").load(menu_path, function() {
+                $("#menu-dashboard").fadeIn(300); // Mostrar nuevo contenido con transición
+            });
         });
     }
 
     function updateGraph(id, op){
+        let tams_ant = {
+            '4' : '4',
+            '6' : '4',
+            '8' : '6',
+            '12' : '9'
+        }
+        let tams_sig = {
+            '4' : '6',
+            '6' : '8',
+            '8' : '12',
+            '12' : '12'
+        }
         let classes = $('#' + id).attr('class').split(' ');
             $.each(classes, function(index, className) {
             ant = '';
@@ -91,7 +110,7 @@ $dashboards = $dashboard -> selectAllByUsuario();
                     }
                 }
             });
-        let tam = (op === '+') ? (parseInt(ant)+3) : (parseInt(ant)-3);
+        let tam = (op === '+') ? tams_sig[ant] : tams_ant[ant];
         $.ajax({
             url: 'updateGraficaService.php?id='+id,
             type: 'POST',
@@ -126,4 +145,6 @@ $dashboards = $dashboard -> selectAllByUsuario();
             }
         });
     }
+
+    
 </script>

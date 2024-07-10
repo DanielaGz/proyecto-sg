@@ -112,8 +112,4 @@ var sortable = Sortable.create(demoGrid, {
 
 });
 
-document.getElementById('pdf').addEventListener('click', function() {
-    generatePDF('pdf-document');
-});
-
 </script>

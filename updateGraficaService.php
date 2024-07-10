@@ -53,7 +53,7 @@ if (isset($_POST['create'])) {
         $_POST['nombre'], 
         $_POST['detalle'], 
         $_POST['config'], 
-        count($graficas)+1, 
+        $_POST['fila'], 
         count($graficas)+1, 
         $_POST['tam'], 
         $id
