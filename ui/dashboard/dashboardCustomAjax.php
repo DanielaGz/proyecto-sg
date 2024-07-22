@@ -4,24 +4,48 @@ $dashboard = new Dashboard($id);
 $dashboard -> select();
 $grafica = new Grafica( "", "","", "", "", "", "", $id);
 $graficas = $grafica -> selectAllByDashboardOrder('posicion','asc');
+$categoriaRa = new CategoriaRa();
+$categoriaRas = $categoriaRa -> selectAll();
+$category = $_GET['category'] ? $_GET['category'] : 1;
+$_SESSION['category']=$category;
 ?>
 <div class="container">
 <div class="card round mt-3">
-    <div class="d-flex justify-content-end bd-highlight">
-        <a class="btn btn-info round m-2 round " href='modalAddGrafica.php?id=<?php echo $id;?>' data-toggle='modal' data-target='#modalAddGra' role="button">
-            Agregar gráfico
-            <span class='fas fa-plus'></span>
-        </a>
-        <button type="button" id="move" class="btn btn-info m-2 round">
-            <span id="save-button">Editar</span>
-            <span class="fas fa-pen" aria-hidden="true"></span>
-        </button>
-        <button type="button" id="pdf" class="btn btn-info m-2 round">
-            Descargar
-            <span class="fas fa-file-pdf" aria-hidden="true"></span>
-        </button>
+    <div class="d-lg-flex justify-content-between">
+        <div class="m-3">
+            Categoría: <?php echo $dashboard -> getCategory() ;?>
+        </div>
+        <div class="d-flex justify-content-end bd-highlight">
+            <a class="btn btn-info round m-2 round " href='modalAddGrafica.php?id=<?php echo $id;?>' data-toggle='modal' data-target='#modalAddGra' role="button">
+                Agregar gráfico
+                <span class='fas fa-plus'></span>
+            </a>
+            <button type="button" id="move" class="btn btn-info m-2 round">
+                <span id="save-button">Mover</span>
+                <span class="fas fa-pen" aria-hidden="true"></span>
+            </button>
+            <button type="button" id="pdf" class="btn btn-info m-2 round">
+                Descargar
+                <span class="fas fa-file-pdf" aria-hidden="true"></span>
+            </button>
+        </div>
     </div>
+    <?php 
+?>
+<div class="input-group p-2">
+    <select id="selectc" class="custom-select round" id="inputGroupSelect01">
+        <?php 
+        foreach ($categoriaRas as $currentCategoriaRa) {
+            $selected = $currentCategoriaRa -> getIdCategoriaRa() === $category? 'selected' : '';
+            echo "<option ".$selected." value=".$currentCategoriaRa -> getIdCategoriaRa().">".$currentCategoriaRa -> getNombre()."</option>";
+        }
+        ?>
+    </select>
 </div>
+</div>
+ <?php
+    ?>
+    
 </div>
 
 
@@ -79,6 +103,7 @@ $(document).ready(function(){
 let data = {};
 
 $('body').on('show.bs.modal', '.modal', function (e) {
+    $("#modalContent").empty();
     var link = $(e.relatedTarget);
     $(this).find(".modal-content").load(link.attr("href"));
 });
@@ -92,8 +117,23 @@ var sortable = Sortable.create(demoGrid, {
     chosenClass: 'active'
 });
 
+$("#selectc").change(function(){
+    idS = $("#selectc").val();
+    console.log(idS)
+    $("#loader").fadeIn(0);
+    $("#dashboard").fadeOut(300, function() { // Desvanecer el contenido actual
+        $("#dashboard").empty();
+        var path = "indexAjax.php?pid=<?php echo base64_encode("ui/dashboard/dashboardCustomAjax.php").'&id='.$_GET['id']; ?>&category="+idS;
+        console.log(path);
+        $("#dashboard").load(path, function() {
+            $("#dashboard").fadeIn(300); // Mostrar nuevo contenido con transición
+            $("#loader").fadeOut(300);
+        });
+    });
+});
+
 $('#move').on('click', function() {
-    var $gridItems = $('#demoGrid').find('.col-lg-3, .col-lg-6, .col-lg-9, .col-lg-12');
+    var $gridItems = $('#demoGrid').find('.col-lg-4, .col-lg-6, .col-lg-8, .col-lg-12');
     if($gridItems.length === 0){
         $("#save-button").text('Editar');
         $("#pdf").removeAttr('disabled');

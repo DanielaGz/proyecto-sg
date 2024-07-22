@@ -6,28 +6,29 @@ $dashboards = $dashboard -> selectAllByUsuario();
 <div class="container">
     <div class="card round mt-3">
         <div class="d-flex align-items-center bd-highlight">
-            <div class="btn-group m-2" role="group" aria-label="Basic outlined example">
-                <?php 
-                    $count = 1;
-                    foreach($dashboards as $currentDashboard){
-                        $customClass = $count == 1 ? 'round-left' : '';
-                        $customClass .= $count == count($dashboards) ? 'round-right' : '';
-                        if(count($dashboards) === 1){
-                            $customClass = 'round';
+            <div class="input-group m-2">
+                <select id="select" class="custom-select round">
+                    <option selected>Seleccione uno de sus tableros...</option>
+                    <?php 
+                        foreach($dashboards as $currentDashboard){
+                            echo "<option value=".$currentDashboard -> getIdDashboard().' onclick="selectDashboard('.$currentDashboard -> getIdDashboard().')">'.$currentDashboard -> getNombre().'</option>';
                         }
-                        echo ('<button type="button" class="btn btn-outline-info '.$customClass.'" onclick="selectDashboard('.$currentDashboard -> getIdDashboard().')">'.$currentDashboard -> getNombre().'</button>');
-                        $count++;
-                    }
-                ?>
+                    ?>
+                </select>
             </div>
+            <button type="button" class="btn btn-info round mr-1" data-toggle="tooltip" data-placement="bottom" title="Editar">
+                <span class='fas fa-pen'></span>
+            </button>
             <button type="button" class="btn btn-info round mr-1" data-toggle="tooltip" data-placement="bottom" title="Agregar">
                 <span class='fas fa-plus'></span>
             </button>
-            <span class="align-middle">Seleccione un dashboard...</span>
         </div>
     </div>
 </div>
 
+<div id="loader">
+<?php include("ui/loader.php") ?>
+</div>
 <div id="dashboard"></div>
 
 <div class="modal fade" id="modalEstrategia" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -51,6 +52,8 @@ $dashboards = $dashboard -> selectAllByUsuario();
 
 
     $(document).ready(function(){
+
+        $("#loader").fadeOut(0);
         
         $('body').on('hidden.bs.modal', function (e) {
             $("#modalContent").empty();
@@ -65,21 +68,34 @@ $dashboards = $dashboard -> selectAllByUsuario();
             }
             change = false;
         });
-    });
 
-
-    function selectDashboard(id){
-        idS = id;
-        $("#dashboard").fadeOut(300, function() { // Desvanecer el contenido actual
-            $("#dashboard").empty();
-            var path = "indexAjax.php?pid=<?php echo base64_encode("ui/dashboard/dashboardCustomAjax.php"); ?>&id="+id;
-            $("#dashboard").load(path, function() {
-                $("#dashboard").fadeIn(300); // Mostrar nuevo contenido con transición
+        $("#select").change(function(){
+            idS = $("#select").val();
+            $("#loader").fadeIn(0);
+            $("#dashboard").fadeOut(300, function() { // Desvanecer el contenido actual
+                $("#dashboard").empty();
+                var path = "indexAjax.php?pid=<?php echo base64_encode("ui/dashboard/dashboardCustomAjax.php"); ?>&id="+$("#select").val();
+                $("#dashboard").load(path, function() {
+                    $("#dashboard").fadeIn(300); // Mostrar nuevo contenido con transición
+                    $("#loader").fadeOut(300);
+                });
             });
         });
-    }
+    });
 
     function updateGraph(id, op){
+        let tams_ant = {
+            '4' : '4',
+            '6' : '4',
+            '8' : '6',
+            '12' : '8'
+        }
+        let tams_sig = {
+            '4' : '6',
+            '6' : '8',
+            '8' : '12',
+            '12' : '12'
+        }
         let classes = $('#' + id).attr('class').split(' ');
             $.each(classes, function(index, className) {
             ant = '';
@@ -91,7 +107,7 @@ $dashboards = $dashboard -> selectAllByUsuario();
                     }
                 }
             });
-        let tam = (op === '+') ? (parseInt(ant)+3) : (parseInt(ant)-3);
+        let tam = (op === '+') ? tams_sig[ant] : tams_ant[ant];
         $.ajax({
             url: 'updateGraficaService.php?id='+id,
             type: 'POST',

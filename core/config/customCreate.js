@@ -47,3 +47,23 @@ if ($("#generalbar").length) {
             grapich['nivel'])
         )
     }
+
+    if ($("#categorypie").length) {
+        Highcharts.chart('categorypie',
+        createChart(
+            "Porcentaje de estrategias por RA", 
+            "pie", 
+            grapich['categorypie'])
+        )
+    }
+
+    if ($("#categorybar").length) {
+        Highcharts.chart('categorybar',
+            createChart(
+                "Cantidad de RA por categoría", 
+                "column", 
+                grapich['categorybar'], 
+                "Cantidad RA", 
+                "Cantidad RA")
+        );
+      }

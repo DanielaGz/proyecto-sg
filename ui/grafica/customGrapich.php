@@ -1,4 +1,5 @@
 <?php 
+
 $categoriaRa = new CategoriaRa();
 $categoriaRas = $categoriaRa -> selectAll();
 $pie = "[";
@@ -79,16 +80,33 @@ foreach ($categoriaRas as $currentCategoriaRa) {
     $buble .= ']},';
 }
 $buble .= ']';
+
+$resultadoA = new ResultadoAprendizaje("","","","",$category);
+$resultadoAs = $resultadoA -> selectAllByCategoriaRa();
+$categorybar .= "[";
+$categorypie .= "[";
+foreach ($resultadoAs as $currentResultadoAs) {
+    $estrategia = new Estrategia("","","", $currentResultadoAs -> getIdResultadoAprendizaje());
+    $estrategias = $estrategia -> selectAllByResultadoAprendizaje();
+    $categorypie .= '{"name": "'.$currentResultadoAs -> getNombre().'", "y": '.count($estrategias).' },';    
+    $categorybar .='["'.$currentResultadoAs -> getNombre().'", '.count($estrategias).'],';
+}
+$categorypie .= "]";
+$categorybar .= "]";
+
 ?>
 
 <script>
 grapich['generalbar'] = <?php echo ($nivelBar); ?>;
+grapich['categorypie'] = <?php echo ($categorypie); ?>;
+grapich['categorybar'] = <?php echo ($categorybar); ?>;
 grapich['generalpie'] = <?php echo ($pie); ?>;
 grapich['generalnetworkgraph'] = <?php echo json_encode($network); ?>;
 grapich['generalpackedbubble'] = <?php echo ($buble); ?>;
 grapich['generalcolumn-line'] = <?php echo ($nivelPie); ?>;
 grapich['categories'] = <?php echo ($categories); ?>;
 grapich['nivel'] = <?php echo ($nivel); ?>;
+console.log(grapich)
 
 $(document).ready(function(){
 

@@ -86,40 +86,58 @@ const graficas = {
 };
 
 const typeCharts = {
-  'generalpie': {
-    'nombre': "Porcentaje RA por categoría",
-    "detalle": "",
-    "config": "generalpie",
-    "posicion": 1,
-    "tam": 6,
+  'general': {
+    'generalpie': {
+      'nombre': "Porcentaje RA por categoría",
+      "detalle": "",
+      "config": "generalpie",
+      "posicion": 1,
+      "tam": 6,
+    },
+    'generalbar': {
+      'nombre': "Cantidad de RA por categoría",
+      "detalle": "",
+      "config": "generalbar",
+      "posicion": 1,
+      "tam": 6,
+    },
+    'generalnetworkgraph': {
+      'nombre': "Resultados de aprendizaje",
+      "detalle": "",
+      "config": "generalnetworkgraph",
+      "posicion": 1,
+      "tam": 6,
+    },
+    'generalpackedbubble': {
+      'nombre': "Resultados de aprendizaje por categoría",
+      "detalle": "",
+      "config": "generalpackedbubble",
+      "posicion": 1,
+      "tam": 6,
+    },
+    'generalcolumn-line': {
+      'nombre': "Resultados de aprendizaje por bloom",
+      "detalle": "",
+      "config": "generalcolumn-line",
+      "posicion": 1,
+      "tam": 6,
+    }
   },
-  'generalbar': {
-    'nombre': "Cantidad de RA por categoría",
-    "detalle": "",
-    "config": "generalbar",
-    "posicion": 1,
-    "tam": 6,
-  },
-  'generalnetworkgraph': {
-    'nombre': "Resultados de aprendizaje",
-    "detalle": "",
-    "config": "generalnetworkgraph",
-    "posicion": 1,
-    "tam": 6,
-  },
-  'generalpackedbubble': {
-    'nombre': "Resultados de aprendizaje por categoría",
-    "detalle": "",
-    "config": "generalpackedbubble",
-    "posicion": 1,
-    "tam": 6,
-  },
-  'generalcolumn-line': {
-    'nombre': "Resultados de aprendizaje por bloom",
-    "detalle": "",
-    "config": "generalcolumn-line",
-    "posicion": 1,
-    "tam": 6,
+  'category': {
+    'categorypie': {
+      'nombre': "Porcentaje de estrategias por RA",
+      "detalle": "",
+      "config": "categorypie",
+      "posicion": 1,
+      "tam": 6,
+    },
+    'categorybar': {
+      'nombre': "Cantidad de RA por categoría",
+      "detalle": "",
+      "config": "categorybar",
+      "posicion": 1,
+      "tam": 6,
+    }
   }
 }
 
