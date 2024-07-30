@@ -32,6 +32,7 @@ $webPages = array(
 	'ui/logAdministrator/searchLogAdministrator.php',
 	'ui/logUsuario/searchLogUsuario.php',
 	'ui/sessionUsuario.php',
+	'ui/general.php',
 	'ui/usuario/insertUsuario.php',
 	'ui/usuario/updateUsuario.php',
 	'ui/usuario/selectAllUsuario.php',
@@ -190,6 +191,20 @@ if(isset($_GET['logOut'])){
 
 			.round-right {
 				border-radius: 0px 16px 16px 0px;
+			}
+
+			.round-top, .card-header{
+				border-radius: 20px 20px 0px 0px !important;
+			}
+
+			input, button, select, .card {
+				border-radius: 20px !important;
+			}
+
+			.container-sticky{
+				position: sticky;
+				z-index: 10;
+				top: 4rem;
 			}
 		</style>
 	</head>

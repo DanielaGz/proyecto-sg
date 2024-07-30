@@ -12,6 +12,12 @@ $usuario="";
 if(isset($_POST['usuario'])){
 	$usuario=$_POST['usuario'];
 }
+
+$url = base64_encode("ui/dashboard/insertDashboard.php");
+if(isset($_GET['usuario'])){
+	$usuario=$_GET['usuario'];
+	$url .= '&usuario='.$_SESSION['id'];
+}
 if(isset($_POST['insert'])){
 	$newDashboard = new Dashboard("", $nombre, $detalle, $usuario);
 	$newDashboard -> insert();
@@ -48,17 +54,17 @@ if(isset($_POST['insert'])){
 		<div class="col-md-8">
 			<div class="card">
 				<div class="card-header">
-					<h4 class="card-title">Create Dashboard</h4>
+					<h4 class="card-title">Crear tablero</h4>
 				</div>
 				<div class="card-body">
 					<?php if($processed){ ?>
-					<div class="alert alert-success" >Data Entered
+					<div class="alert alert-success" >Tablero actualizado
 						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
 					</div>
 					<?php } ?>
-					<form id="form" method="post" action="index.php?pid=<?php echo base64_encode("ui/dashboard/insertDashboard.php") ?>" class="bootstrap-form needs-validation"   >
+					<form id="form" method="post" action="index.php?pid=<?php echo $url ?>" class="bootstrap-form needs-validation"   >
 						<div class="form-group">
 							<label>Nombre*</label>
 							<input type="text" class="form-control" name="nombre" value="<?php echo $nombre ?>" required />
@@ -67,6 +73,7 @@ if(isset($_POST['insert'])){
 							<label>Detalle</label>
 							<input type="text" class="form-control" name="detalle" value="<?php echo $detalle ?>"/>
 						</div>
+						<?php if(!isset($_GET['usuario'])){ ?>
 						<div class="form-group">
 							<label>Usuario*</label>
 							<select class="form-control" name="usuario">
@@ -83,6 +90,7 @@ if(isset($_POST['insert'])){
 								?>
 							</select>
 						</div>
+						<?php } ?>
 						<button type="submit" class="btn btn-info" name="insert">Create</button>
 					</form>
 				</div>

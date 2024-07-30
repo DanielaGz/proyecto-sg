@@ -46,13 +46,13 @@ if(isset($_POST['update'])){
 	<div class="row">
 		<div class="col-md-2"></div>
 		<div class="col-md-8">
-			<div class="card">
-				<div class="card-header">
-					<h4 class="card-title">Edit Dashboard</h4>
+			<div class="card round mt-3">
+				<div class="card-header round-top">
+					<h4 class="card-title">Actualizar tablero</h4>
 				</div>
 				<div class="card-body">
 					<?php if($processed){ ?>
-					<div class="alert alert-success" >Data Edited
+					<div class="alert alert-success" >Tablero actualizado
 						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
@@ -67,7 +67,7 @@ if(isset($_POST['update'])){
 							<label>Detalle</label>
 							<input type="text" class="form-control" name="detalle" value="<?php echo $updateDashboard -> getDetalle() ?>"/>
 						</div>
-						<button type="submit" class="btn btn-info" name="update">Edit</button>
+						<button type="submit" class="btn btn-info m-2 round" name="update">Actualizar</button>
 					</form>
 				</div>
 			</div>

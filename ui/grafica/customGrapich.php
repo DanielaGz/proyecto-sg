@@ -29,6 +29,8 @@ $colors = [
     "#E6B2A3", // Darkened Pastel Orange
     "#CC8CB3", // Darkened Lavender
 ];
+$resultadoA = new ResultadoAprendizaje("","","","",$category);
+$resultadoAs = $resultadoA -> selectAllByCategoriaRa();
 $buble = '[';
 foreach ($categoriaRas as $currentCategoriaRa) {
 	$resultadoAp = new resultadoAprendizaje("","","","",$currentCategoriaRa -> getIdCategoriaRa());
@@ -49,7 +51,12 @@ $blom = new Bloom();
 $bloms = $blom -> selectAll();
 $nivel = "[";
 $nivelPie = "[";
+$solidgauge = "[";
+$solidgaugeBack = "[";
 $iB = 0;
+$radius = 0;
+$count = 0;
+$niveles = 0;
 foreach ($bloms as $currentBlom) {
 	$data = [];
 	$resultadoAp = new resultadoAprendizaje("","","",$currentBlom -> getIdBloom());
@@ -62,10 +69,19 @@ foreach ($bloms as $currentBlom) {
 			}
 		}
 	}
+    if(count($resultadoAps)> 0){
+        $niveles++;
+    }
+    $solidgauge .= "{name: '".$currentBlom -> getNombre()."', data: [{ color: colors[".$count."], radius: '".($radius+18)."%', innerRadius: '".$radius."%', y: ".((count($resultadoAps) / count($resultadoAs)) * 100)." }]},";
+    $solidgaugeBack .= "{ outerRadius: '".($radius+18)."%', innerRadius: '".($radius)."%', backgroundColor: pastelColors[".$count."], borderWidth: 0 }, ";
     $nivel .='{type: "column",name: "'.$currentBlom -> getNombre().'",data: '.json_encode($sum).'},';
     $nivelPie .='{name: "'.$currentBlom -> getNombre().'",y: '.count($resultadoAps).',color: colors['.$iB.'],dataLabels: { enabled: true,distance: -50, format: "{point.total}",style: {fontSize: "15px"}} },';
     $iB++;
+    $radius += 18;
+    $count += 1;
 }
+$solidgauge .= "]";
+$solidgaugeBack .= "]";
 $nivel .= "]";
 $nivelPie .= "]";
 foreach ($categoriaRas as $currentCategoriaRa) {
@@ -80,9 +96,6 @@ foreach ($categoriaRas as $currentCategoriaRa) {
     $buble .= ']},';
 }
 $buble .= ']';
-
-$resultadoA = new ResultadoAprendizaje("","","","",$category);
-$resultadoAs = $resultadoA -> selectAllByCategoriaRa();
 $categorybar .= "[";
 $categorypie .= "[";
 foreach ($resultadoAs as $currentResultadoAs) {
@@ -106,7 +119,10 @@ grapich['generalpackedbubble'] = <?php echo ($buble); ?>;
 grapich['generalcolumn-line'] = <?php echo ($nivelPie); ?>;
 grapich['categories'] = <?php echo ($categories); ?>;
 grapich['nivel'] = <?php echo ($nivel); ?>;
+grapich['solidgaugeBack'] = <?php echo ($solidgaugeBack); ?>;
+grapich['solidgauge'] = <?php echo ($solidgauge); ?>;
 console.log(grapich)
+
 
 $(document).ready(function(){
 

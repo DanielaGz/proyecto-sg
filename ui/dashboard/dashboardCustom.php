@@ -16,12 +16,8 @@ $dashboards = $dashboard -> selectAllByUsuario();
                     ?>
                 </select>
             </div>
-            <button type="button" class="btn btn-info round mr-1" data-toggle="tooltip" data-placement="bottom" title="Editar">
-                <span class='fas fa-pen'></span>
-            </button>
-            <button type="button" class="btn btn-info round mr-1" data-toggle="tooltip" data-placement="bottom" title="Agregar">
-                <span class='fas fa-plus'></span>
-            </button>
+            <a id="updateDash" class="btn btn-info round mr-1" href="#" role="button"><span class='fas fa-pen'></span></a>
+            <a class="btn btn-info round mr-1" href="<?php echo("index.php?pid=" . base64_encode('ui/dashboard/insertDashboard.php').'&usuario='.$_SESSION['id']); ?>" role="button"><span class='fas fa-plus'></span></a>
         </div>
     </div>
 </div>
@@ -79,6 +75,7 @@ $dashboards = $dashboard -> selectAllByUsuario();
                     $("#dashboard").fadeIn(300); // Mostrar nuevo contenido con transición
                     $("#loader").fadeOut(300);
                 });
+                $("#updateDash").attr('href', "<?php echo("index.php?pid=" . base64_encode('ui/dashboard/updateDashboard.php') . '&idDashboard='); ?>"+$("#select").val());
             });
         });
     });

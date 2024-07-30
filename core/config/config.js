@@ -137,6 +137,13 @@ const typeCharts = {
       "config": "categorybar",
       "posicion": 1,
       "tam": 6,
+    },
+    'categorysolidgauge': {
+      'nombre': "Porcentaje de niveles por RA",
+      "detalle": "",
+      "config": "categorysolidgauge",
+      "posicion": 1,
+      "tam": 6,
     }
   }
 }

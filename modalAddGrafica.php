@@ -19,21 +19,6 @@ if (isset($_GET['category'])){
     $category = $_GET['category'];
 }
 
-//categorypie
-
-$resultadoA = new ResultadoAprendizaje("","","","",1);
-$resultadoAs = $resultadoA -> selectAllByCategoriaRa();
-$categorybar = "[";
-$categorypie .= "[";
-foreach ($resultadoAs as $currentResultadoAs) {
-    $estrategia = new Estrategia("","","", $currentResultadoAs -> getIdResultadoAprendizaje());
-    $estrategias = $estrategia -> selectAllByResultadoAprendizaje();
-    $categorypie .= '{"name": "'.$currentResultadoAs -> getNombre().'", "y": '.count($estrategias).' },';    
-    $categorybar .='["'.$currentResultadoAs -> getNombre().'", '.count($estrategias).'],';
-}
-$categorypie .= "]";
-$categorybar .= "]";
-
 $grafica = new Grafica( "", "","", "", "", "", "", $id);
 $graficas = $grafica -> selectAllByDashboardOrder('posicion','asc');
 
@@ -55,6 +40,7 @@ foreach ($graficas as $currentGrafica) {
 </div>
 <div class="input-group p-2">
     <select id="selectcat" class="custom-select round" id="inputGroupSelect01">
+        <option value="">Selecciona</option>
         <option  <?php if ($category === 'general'){ echo 'selected'; }?> value="general">Gráficas generales</option>
         <option  <?php if ($category === 'category'){ echo 'selected'; }?> value="category">Gráficas por categoría</option>
     </select>
@@ -65,7 +51,7 @@ foreach ($graficas as $currentGrafica) {
     ?>
 <div class="modal-body">
     Gráficas disponibles:
-    <div id="no" class="text-center d-none">
+    <div id="no" class="text-center d-none" style="height: 700px;">
         <h3>
             No tienes graficas disponibles
         </h3>
@@ -88,13 +74,13 @@ for (let [key, value] of Object.entries(typeCharts['<?php echo $category; ?>']))
         $("#grapichs").append('<div class="card round m-1"><div id="'+value.config+'"></div><div class="d-flex justify-content-end m-1"><button type="button" class="btn btn-info round mr-1" data-toggle="tooltip" data-placement="bottom" title="Agregar" onclick="Agregar('+"'"+value.config+"'"+')">Seleccionar <span class="fas fa-plus"></span></button></div></div>');
     }
 }
+/* if(Object.keys(typeCharts['<?php echo $category; ?>']).length === added.length){
+    $("#no").removeClass('d-none');
+}
+ */
 <?php
 }
     ?>
-
-if(Object.entries(typeCharts).length === added.length){
-    $("#no").removeClass('d-none');
-}
 
 function Agregar(cat){
     $.ajax({
@@ -117,8 +103,10 @@ function Agregar(cat){
 $("#selectcat").change(function(){
     idA = $("#selectcat").val();
     console.log(idA)
-    $("#modalContent").empty();
-    $("#modalContent").load('modalAddGrafica.php?id=<?php echo $id;?>'+'&category='+idA);
+    if(idA !== ''){
+        $("#modalContent").empty();
+        $("#modalContent").load('modalAddGrafica.php?id=<?php echo $id;?>'+'&category='+idA);
+    }
 });
 
 </script>
