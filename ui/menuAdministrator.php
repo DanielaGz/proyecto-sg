@@ -42,7 +42,7 @@ $administrator -> select();
 				<div class="dropdown-menu">
 					<a class="dropdown-item" href="index.php?pid=<?php echo base64_encode("ui/administrator/searchAdministrator.php") ?>">Administrador</a>
 					<a class="dropdown-item" href="index.php?pid=<?php echo base64_encode("ui/usuario/searchUsuario.php") ?>">Usuario</a>
-					<a class="dropdown-item" href="index.php?pid=<?php echo base64_encode("ui/dashboard/searchDashboard.php") ?>">Dashboard</a>
+					<a class="dropdown-item" href="index.php?pid=<?php echo base64_encode("ui/dashboard/searchDashboard.php") ?>">Tablero</a>
 					<a class="dropdown-item" href="index.php?pid=<?php echo base64_encode("ui/grafica/searchGrafica.php") ?>">Gráfica</a>
 					<a class="dropdown-item" href="index.php?pid=<?php echo base64_encode("ui/categoriaRa/searchCategoriaRa.php") ?>">Categoría Ra</a>
 					<a class="dropdown-item" href="index.php?pid=<?php echo base64_encode("ui/bloom/searchBloom.php") ?>">Bloom</a>

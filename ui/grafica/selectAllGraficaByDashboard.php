@@ -73,13 +73,13 @@ if(!empty($_GET['action']) && $_GET['action']=="delete"){
 						<?php if($order=="nombre" && $dir=="asc") { ?>
 							<span class='fas fa-sort-up'></span>
 						<?php } else { ?>
-							<a data-toggle='tooltip' data-placement='right' data-original-title='Sort Ascending' href='index.php?pid=<?php echo base64_encode("ui/grafica/selectAllGraficaByDashboard.php") ?>&idDashboard=<?php echo $_GET['idDashboard'] ?>&order=nombre&dir=asc'>
+							<a data-toggle='tooltip' data-placement='right' data-original-title='Orden ascendente' href='index.php?pid=<?php echo base64_encode("ui/grafica/selectAllGraficaByDashboard.php") ?>&idDashboard=<?php echo $_GET['idDashboard'] ?>&order=nombre&dir=asc'>
 							<span class='fas fa-sort-amount-up'></span></a>
 						<?php } ?>
 						<?php if($order=="nombre" && $dir=="desc") { ?>
 							<span class='fas fa-sort-down'></span>
 						<?php } else { ?>
-							<a data-toggle='tooltip' data-placement='right' data-original-title='Sort Descending' href='index.php?pid=<?php echo base64_encode("ui/grafica/selectAllGraficaByDashboard.php") ?>&idDashboard=<?php echo $_GET['idDashboard'] ?>&order=nombre&dir=desc'>
+							<a data-toggle='tooltip' data-placement='right' data-original-title='Orden descendente' href='index.php?pid=<?php echo base64_encode("ui/grafica/selectAllGraficaByDashboard.php") ?>&idDashboard=<?php echo $_GET['idDashboard'] ?>&order=nombre&dir=desc'>
 							<span class='fas fa-sort-amount-down'></span></a>
 						<?php } ?>
 						</th>
@@ -87,27 +87,27 @@ if(!empty($_GET['action']) && $_GET['action']=="delete"){
 						<?php if($order=="detalle" && $dir=="asc") { ?>
 							<span class='fas fa-sort-up'></span>
 						<?php } else { ?>
-							<a data-toggle='tooltip' data-placement='right' data-original-title='Sort Ascending' href='index.php?pid=<?php echo base64_encode("ui/grafica/selectAllGraficaByDashboard.php") ?>&idDashboard=<?php echo $_GET['idDashboard'] ?>&order=detalle&dir=asc'>
+							<a data-toggle='tooltip' data-placement='right' data-original-title='Orden ascendente' href='index.php?pid=<?php echo base64_encode("ui/grafica/selectAllGraficaByDashboard.php") ?>&idDashboard=<?php echo $_GET['idDashboard'] ?>&order=detalle&dir=asc'>
 							<span class='fas fa-sort-amount-up'></span></a>
 						<?php } ?>
 						<?php if($order=="detalle" && $dir=="desc") { ?>
 							<span class='fas fa-sort-down'></span>
 						<?php } else { ?>
-							<a data-toggle='tooltip' data-placement='right' data-original-title='Sort Descending' href='index.php?pid=<?php echo base64_encode("ui/grafica/selectAllGraficaByDashboard.php") ?>&idDashboard=<?php echo $_GET['idDashboard'] ?>&order=detalle&dir=desc'>
+							<a data-toggle='tooltip' data-placement='right' data-original-title='Orden descendente' href='index.php?pid=<?php echo base64_encode("ui/grafica/selectAllGraficaByDashboard.php") ?>&idDashboard=<?php echo $_GET['idDashboard'] ?>&order=detalle&dir=desc'>
 							<span class='fas fa-sort-amount-down'></span></a>
 						<?php } ?>
 						</th>
-						<th nowrap>Config 
+						<th nowrap>Configuración 
 						<?php if($order=="config" && $dir=="asc") { ?>
 							<span class='fas fa-sort-up'></span>
 						<?php } else { ?>
-							<a data-toggle='tooltip' data-placement='right' data-original-title='Sort Ascending' href='index.php?pid=<?php echo base64_encode("ui/grafica/selectAllGraficaByDashboard.php") ?>&idDashboard=<?php echo $_GET['idDashboard'] ?>&order=config&dir=asc'>
+							<a data-toggle='tooltip' data-placement='right' data-original-title='Orden ascendente' href='index.php?pid=<?php echo base64_encode("ui/grafica/selectAllGraficaByDashboard.php") ?>&idDashboard=<?php echo $_GET['idDashboard'] ?>&order=config&dir=asc'>
 							<span class='fas fa-sort-amount-up'></span></a>
 						<?php } ?>
 						<?php if($order=="config" && $dir=="desc") { ?>
 							<span class='fas fa-sort-down'></span>
 						<?php } else { ?>
-							<a data-toggle='tooltip' data-placement='right' data-original-title='Sort Descending' href='index.php?pid=<?php echo base64_encode("ui/grafica/selectAllGraficaByDashboard.php") ?>&idDashboard=<?php echo $_GET['idDashboard'] ?>&order=config&dir=desc'>
+							<a data-toggle='tooltip' data-placement='right' data-original-title='Orden descendente' href='index.php?pid=<?php echo base64_encode("ui/grafica/selectAllGraficaByDashboard.php") ?>&idDashboard=<?php echo $_GET['idDashboard'] ?>&order=config&dir=desc'>
 							<span class='fas fa-sort-amount-down'></span></a>
 						<?php } ?>
 						</th>
@@ -115,13 +115,13 @@ if(!empty($_GET['action']) && $_GET['action']=="delete"){
 						<?php if($order=="fila" && $dir=="asc") { ?>
 							<span class='fas fa-sort-up'></span>
 						<?php } else { ?>
-							<a data-toggle='tooltip' data-placement='right' data-original-title='Sort Ascending' href='index.php?pid=<?php echo base64_encode("ui/grafica/selectAllGraficaByDashboard.php") ?>&idDashboard=<?php echo $_GET['idDashboard'] ?>&order=fila&dir=asc'>
+							<a data-toggle='tooltip' data-placement='right' data-original-title='Orden ascendente' href='index.php?pid=<?php echo base64_encode("ui/grafica/selectAllGraficaByDashboard.php") ?>&idDashboard=<?php echo $_GET['idDashboard'] ?>&order=fila&dir=asc'>
 							<span class='fas fa-sort-amount-up'></span></a>
 						<?php } ?>
 						<?php if($order=="fila" && $dir=="desc") { ?>
 							<span class='fas fa-sort-down'></span>
 						<?php } else { ?>
-							<a data-toggle='tooltip' data-placement='right' data-original-title='Sort Descending' href='index.php?pid=<?php echo base64_encode("ui/grafica/selectAllGraficaByDashboard.php") ?>&idDashboard=<?php echo $_GET['idDashboard'] ?>&order=fila&dir=desc'>
+							<a data-toggle='tooltip' data-placement='right' data-original-title='Orden descendente' href='index.php?pid=<?php echo base64_encode("ui/grafica/selectAllGraficaByDashboard.php") ?>&idDashboard=<?php echo $_GET['idDashboard'] ?>&order=fila&dir=desc'>
 							<span class='fas fa-sort-amount-down'></span></a>
 						<?php } ?>
 						</th>
@@ -129,13 +129,13 @@ if(!empty($_GET['action']) && $_GET['action']=="delete"){
 						<?php if($order=="posicion" && $dir=="asc") { ?>
 							<span class='fas fa-sort-up'></span>
 						<?php } else { ?>
-							<a data-toggle='tooltip' data-placement='right' data-original-title='Sort Ascending' href='index.php?pid=<?php echo base64_encode("ui/grafica/selectAllGraficaByDashboard.php") ?>&idDashboard=<?php echo $_GET['idDashboard'] ?>&order=posicion&dir=asc'>
+							<a data-toggle='tooltip' data-placement='right' data-original-title='Orden ascendente' href='index.php?pid=<?php echo base64_encode("ui/grafica/selectAllGraficaByDashboard.php") ?>&idDashboard=<?php echo $_GET['idDashboard'] ?>&order=posicion&dir=asc'>
 							<span class='fas fa-sort-amount-up'></span></a>
 						<?php } ?>
 						<?php if($order=="posicion" && $dir=="desc") { ?>
 							<span class='fas fa-sort-down'></span>
 						<?php } else { ?>
-							<a data-toggle='tooltip' data-placement='right' data-original-title='Sort Descending' href='index.php?pid=<?php echo base64_encode("ui/grafica/selectAllGraficaByDashboard.php") ?>&idDashboard=<?php echo $_GET['idDashboard'] ?>&order=posicion&dir=desc'>
+							<a data-toggle='tooltip' data-placement='right' data-original-title='Orden descendente' href='index.php?pid=<?php echo base64_encode("ui/grafica/selectAllGraficaByDashboard.php") ?>&idDashboard=<?php echo $_GET['idDashboard'] ?>&order=posicion&dir=desc'>
 							<span class='fas fa-sort-amount-down'></span></a>
 						<?php } ?>
 						</th>
@@ -143,17 +143,17 @@ if(!empty($_GET['action']) && $_GET['action']=="delete"){
 						<?php if($order=="tam" && $dir=="asc") { ?>
 							<span class='fas fa-sort-up'></span>
 						<?php } else { ?>
-							<a data-toggle='tooltip' data-placement='right' data-original-title='Sort Ascending' href='index.php?pid=<?php echo base64_encode("ui/grafica/selectAllGraficaByDashboard.php") ?>&idDashboard=<?php echo $_GET['idDashboard'] ?>&order=tam&dir=asc'>
+							<a data-toggle='tooltip' data-placement='right' data-original-title='Orden ascendente' href='index.php?pid=<?php echo base64_encode("ui/grafica/selectAllGraficaByDashboard.php") ?>&idDashboard=<?php echo $_GET['idDashboard'] ?>&order=tam&dir=asc'>
 							<span class='fas fa-sort-amount-up'></span></a>
 						<?php } ?>
 						<?php if($order=="tam" && $dir=="desc") { ?>
 							<span class='fas fa-sort-down'></span>
 						<?php } else { ?>
-							<a data-toggle='tooltip' data-placement='right' data-original-title='Sort Descending' href='index.php?pid=<?php echo base64_encode("ui/grafica/selectAllGraficaByDashboard.php") ?>&idDashboard=<?php echo $_GET['idDashboard'] ?>&order=tam&dir=desc'>
+							<a data-toggle='tooltip' data-placement='right' data-original-title='Orden descendente' href='index.php?pid=<?php echo base64_encode("ui/grafica/selectAllGraficaByDashboard.php") ?>&idDashboard=<?php echo $_GET['idDashboard'] ?>&order=tam&dir=desc'>
 							<span class='fas fa-sort-amount-down'></span></a>
 						<?php } ?>
 						</th>
-						<th>Dashboard</th>
+						<th>Tablero</th>
 						<th nowrap></th>
 					</tr>
 				</thead>

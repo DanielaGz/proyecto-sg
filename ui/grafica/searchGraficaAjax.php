@@ -13,7 +13,7 @@
 			<th nowrap>Fila</th>
 			<th nowrap>Posicion</th>
 			<th nowrap>Tam</th>
-			<th>Dashboard</th>
+			<th>Tablero</th>
 			<th nowrap></th>
 		</tr>
 	</thead>
@@ -33,10 +33,10 @@
 			echo "<td>" . $currentGrafica -> getDashboard() -> getNombre() . "</td>";
 						echo "<td class='text-right' nowrap>";
 						if($_GET['entity'] == 'Administrator') {
-							echo "<a href='index.php?pid=" . base64_encode("ui/grafica/updateGrafica.php") . "&idGrafica=" . $currentGrafica -> getIdGrafica() . "'><span class='fas fa-edit' data-toggle='tooltip' data-placement='left' data-original-title='Edit Grafica' ></span></a> ";
+							echo "<a href='index.php?pid=" . base64_encode("ui/grafica/updateGrafica.php") . "&idGrafica=" . $currentGrafica -> getIdGrafica() . "'><span class='fas fa-edit' data-toggle='tooltip' data-placement='left' data-original-title='Editar Gráfica' ></span></a> ";
 						}
 						if($_GET['entity'] == 'Administrator') {
-							echo "<a href='index.php?pid=" . base64_encode("ui/grafica/selectAllGrafica.php") . "&idGrafica=" . $currentGrafica -> getIdGrafica() . "&action=delete' onclick='return confirm(\"Confirm to delete Grafica: " . $currentGrafica -> getNombre() . "\")'><span class='fas fa-backspace' data-toggle='tooltip' data-placement='left' data-original-title='Delete Grafica' ></span></a> ";
+							echo "<a href='index.php?pid=" . base64_encode("ui/grafica/selectAllGrafica.php") . "&idGrafica=" . $currentGrafica -> getIdGrafica() . "&action=delete' onclick='return confirm(\"Está seguro de eliminar el registro: " . $currentGrafica -> getNombre() . "\")'><span class='fas fa-backspace' data-toggle='tooltip' data-placement='left' data-original-title='Eliminar Gráfica' ></span></a> ";
 						}
 						echo "</td>";
 			echo "</tr>";

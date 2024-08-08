@@ -1,14 +1,14 @@
-<div class="container-fluid">
+<div class="container">
 	<div class="card">
 		<div class="card-header">
-			<h4 class="card-title">Search Estrategia</h4>
+			<h4 class="card-title">Buscar Estrategias</h4>
 		</div>
 		<div class="card-body">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-2"></div>
 					<div class="col-md-8">
-						<input type="text" class="form-control" id="search" placeholder="Search Estrategia" autocomplete="off" />
+						<input type="text" class="form-control" id="search" placeholder="Buscar Estrategias" autocomplete="off" />
 					</div>
 				</div>
 			</div>

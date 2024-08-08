@@ -38,7 +38,7 @@ $usuario -> select();
 				</div>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="index.php?logOut=1">Log Out</a>
+				<a class="nav-link" href="index.php?logOut=1">Cerrar sesión</a>
 			</li>
 		</ul>
 	</div>

@@ -26,7 +26,7 @@ if(isset($_POST['logIn'])){
 			if($administrator -> getState()==1){
 				$_SESSION['id']=$administrator -> getIdAdministrator();
 				$_SESSION['entity']="Administrator";
-				$logAdministrator = new LogAdministrator("", "Log In", "", date("Y-m-d"), date("H:i:s"), $user_ip, PHP_OS, $browser, $administrator -> getIdAdministrator());
+				$logAdministrator = new LogAdministrator("", "Inicio sesión", "", date("Y-m-d"), date("H:i:s"), $user_ip, PHP_OS, $browser, $administrator -> getIdAdministrator());
 				$logAdministrator -> insert();
 				echo "<script>location.href = 'index.php?pid=" . base64_encode("ui/sessionAdministrator.php") . "'</script>"; 
 			} else { 
@@ -38,7 +38,7 @@ if(isset($_POST['logIn'])){
 			if($usuario -> getState()==1){
 				$_SESSION['id']=$usuario -> getIdUsuario();
 				$_SESSION['entity']="Usuario";
-				$logUsuario = new LogUsuario("", "Log In", "", date("Y-m-d"), date("H:i:s"), $user_ip, PHP_OS, $browser, $usuario -> getIdUsuario());
+				$logUsuario = new LogUsuario("", "Inicio sesión", "", date("Y-m-d"), date("H:i:s"), $user_ip, PHP_OS, $browser, $usuario -> getIdUsuario());
 				$logUsuario -> insert();
 				echo "<script>location.href = 'index.php?pid=" . base64_encode("ui/sessionUsuario.php") . "'</script>"; 
 			} else { 
@@ -54,20 +54,12 @@ if(isset($_POST['logIn'])){
 </div>
 <div class="container">
 	<div class="row">
-		<div class="col-md-9">
-			<div class="card">
-				<div class="card-header">
-					<h4><strong>SVRA</strong></h4>
-				</div>
-				<div class="card-body">
-					<p></p>
-				</div>
-			</div>
-		</div>
 		<div class="col-md-3">
+		</div>
+		<div class="col-md-6">
 			<div class="card">
 				<div class="card-header">
-					<h4><strong>Log In</strong></h4>
+					<h4><strong>Incia sesión</strong></h4>
 				</div>
 				<div class="card-body">
 					<form id="form" method="post" action="index.php" class="bootstrap-form needs-validation"  >
@@ -85,10 +77,10 @@ if(isset($_POST['logIn'])){
 							echo "<div class='alert alert-danger' >Wrong email or password</div>";
 						} ?>
 						<div class="form-group">
-							<a href="index.php?pid=<?php echo base64_encode("ui/recoverPassword.php") ?>">Recover Password</a>
+							<a href="index.php?pid=<?php echo base64_encode("ui/recoverPassword.php") ?>">Recuperar contraseña</a>
 						</div>
 						<div class="form-group">
-							<button type="submit" class="btn btn-info" name="logIn">Log In</button>
+							<button type="submit" class="btn btn-info" name="logIn">Iniciar sesión</button>
 						</div>
 					</form>
 				</div>

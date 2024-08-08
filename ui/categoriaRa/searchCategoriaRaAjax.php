@@ -24,9 +24,9 @@
 							echo "<a href='index.php?pid=" . base64_encode("ui/categoriaRa/updateCategoriaRa.php") . "&idCategoriaRa=" . $currentCategoriaRa -> getIdCategoriaRa() . "'><span class='fas fa-edit' data-toggle='tooltip' data-placement='left' data-original-title='Editar Categoria Ra' ></span></a> ";
 						}
 						if($_GET['entity'] == 'Administrator') {
-							echo "<a href='index.php?pid=" . base64_encode("ui/categoriaRa/selectAllCategoriaRa.php") . "&idCategoriaRa=" . $currentCategoriaRa -> getIdCategoriaRa() . "&action=delete' onclick='return confirm(\"Confirm to delete Categoria Ra: " . $currentCategoriaRa -> getNombre() . "\")'><span class='fas fa-backspace' data-toggle='tooltip' data-placement='left' data-original-title='Delete Categoria Ra' ></span></a> ";
+							echo "<a href='index.php?pid=" . base64_encode("ui/categoriaRa/selectAllCategoriaRa.php") . "&idCategoriaRa=" . $currentCategoriaRa -> getIdCategoriaRa() . "&action=delete' onclick='return confirm(\"Está seguro de eliminar el registro: " . $currentCategoriaRa -> getNombre() . "\")'><span class='fas fa-backspace' data-toggle='tooltip' data-placement='left' data-original-title='Eliminar Categoría Ra' ></span></a> ";
 						}
-						echo "<a href='index.php?pid=" . base64_encode("ui/resultadoAprendizaje/selectAllResultadoAprendizajeByCategoriaRa.php") . "&idCategoriaRa=" . $currentCategoriaRa -> getIdCategoriaRa() . "'><span class='fas fa-search-plus' data-toggle='tooltip' data-placement='left' data-original-title='Obtener Resultado Aprendizaje' ></span></a> ";
+						echo "<a href='index.php?pid=" . base64_encode("ui/resultadoAprendizaje/selectAllResultadoAprendizajeByCategoriaRa.php") . "&idCategoriaRa=" . $currentCategoriaRa -> getIdCategoriaRa() . "'><span class='fas fa-search-plus' data-toggle='tooltip' data-placement='left' data-original-title='Consultar Resultado Aprendizaje' ></span></a> ";
 						if($_GET['entity'] == 'Administrator') {
 							echo "<a href='index.php?pid=" . base64_encode("ui/resultadoAprendizaje/insertResultadoAprendizaje.php") . "&idCategoriaRa=" . $currentCategoriaRa -> getIdCategoriaRa() . "'><span class='fas fa-pen' data-toggle='tooltip' data-placement='left' data-original-title='Crear Resultado Aprendizaje' ></span></a> ";
 						}

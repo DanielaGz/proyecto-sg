@@ -25,10 +25,10 @@
 			echo "<td>" . $currentEstrategia -> getResultadoAprendizaje() -> getNombre() . "</td>";
 						echo "<td class='text-right' nowrap>";
 						if($_GET['entity'] == 'Administrator') {
-							echo "<a href='index.php?pid=" . base64_encode("ui/estrategia/updateEstrategia.php") . "&idEstrategia=" . $currentEstrategia -> getIdEstrategia() . "'><span class='fas fa-edit' data-toggle='tooltip' data-placement='left' data-original-title='Edit Estrategia' ></span></a> ";
+							echo "<a href='index.php?pid=" . base64_encode("ui/estrategia/updateEstrategia.php") . "&idEstrategia=" . $currentEstrategia -> getIdEstrategia() . "'><span class='fas fa-edit' data-toggle='tooltip' data-placement='left' data-original-title='Editar Estrategia' ></span></a> ";
 						}
 						if($_GET['entity'] == 'Administrator') {
-							echo "<a href='index.php?pid=" . base64_encode("ui/estrategia/selectAllEstrategia.php") . "&idEstrategia=" . $currentEstrategia -> getIdEstrategia() . "&action=delete' onclick='return confirm(\"Confirm to delete Estrategia: " . $currentEstrategia -> getNombre() . "\")'><span class='fas fa-backspace' data-toggle='tooltip' data-placement='left' data-original-title='Eliminar Estrategia' ></span></a> ";
+							echo "<a href='index.php?pid=" . base64_encode("ui/estrategia/selectAllEstrategia.php") . "&idEstrategia=" . $currentEstrategia -> getIdEstrategia() . "&action=delete' onclick='return confirm(\"Está seguro de eliminar el registro: " . $currentEstrategia -> getNombre() . "\")'><span class='fas fa-backspace' data-toggle='tooltip' data-placement='left' data-original-title='Eliminar Estrategia' ></span></a> ";
 						}
 						echo "<a href='index.php?pid=" . base64_encode("ui/estrategiaCriterio/selectAllEstrategiaCriterioByEstrategia.php") . "&idEstrategia=" . $currentEstrategia -> getIdEstrategia() . "'><span class='fas fa-search-plus' data-toggle='tooltip' data-placement='left' data-original-title='Obtener Estrategia Criterio' ></span></a> ";
 						if($_GET['entity'] == 'Administrator') {

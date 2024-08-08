@@ -7,12 +7,12 @@
 <table class="table table-striped table-hover">
 	<thead>
 		<tr><th></th>
-			<th nowrap>Name</th>
-			<th nowrap>Last Name</th>
-			<th nowrap>Email</th>
-			<th nowrap>Phone</th>
-			<th nowrap>Mobile</th>
-			<th nowrap>State</th>
+			<th nowrap>Nombre</th>
+			<th nowrap>Apellido</th>
+			<th nowrap>Correo</th>
+			<th nowrap>Teléfono</th>
+			<th nowrap>Celular</th>
+			<th nowrap>Estado</th>
 			<th nowrap></th>
 		</tr>
 	</thead>
@@ -30,9 +30,9 @@
 			echo "<td>" . str_ireplace($_GET['search'], "<mark>" . $_GET['search'] . "</mark>", $currentAdministrator -> getMobile()) . "</td>";
 						echo "<td>" . ($currentAdministrator -> getState()==1?"Enabled":"Disabled") . "</td>";
 						echo "<td class='text-right' nowrap>";
-						echo "<a href='modalAdministrator.php?idAdministrator=" . $currentAdministrator -> getIdAdministrator() . "'  data-toggle='modal' data-target='#modalAdministrator' ><span class='fas fa-eye' data-toggle='tooltip' data-placement='left' data-original-title='View more information' ></span></a> ";
+						echo "<a href='modalAdministrator.php?idAdministrator=" . $currentAdministrator -> getIdAdministrator() . "'  data-toggle='modal' data-target='#modalAdministrator' ><span class='fas fa-eye' data-toggle='tooltip' data-placement='left' data-original-title='Ver más información' ></span></a> ";
 						if($_GET['entity'] == 'Administrator') {
-							echo "<a href='index.php?pid=" . base64_encode("ui/administrator/updateAdministrator.php") . "&idAdministrator=" . $currentAdministrator -> getIdAdministrator() . "'><span class='fas fa-edit' data-toggle='tooltip' data-placement='left' data-original-title='Edit Administrator' ></span></a> ";
+							echo "<a href='index.php?pid=" . base64_encode("ui/administrator/updateAdministrator.php") . "&idAdministrator=" . $currentAdministrator -> getIdAdministrator() . "'><span class='fas fa-edit' data-toggle='tooltip' data-placement='left' data-original-title='Editar Administrador' ></span></a> ";
 							echo "<a href='index.php?pid=" . base64_encode("ui/administrator/updatePictureAdministrator.php") . "&idAdministrator=" . $currentAdministrator -> getIdAdministrator() . "&attribute=picture'><span class='fas fa-camera' data-toggle='tooltip' data-placement='left' data-original-title='Editar foto'></span></a> ";
 						}
 						echo "</td>";

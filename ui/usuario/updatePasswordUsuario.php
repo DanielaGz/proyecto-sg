@@ -23,7 +23,7 @@ if(isset($_POST['update'])){
 			} else if (preg_match('/Safari[\/\s](\d+\.\d+)/', $agent) ) {
 				$browser = "Safari";
 			}
-			$logUsuario = new LogUsuario("","Edit Password Usuario", "", date("Y-m-d"), date("H:i:s"), $user_ip, PHP_OS, $browser, $_SESSION['id']);
+			$logUsuario = new LogUsuario("","Editar contraseña Usuario", "", date("Y-m-d"), date("H:i:s"), $user_ip, PHP_OS, $browser, $_SESSION['id']);
 			$logUsuario -> insert();
 			$processed = true;
 		} else {
@@ -40,23 +40,23 @@ if(isset($_POST['update'])){
 		<div class="col-md-8">
 			<div class="card">
 				<div class="card-header">
-					<h4 class="card-title">Edit Password Usuario</h4>
+					<h4 class="card-title">Editar contrasela Usuario</h4>
 				</div>
 				<div class="card-body">
 					<?php if($processed){ ?>
-					<div class="alert alert-success" >Password Edited
+					<div class="alert alert-success" >Contraseña actualizada
 						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
 					</div>
 					<?php } else if($error == 1) { ?>
-					<div class="alert alert-danger" >Error. <em>New Password</em> and <em>Confirm Password</em> fields must be equal
+					<div class="alert alert-danger" >Error. <em>Nueva contraseña</em> y <em>Confirmar contraseña</em> no coinciden
 						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
 					</div>
 					<?php } else if($error == 2) { ?>
-					<div class="alert alert-danger" >Error. <em>Current Password</em> is wrong
+					<div class="alert alert-danger" >Error. <em>Contraseña actual</em> incorrecta
 						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
@@ -64,18 +64,18 @@ if(isset($_POST['update'])){
 					<?php } ?>
 					<form id="form" method="post" action="index.php?pid=<?php echo base64_encode("ui/usuario/updatePasswordUsuario.php") ?>" class="bootstrap-form needs-validation"   >
 						<div class="form-group">
-							<label>Current Password*</label>
+							<label>Contraseña actual*</label>
 							<input type="password" class="form-control" name="currentPassword" required />
 						</div>
 						<div class="form-group">
-							<label>New Password*</label>
+							<label>Nueva contraseña*</label>
 							<input type="password" class="form-control" name="newPassword" required />
 						</div>
 						<div class="form-group">
-							<label>Confirm Password*</label>
+							<label>Confirmar contraseña*</label>
 							<input type="password" class="form-control" name="newPasswordConfirm" required />
 						</div>
-						<button type="submit" class="btn btn-info" name="update">Edit</button>
+						<button type="submit" class="btn btn-info" name="update">Editar</button>
 					</form>
 				</div>
 			</div>

@@ -36,18 +36,18 @@ if(isset($_POST['recover'])){
 		<div class="col-md-8">
 			<div class="card">
 				<div class="card-header">
-					<h4 class="card-title">Recover Password</h4>
+					<h4 class="card-title">Recuperar contraseña</h4>
 				</div>
 				<div class="card-body">
 					<?php if(isset($_POST['recover'])) { ?>
-					<div class="alert alert-success" >If the email: <em><?php echo $_POST['email'] ?></em> was found in the system, a new password was sent</div>
+					<div class="alert alert-success" >Si el correo: <em><?php echo $_POST['email'] ?></em> se encuentra en el sistema, una nueva contraseña fue enviada</div>
 					<?php } else { ?>
 					<form id="form" method="post" action="index.php?pid=<?php echo base64_encode("ui/recoverPassword.php") ?>" class="bootstrap-form needs-validation"   >
 						<div class="form-group">
-							<label>Email*</label>
+							<label>Contraseña*</label>
 							<input type="email" class="form-control" name="email" required />
 						</div>
-						<button type="submit" class="btn btn-info" name="recover">Recover Password</button>
+						<button type="submit" class="btn btn-info" name="recover">Recuperar contraseña</button>
 					</form>
 					<?php } ?>
 				</div>

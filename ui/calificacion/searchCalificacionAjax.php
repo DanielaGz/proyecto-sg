@@ -25,10 +25,10 @@
 			echo "<td>" . $currentCalificacion -> getCriterio() -> getNombre() . "</td>";
 						echo "<td class='text-right' nowrap>";
 						if($_GET['entity'] == 'Administrator') {
-							echo "<a href='index.php?pid=" . base64_encode("ui/calificacion/updateCalificacion.php") . "&idCalificacion=" . $currentCalificacion -> getIdCalificacion() . "'><span class='fas fa-edit' data-toggle='tooltip' data-placement='left' data-original-title='Edit Calificacion' ></span></a> ";
+							echo "<a href='index.php?pid=" . base64_encode("ui/calificacion/updateCalificacion.php") . "&idCalificacion=" . $currentCalificacion -> getIdCalificacion() . "'><span class='fas fa-edit' data-toggle='tooltip' data-placement='left' data-original-title='Editar Calificación' ></span></a> ";
 						}
 						if($_GET['entity'] == 'Administrator') {
-							echo "<a href='index.php?pid=" . base64_encode("ui/calificacion/selectAllCalificacion.php") . "&idCalificacion=" . $currentCalificacion -> getIdCalificacion() . "&action=delete' onclick='return confirm(\"Confirm to delete Calificacion: " . $currentCalificacion -> getNivel() . "\")'><span class='fas fa-backspace' data-toggle='tooltip' data-placement='left' data-original-title='Delete Calificacion' ></span></a> ";
+							echo "<a href='index.php?pid=" . base64_encode("ui/calificacion/selectAllCalificacion.php") . "&idCalificacion=" . $currentCalificacion -> getIdCalificacion() . "&action=delete' onclick='return confirm(\"Está seguro de eliminar el registro: " . $currentCalificacion -> getNivel() . "\")'><span class='fas fa-backspace' data-toggle='tooltip' data-placement='left' data-original-title='Eliminar Calificación' ></span></a> ";
 						}
 						echo "</td>";
 			echo "</tr>";
