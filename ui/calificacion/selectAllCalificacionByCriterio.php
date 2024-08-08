@@ -32,11 +32,11 @@ if(!empty($_GET['action']) && $_GET['action']=="delete"){
 			$browser = "Safari";
 		}
 		if($_SESSION['entity'] == 'Administrator'){
-			$logAdministrator = new LogAdministrator("","Delete Calificacion", "Nivel: " . $deleteCalificacion -> getNivel() . ";; Detalle: " . $deleteCalificacion -> getDetalle() . ";; Criterio: " . $nameCriterio, date("Y-m-d"), date("H:i:s"), $user_ip, PHP_OS, $browser, $_SESSION['id']);
+			$logAdministrator = new LogAdministrator("","Eliminar Calificacion", "Nivel: " . $deleteCalificacion -> getNivel() . ";; Detalle: " . $deleteCalificacion -> getDetalle() . ";; Criterio: " . $nameCriterio, date("Y-m-d"), date("H:i:s"), $user_ip, PHP_OS, $browser, $_SESSION['id']);
 			$logAdministrator -> insert();
 		}
 		else if($_SESSION['entity'] == 'Usuario'){
-			$logUsuario = new LogUsuario("","Delete Calificacion", "Nivel: " . $deleteCalificacion -> getNivel() . ";; Detalle: " . $deleteCalificacion -> getDetalle() . ";; Criterio: " . $nameCriterio, date("Y-m-d"), date("H:i:s"), $user_ip, PHP_OS, $browser, $_SESSION['id']);
+			$logUsuario = new LogUsuario("","Eliminar Calificacion", "Nivel: " . $deleteCalificacion -> getNivel() . ";; Detalle: " . $deleteCalificacion -> getDetalle() . ";; Criterio: " . $nameCriterio, date("Y-m-d"), date("H:i:s"), $user_ip, PHP_OS, $browser, $_SESSION['id']);
 			$logUsuario -> insert();
 		}
 	}else{
@@ -50,13 +50,13 @@ if(!empty($_GET['action']) && $_GET['action']=="delete"){
 		<h3 class="card-title">Calificación por criterio: <em><?php echo $criterio -> getNombre() ?></em></h3>
 		<?php if(isset($_GET['action']) && $_GET['action']=="delete"){ ?>
 			<?php if($error == 0){ ?>
-				<div class="alert alert-success" >The registry was succesfully deleted.
+				<div class="alert alert-success" >Registro eliminado.
 					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
 				<?php } else { ?>
-				<div class="alert alert-danger" >The registry was not deleted. Check it does not have related information
+				<div class="alert alert-danger" >Error.
 					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
@@ -71,13 +71,13 @@ if(!empty($_GET['action']) && $_GET['action']=="delete"){
 						<?php if($order=="nivel" && $dir=="asc") { ?>
 							<span class='fas fa-sort-up'></span>
 						<?php } else { ?>
-							<a data-toggle='tooltip' data-placement='right' data-original-title='Sort Ascending' href='index.php?pid=<?php echo base64_encode("ui/calificacion/selectAllCalificacionByCriterio.php") ?>&idCriterio=<?php echo $_GET['idCriterio'] ?>&order=nivel&dir=asc'>
+							<a data-toggle='tooltip' data-placement='right' data-original-title='Orden ascendente' href='index.php?pid=<?php echo base64_encode("ui/calificacion/selectAllCalificacionByCriterio.php") ?>&idCriterio=<?php echo $_GET['idCriterio'] ?>&order=nivel&dir=asc'>
 							<span class='fas fa-sort-amount-up'></span></a>
 						<?php } ?>
 						<?php if($order=="nivel" && $dir=="desc") { ?>
 							<span class='fas fa-sort-down'></span>
 						<?php } else { ?>
-							<a data-toggle='tooltip' data-placement='right' data-original-title='Sort Descending' href='index.php?pid=<?php echo base64_encode("ui/calificacion/selectAllCalificacionByCriterio.php") ?>&idCriterio=<?php echo $_GET['idCriterio'] ?>&order=nivel&dir=desc'>
+							<a data-toggle='tooltip' data-placement='right' data-original-title='Orden descendente' href='index.php?pid=<?php echo base64_encode("ui/calificacion/selectAllCalificacionByCriterio.php") ?>&idCriterio=<?php echo $_GET['idCriterio'] ?>&order=nivel&dir=desc'>
 							<span class='fas fa-sort-amount-down'></span></a>
 						<?php } ?>
 						</th>
@@ -85,13 +85,13 @@ if(!empty($_GET['action']) && $_GET['action']=="delete"){
 						<?php if($order=="detalle" && $dir=="asc") { ?>
 							<span class='fas fa-sort-up'></span>
 						<?php } else { ?>
-							<a data-toggle='tooltip' data-placement='right' data-original-title='Sort Ascending' href='index.php?pid=<?php echo base64_encode("ui/calificacion/selectAllCalificacionByCriterio.php") ?>&idCriterio=<?php echo $_GET['idCriterio'] ?>&order=detalle&dir=asc'>
+							<a data-toggle='tooltip' data-placement='right' data-original-title='Orden ascendente' href='index.php?pid=<?php echo base64_encode("ui/calificacion/selectAllCalificacionByCriterio.php") ?>&idCriterio=<?php echo $_GET['idCriterio'] ?>&order=detalle&dir=asc'>
 							<span class='fas fa-sort-amount-up'></span></a>
 						<?php } ?>
 						<?php if($order=="detalle" && $dir=="desc") { ?>
 							<span class='fas fa-sort-down'></span>
 						<?php } else { ?>
-							<a data-toggle='tooltip' data-placement='right' data-original-title='Sort Descending' href='index.php?pid=<?php echo base64_encode("ui/calificacion/selectAllCalificacionByCriterio.php") ?>&idCriterio=<?php echo $_GET['idCriterio'] ?>&order=detalle&dir=desc'>
+							<a data-toggle='tooltip' data-placement='right' data-original-title='Orden descendente' href='index.php?pid=<?php echo base64_encode("ui/calificacion/selectAllCalificacionByCriterio.php") ?>&idCriterio=<?php echo $_GET['idCriterio'] ?>&order=detalle&dir=desc'>
 							<span class='fas fa-sort-amount-down'></span></a>
 						<?php } ?>
 						</th>
@@ -115,10 +115,10 @@ if(!empty($_GET['action']) && $_GET['action']=="delete"){
 						echo "<td><a href='modalCriterio.php?idCriterio=" . $currentCalificacion -> getCriterio() -> getIdCriterio() . "' data-toggle='modal' data-target='#modalCalificacion' >" . $currentCalificacion -> getCriterio() -> getNombre() . "</a></td>";
 						echo "<td class='text-right' nowrap>";
 						if($_SESSION['entity'] == 'Administrator') {
-							echo "<a href='index.php?pid=" . base64_encode("ui/calificacion/updateCalificacion.php") . "&idCalificacion=" . $currentCalificacion -> getIdCalificacion() . "'><span class='fas fa-edit' data-toggle='tooltip' data-placement='left' data-original-title='Edit Calificacion' ></span></a> ";
+							echo "<a href='index.php?pid=" . base64_encode("ui/calificacion/updateCalificacion.php") . "&idCalificacion=" . $currentCalificacion -> getIdCalificacion() . "'><span class='fas fa-edit' data-toggle='tooltip' data-placement='left' data-original-title='Editar Calificación' ></span></a> ";
 						}
 						if($_SESSION['entity'] == 'Administrator') {
-							echo "<a href='index.php?pid=" . base64_encode("ui/calificacion/selectAllCalificacionByCriterio.php") . "&idCriterio=" . $_GET['idCriterio'] . "&idCalificacion=" . $currentCalificacion -> getIdCalificacion() . "&action=delete' onclick='return confirm(\"Confirm to delete Calificacion: " . $currentCalificacion -> getNivel() . "\")'> <span class='fas fa-backspace' data-toggle='tooltip' data-placement='left' data-original-title='Delete Calificacion' ></span></a> ";
+							echo "<a href='index.php?pid=" . base64_encode("ui/calificacion/selectAllCalificacionByCriterio.php") . "&idCriterio=" . $_GET['idCriterio'] . "&idCalificacion=" . $currentCalificacion -> getIdCalificacion() . "&action=delete' onclick='return confirm(\"Está seguro de eliminar el registro: " . $currentCalificacion -> getNivel() . "\")'> <span class='fas fa-backspace' data-toggle='tooltip' data-placement='left' data-original-title='Eliminar Calificación' ></span></a> ";
 						}
 						echo "</td>";
 						echo "</tr>";

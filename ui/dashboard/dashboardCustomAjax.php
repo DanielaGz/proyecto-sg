@@ -310,7 +310,7 @@ function savePositions(id, posicion){
 
 document.getElementById('pdf').addEventListener('click', function() {
     $("#loader").fadeIn(0);
-    generatePDF('pdf-document');
+    generatePDF('pdf-document','tablero');
     $("#loader").fadeOut(300);
 });
 

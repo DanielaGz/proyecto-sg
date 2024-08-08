@@ -48,11 +48,11 @@ if(isset($_POST['insert'])){
 		$browser = "Safari";
 	}
 	if($_SESSION['entity'] == 'Administrator'){
-		$logAdministrator = new LogAdministrator("","Create Usuario", "Name: " . $name . "; Last Name: " . $lastName . "; Email: " . $email . "; Password: " . $password . "; Phone: " . $phone . "; Mobile: " . $mobile . "; State: " . $state, date("Y-m-d"), date("H:i:s"), $user_ip, PHP_OS, $browser, $_SESSION['id']);
+		$logAdministrator = new LogAdministrator("","Crear Usuario", "Name: " . $name . "; Last Name: " . $lastName . "; Email: " . $email . "; Password: " . $password . "; Phone: " . $phone . "; Mobile: " . $mobile . "; State: " . $state, date("Y-m-d"), date("H:i:s"), $user_ip, PHP_OS, $browser, $_SESSION['id']);
 		$logAdministrator -> insert();
 	}
 	else if($_SESSION['entity'] == 'Usuario'){
-		$logUsuario = new LogUsuario("","Create Usuario", "Name: " . $name . "; Last Name: " . $lastName . "; Email: " . $email . "; Password: " . $password . "; Phone: " . $phone . "; Mobile: " . $mobile . "; State: " . $state, date("Y-m-d"), date("H:i:s"), $user_ip, PHP_OS, $browser, $_SESSION['id']);
+		$logUsuario = new LogUsuario("","Crear Usuario", "Name: " . $name . "; Last Name: " . $lastName . "; Email: " . $email . "; Password: " . $password . "; Phone: " . $phone . "; Mobile: " . $mobile . "; State: " . $state, date("Y-m-d"), date("H:i:s"), $user_ip, PHP_OS, $browser, $_SESSION['id']);
 		$logUsuario -> insert();
 	}
 	$processed=true;
@@ -64,11 +64,11 @@ if(isset($_POST['insert'])){
 		<div class="col-md-8">
 			<div class="card">
 				<div class="card-header">
-					<h4 class="card-title">Create Usuario</h4>
+					<h4 class="card-title">Crear Usuario</h4>
 				</div>
 				<div class="card-body">
 					<?php if($processed){ ?>
-					<div class="alert alert-success" >Data Entered
+					<div class="alert alert-success" >Información almacenada
 						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
@@ -76,41 +76,41 @@ if(isset($_POST['insert'])){
 					<?php } ?>
 					<form id="form" method="post" action="index.php?pid=<?php echo base64_encode("ui/usuario/insertUsuario.php") ?>" class="bootstrap-form needs-validation"   >
 						<div class="form-group">
-							<label>Name*</label>
+							<label>Nombre*</label>
 							<input type="text" class="form-control" name="name" value="<?php echo $name ?>" required />
 						</div>
 						<div class="form-group">
-							<label>Last Name*</label>
+							<label>Apellido*</label>
 							<input type="text" class="form-control" name="lastName" value="<?php echo $lastName ?>" required />
 						</div>
 						<div class="form-group">
-							<label>Email*</label>
+							<label>Correo*</label>
 							<input type="email" class="form-control" name="email" value="<?php echo $email ?>"  required />
 						</div>
 						<div class="form-group">
-							<label>Password*</label>
+							<label>Contraseña*</label>
 							<input type="password" class="form-control" name="password" value="<?php echo $password ?>" required />
 						</div>
 						<div class="form-group">
-							<label>Phone</label>
+							<label>Teléfono</label>
 							<input type="text" class="form-control" name="phone" value="<?php echo $phone ?>"/>
 						</div>
 						<div class="form-group">
-							<label>Mobile</label>
+							<label>Celular</label>
 							<input type="text" class="form-control" name="mobile" value="<?php echo $mobile ?>"/>
 						</div>
 						<div class="form-group">
-							<label>State*</label>
+							<label>Estado*</label>
 						<div class="form-check">
 							<input type="radio" class="form-check-input" name="state" value="1" checked />
-							<label class="form-check-label">Enabled</label>
+							<label class="form-check-label">Activado</label>
 						</div>
 						<div class="form-check form-check-inline">
 							<input type="radio" class="form-check-input" name="state" value="0" />
-							<label class="form-check-label" >Disabled</label>
+							<label class="form-check-label" >Desactivado</label>
 						</div>
 						</div>
-						<button type="submit" class="btn btn-info" name="insert">Create</button>
+						<button type="submit" class="btn btn-info" name="insert">Crear</button>
 					</form>
 				</div>
 			</div>

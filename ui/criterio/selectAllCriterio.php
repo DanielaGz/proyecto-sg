@@ -29,11 +29,11 @@ if(isset($_GET['action']) && $_GET['action']=="delete"){
 			$browser = "Safari";
 		}
 		if($_SESSION['entity'] == 'Administrator'){
-			$logAdministrator = new LogAdministrator("","Delete Criterio", "Nombre: " . $deleteCriterio -> getNombre() . ";; Detalle: " . $deleteCriterio -> getDetalle(), date("Y-m-d"), date("H:i:s"), $user_ip, PHP_OS, $browser, $_SESSION['id']);
+			$logAdministrator = new LogAdministrator("","Eliminar Criterio", "Nombre: " . $deleteCriterio -> getNombre() . ";; Detalle: " . $deleteCriterio -> getDetalle(), date("Y-m-d"), date("H:i:s"), $user_ip, PHP_OS, $browser, $_SESSION['id']);
 			$logAdministrator -> insert();
 		}
 		else if($_SESSION['entity'] == 'Usuario'){
-			$logUsuario = new LogUsuario("","Delete Criterio", "Nombre: " . $deleteCriterio -> getNombre() . ";; Detalle: " . $deleteCriterio -> getDetalle(), date("Y-m-d"), date("H:i:s"), $user_ip, PHP_OS, $browser, $_SESSION['id']);
+			$logUsuario = new LogUsuario("","Eliminar Criterio", "Nombre: " . $deleteCriterio -> getNombre() . ";; Detalle: " . $deleteCriterio -> getDetalle(), date("Y-m-d"), date("H:i:s"), $user_ip, PHP_OS, $browser, $_SESSION['id']);
 			$logUsuario -> insert();
 		}
 	}else{
@@ -47,13 +47,13 @@ if(isset($_GET['action']) && $_GET['action']=="delete"){
 		<h3 class="card-title">Criterios</h3>
 		<?php if(isset($_GET['action']) && $_GET['action']=="delete"){ ?>
 			<?php if($error == 0){ ?>
-				<div class="alert alert-success" >The registry was succesfully deleted.
+				<div class="alert alert-success" >Registro eliminado
 					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
 				<?php } else { ?>
-				<div class="alert alert-danger" >The registry was not deleted. Check it does not have related information
+				<div class="alert alert-danger" >Error.
 					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
@@ -69,13 +69,13 @@ if(isset($_GET['action']) && $_GET['action']=="delete"){
 							<span class='fas fa-sort-up'></span>
 						<?php } else { ?>
 							<a href='index.php?pid=<?php echo base64_encode("ui/criterio/selectAllCriterio.php") ?>&order=nombre&dir=asc'>
-							<span class='fas fa-sort-amount-up' data-toggle='tooltip' data-placement='right' data-original-title='Sort Ascending' ></span></a>
+							<span class='fas fa-sort-amount-up' data-toggle='tooltip' data-placement='right' data-original-title='Orden ascendente' ></span></a>
 						<?php } ?>
 						<?php if($order=="nombre" && $dir=="desc") { ?>
 							<span class='fas fa-sort-down'></span>
 						<?php } else { ?>
 							<a href='index.php?pid=<?php echo base64_encode("ui/criterio/selectAllCriterio.php") ?>&order=nombre&dir=desc'>
-							<span class='fas fa-sort-amount-down' data-toggle='tooltip' data-placement='right' data-original-title='Sort Descending' ></span></a>
+							<span class='fas fa-sort-amount-down' data-toggle='tooltip' data-placement='right' data-original-title='Orden descendente' ></span></a>
 						<?php } ?>
 						</th>
 						<th nowrap>Detalle 
@@ -83,13 +83,13 @@ if(isset($_GET['action']) && $_GET['action']=="delete"){
 							<span class='fas fa-sort-up'></span>
 						<?php } else { ?>
 							<a href='index.php?pid=<?php echo base64_encode("ui/criterio/selectAllCriterio.php") ?>&order=detalle&dir=asc'>
-							<span class='fas fa-sort-amount-up' data-toggle='tooltip' data-placement='right' data-original-title='Sort Ascending' ></span></a>
+							<span class='fas fa-sort-amount-up' data-toggle='tooltip' data-placement='right' data-original-title='Orden ascendente' ></span></a>
 						<?php } ?>
 						<?php if($order=="detalle" && $dir=="desc") { ?>
 							<span class='fas fa-sort-down'></span>
 						<?php } else { ?>
 							<a href='index.php?pid=<?php echo base64_encode("ui/criterio/selectAllCriterio.php") ?>&order=detalle&dir=desc'>
-							<span class='fas fa-sort-amount-down' data-toggle='tooltip' data-placement='right' data-original-title='Sort Descending' ></span></a>
+							<span class='fas fa-sort-amount-down' data-toggle='tooltip' data-placement='right' data-original-title='Orden descendente' ></span></a>
 						<?php } ?>
 						</th>
 						<th nowrap></th>
@@ -110,19 +110,12 @@ if(isset($_GET['action']) && $_GET['action']=="delete"){
 						echo "<td>" . $currentCriterio -> getDetalle() . "</td>";
 						echo "<td class='text-right' nowrap>";
 						if($_SESSION['entity'] == 'Administrator') {
-							echo "<a href='index.php?pid=" . base64_encode("ui/criterio/updateCriterio.php") . "&idCriterio=" . $currentCriterio -> getIdCriterio() . "'><span class='fas fa-edit' data-toggle='tooltip' data-placement='left' data-original-title='Edit Criterio' ></span></a> ";
+							echo "<a href='index.php?pid=" . base64_encode("ui/criterio/updateCriterio.php") . "&idCriterio=" . $currentCriterio -> getIdCriterio() . "'><span class='fas fa-edit' data-toggle='tooltip' data-placement='left' data-original-title='Editar Criterio' ></span></a> ";
 						}
 						if($_SESSION['entity'] == 'Administrator') {
-							echo "<a href='index.php?pid=" . base64_encode("ui/criterio/selectAllCriterio.php") . "&idCriterio=" . $currentCriterio -> getIdCriterio() . "&action=delete' onclick='return confirm(\"Confirm to delete Criterio: " . $currentCriterio -> getNombre() . "\")'><span class='fas fa-backspace' data-toggle='tooltip' data-placement='left' data-original-title='Delete Criterio' ></span></a> ";
+							echo "<a href='index.php?pid=" . base64_encode("ui/criterio/selectAllCriterio.php") . "&idCriterio=" . $currentCriterio -> getIdCriterio() . "&action=delete' onclick='return confirm(\"Está seguro de eliminar el registro: " . $currentCriterio -> getNombre() . "\")'><span class='fas fa-backspace' data-toggle='tooltip' data-placement='left' data-original-title='Eliminar Criterio' ></span></a> ";
 						}
-						echo "<a href='index.php?pid=" . base64_encode("ui/calificacion/selectAllCalificacionByCriterio.php") . "&idCriterio=" . $currentCriterio -> getIdCriterio() . "'><span class='fas fa-search-plus' data-toggle='tooltip' data-placement='left' data-original-title='Get All Calificacion' ></span></a> ";
-						if($_SESSION['entity'] == 'Administrator') {
-							echo "<a href='index.php?pid=" . base64_encode("ui/calificacion/insertCalificacion.php") . "&idCriterio=" . $currentCriterio -> getIdCriterio() . "'><span class='fas fa-pen' data-toggle='tooltip' data-placement='left' data-original-title='Create Calificacion' ></span></a> ";
-						}
-						echo "<a href='index.php?pid=" . base64_encode("ui/estrategiaCriterio/selectAllEstrategiaCriterioByCriterio.php") . "&idCriterio=" . $currentCriterio -> getIdCriterio() . "'><span class='fas fa-search-plus' data-toggle='tooltip' data-placement='left' data-original-title='Get All Estrategia Criterio' ></span></a> ";
-						if($_SESSION['entity'] == 'Administrator') {
-							echo "<a href='index.php?pid=" . base64_encode("ui/estrategiaCriterio/insertEstrategiaCriterio.php") . "&idCriterio=" . $currentCriterio -> getIdCriterio() . "'><span class='fas fa-pen' data-toggle='tooltip' data-placement='left' data-original-title='Create Estrategia Criterio' ></span></a> ";
-						}
+						echo "<a href='index.php?pid=" . base64_encode("ui/calificacion/selectAllCalificacionByCriterio.php") . "&idCriterio=" . $currentCriterio -> getIdCriterio() . "'><span class='fas fa-search-plus' data-toggle='tooltip' data-placement='left' data-original-title='Obtener Calificacion' ></span></a> ";
 						echo "</td>";
 						echo "</tr>";
 						$counter++;

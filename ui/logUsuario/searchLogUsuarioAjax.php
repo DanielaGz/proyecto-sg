@@ -7,12 +7,12 @@
 <table class="table table-striped table-hover">
 	<thead>
 		<tr><th></th>
-			<th nowrap>Action</th>
-			<th nowrap>Date</th>
-			<th nowrap>Time</th>
+			<th nowrap>Acción</th>
+			<th nowrap>Fecha</th>
+			<th nowrap>Hora</th>
 			<th nowrap>Ip</th>
 			<th nowrap>Os</th>
-			<th nowrap>Browser</th>
+			<th nowrap>Navegador</th>
 			<th>Usuario</th>
 			<th nowrap></th>
 		</tr>
@@ -33,7 +33,7 @@
 			echo "<td>" . $currentLogUsuario -> getUsuario() -> getName() . " " . $currentLogUsuario -> getUsuario() -> getLastName() . "</td>";
 			echo "<td class='text-right' nowrap>
 				<a href='modalLogUsuario.php?idLogUsuario=" . $currentLogUsuario -> getIdLogUsuario() . "'  data-toggle='modal' data-target='#modalLogUsuario' >
-					<span class='fas fa-eye' data-toggle='tooltip' data-placement='left' data-original-title='View more information' ></span>
+					<span class='fas fa-eye' data-toggle='tooltip' data-placement='left' data-original-title='Ver más información' ></span>
 				</a>
 				</td>";
 			echo "</tr>";

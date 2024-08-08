@@ -38,11 +38,11 @@ if(isset($_POST['insert'])){
 		$browser = "Safari";
 	}
 	if($_SESSION['entity'] == 'Administrator'){
-		$logAdministrator = new LogAdministrator("","Create Dashboard", "Nombre: " . $nombre . "; Detalle: " . $detalle, date("Y-m-d"), date("H:i:s"), $user_ip, PHP_OS, $browser, $_SESSION['id']);
+		$logAdministrator = new LogAdministrator("","Crear Tablero", "Nombre: " . $nombre . "; Detalle: " . $detalle, date("Y-m-d"), date("H:i:s"), $user_ip, PHP_OS, $browser, $_SESSION['id']);
 		$logAdministrator -> insert();
 	}
 	else if($_SESSION['entity'] == 'Usuario'){
-		$logUsuario = new LogUsuario("","Create Dashboard", "Nombre: " . $nombre . "; Detalle: " . $detalle, date("Y-m-d"), date("H:i:s"), $user_ip, PHP_OS, $browser, $_SESSION['id']);
+		$logUsuario = new LogUsuario("","Crear Tablero", "Nombre: " . $nombre . "; Detalle: " . $detalle, date("Y-m-d"), date("H:i:s"), $user_ip, PHP_OS, $browser, $_SESSION['id']);
 		$logUsuario -> insert();
 	}
 	$processed=true;
@@ -91,7 +91,7 @@ if(isset($_POST['insert'])){
 							</select>
 						</div>
 						<?php } ?>
-						<button type="submit" class="btn btn-info" name="insert">Create</button>
+						<button type="submit" class="btn btn-info" name="insert">Crear</button>
 					</form>
 				</div>
 			</div>

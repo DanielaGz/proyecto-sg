@@ -11,8 +11,15 @@ $detalle="";
 if(isset($_POST['detalle'])){
 	$detalle=$_POST['detalle'];
 }
+$resultadoAprendizaje="";
+if(isset($_POST['resultadoAprendizaje'])){
+	$resultadoAprendizaje=$_POST['resultadoAprendizaje'];
+}
+if(isset($_GET['idResultadoAprendizaje'])){
+	$resultadoAprendizaje=$_GET['idResultadoAprendizaje'];
+}
 if(isset($_POST['update'])){
-	$updateCriterio = new Criterio($idCriterio, $nombre, $detalle);
+	$updateCriterio = new Criterio($idCriterio, $nombre, $detalle, $resultadoAprendizaje);
 	$updateCriterio -> update();
 	$updateCriterio -> select();
 	$user_ip = getenv('REMOTE_ADDR');
@@ -52,7 +59,7 @@ if(isset($_POST['update'])){
 				</div>
 				<div class="card-body">
 					<?php if($processed){ ?>
-					<div class="alert alert-success" >Data Edited
+					<div class="alert alert-success" >Información almacenada
 						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
@@ -67,7 +74,23 @@ if(isset($_POST['update'])){
 							<label>Detalle</label>
 							<input type="text" class="form-control" name="detalle" value="<?php echo $updateCriterio -> getDetalle() ?>"/>
 						</div>
-						<button type="submit" class="btn btn-info" name="update">Edit</button>
+						<div class="form-group">
+							<label>Resultado Aprendizaje*</label>
+							<select class="form-control" name="resultadoAprendizaje">
+								<?php
+								$objResultadoAprendizaje = new ResultadoAprendizaje();
+								$resultadoAprendizajes = $objResultadoAprendizaje -> selectAllOrder("nombre", "asc");
+								foreach($resultadoAprendizajes as $currentResultadoAprendizaje){
+									echo "<option value='" . $currentResultadoAprendizaje -> getIdResultadoAprendizaje() . "'";
+									if($currentResultadoAprendizaje -> getIdResultadoAprendizaje() == $updateCriterio -> getResultadoAprendizaje() -> getIdResultadoAprendizaje()){
+										echo " selected";
+									}
+									echo ">" . $currentResultadoAprendizaje -> getNombre() . "</option>";
+								}
+								?>
+							</select>
+						</div>
+						<button type="submit" class="btn btn-info" name="update">Editar</button>
 					</form>
 				</div>
 			</div>

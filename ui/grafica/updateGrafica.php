@@ -55,11 +55,11 @@ if(isset($_POST['update'])){
 		$browser = "Safari";
 	}
 	if($_SESSION['entity'] == 'Administrator'){
-		$logAdministrator = new LogAdministrator("","Edit Grafica", "Nombre: " . $nombre . "; Detalle: " . $detalle . "; Config: " . $config . "; Fila: " . $fila . "; Posicion: " . $posicion . "; Tam: " . $tam . "; Dashboard: " . $nameDashboard , date("Y-m-d"), date("H:i:s"), $user_ip, PHP_OS, $browser, $_SESSION['id']);
+		$logAdministrator = new LogAdministrator("","Editar gráfica", "Nombre: " . $nombre . "; Detalle: " . $detalle . "; Config: " . $config . "; Fila: " . $fila . "; Posicion: " . $posicion . "; Tam: " . $tam . "; Dashboard: " . $nameDashboard , date("Y-m-d"), date("H:i:s"), $user_ip, PHP_OS, $browser, $_SESSION['id']);
 		$logAdministrator -> insert();
 	}
 	else if($_SESSION['entity'] == 'Usuario'){
-		$logUsuario = new LogUsuario("","Edit Grafica", "Nombre: " . $nombre . "; Detalle: " . $detalle . "; Config: " . $config . "; Fila: " . $fila . "; Posicion: " . $posicion . "; Tam: " . $tam . "; Dashboard: " . $nameDashboard , date("Y-m-d"), date("H:i:s"), $user_ip, PHP_OS, $browser, $_SESSION['id']);
+		$logUsuario = new LogUsuario("","Editar gráfica", "Nombre: " . $nombre . "; Detalle: " . $detalle . "; Config: " . $config . "; Fila: " . $fila . "; Posicion: " . $posicion . "; Tam: " . $tam . "; Dashboard: " . $nameDashboard , date("Y-m-d"), date("H:i:s"), $user_ip, PHP_OS, $browser, $_SESSION['id']);
 		$logUsuario -> insert();
 	}
 	$processed=true;
@@ -71,11 +71,11 @@ if(isset($_POST['update'])){
 		<div class="col-md-8">
 			<div class="card">
 				<div class="card-header">
-					<h4 class="card-title">Edit Grafica</h4>
+					<h4 class="card-title">Editar gráfica</h4>
 				</div>
 				<div class="card-body">
 					<?php if($processed){ ?>
-					<div class="alert alert-success" >Data Edited
+					<div class="alert alert-success" >Información actualizada
 						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
@@ -103,11 +103,11 @@ if(isset($_POST['update'])){
 							<input type="text" class="form-control" name="posicion" value="<?php echo $updateGrafica -> getPosicion() ?>" required />
 						</div>
 						<div class="form-group">
-							<label>Tam</label>
+							<label>Tamaño</label>
 							<input type="text" class="form-control" name="tam" value="<?php echo $updateGrafica -> getTam() ?>"/>
 						</div>
 						<div class="form-group">
-							<label>Dashboard*</label>
+							<label>Tablero*</label>
 							<select class="form-control" name="dashboard">
 								<?php
 								$objDashboard = new Dashboard();
@@ -122,7 +122,7 @@ if(isset($_POST['update'])){
 								?>
 							</select>
 						</div>
-						<button type="submit" class="btn btn-info" name="update">Edit</button>
+						<button type="submit" class="btn btn-info" name="update">Editar</button>
 					</form>
 				</div>
 			</div>

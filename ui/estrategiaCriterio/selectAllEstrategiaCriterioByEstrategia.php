@@ -33,11 +33,11 @@ if(!empty($_GET['action']) && $_GET['action']=="delete"){
 			$browser = "Safari";
 		}
 		if($_SESSION['entity'] == 'Administrator'){
-			$logAdministrator = new LogAdministrator("","Delete Estrategia Criterio", "Estrategia: " . $nameEstrategia . ";; Criterio: " . $nameCriterio, date("Y-m-d"), date("H:i:s"), $user_ip, PHP_OS, $browser, $_SESSION['id']);
+			$logAdministrator = new LogAdministrator("","Eliminar Estrategia Criterio", "Estrategia: " . $nameEstrategia . ";; Criterio: " . $nameCriterio, date("Y-m-d"), date("H:i:s"), $user_ip, PHP_OS, $browser, $_SESSION['id']);
 			$logAdministrator -> insert();
 		}
 		else if($_SESSION['entity'] == 'Usuario'){
-			$logUsuario = new LogUsuario("","Delete Estrategia Criterio", "Estrategia: " . $nameEstrategia . ";; Criterio: " . $nameCriterio, date("Y-m-d"), date("H:i:s"), $user_ip, PHP_OS, $browser, $_SESSION['id']);
+			$logUsuario = new LogUsuario("","Eliminar Estrategia Criterio", "Estrategia: " . $nameEstrategia . ";; Criterio: " . $nameCriterio, date("Y-m-d"), date("H:i:s"), $user_ip, PHP_OS, $browser, $_SESSION['id']);
 			$logUsuario -> insert();
 		}
 	}else{
@@ -45,21 +45,21 @@ if(!empty($_GET['action']) && $_GET['action']=="delete"){
 	}
 }
 ?>
-<div class="container-fluid">
+<div class="container">
 	<div class="card">
 		<div class="card-header">
-			<h4 class="card-title">Get All Estrategia Criterio of Estrategia: <em><?php echo $estrategia -> getNombre() ?></em></h4>
+			<h4 class="card-title">Consultar criterios por estrategia: <em><?php echo $estrategia -> getNombre() ?></em></h4>
 		</div>
 		<div class="card-body">
 		<?php if(isset($_GET['action']) && $_GET['action']=="delete"){ ?>
 			<?php if($error == 0){ ?>
-				<div class="alert alert-success" >The registry was succesfully deleted.
+				<div class="alert alert-success" >Registro eliminado.
 					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
 				<?php } else { ?>
-				<div class="alert alert-danger" >The registry was not deleted. Check it does not have related information
+				<div class="alert alert-danger" >Error.
 					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
@@ -90,10 +90,10 @@ if(!empty($_GET['action']) && $_GET['action']=="delete"){
 						echo "<td><a href='modalCriterio.php?idCriterio=" . $currentEstrategiaCriterio -> getCriterio() -> getIdCriterio() . "' data-toggle='modal' data-target='#modalEstrategiaCriterio' >" . $currentEstrategiaCriterio -> getCriterio() -> getNombre() . "</a></td>";
 						echo "<td class='text-right' nowrap>";
 						if($_SESSION['entity'] == 'Administrator') {
-							echo "<a href='index.php?pid=" . base64_encode("ui/estrategiaCriterio/updateEstrategiaCriterio.php") . "&idEstrategiaCriterio=" . $currentEstrategiaCriterio -> getIdEstrategiaCriterio() . "'><span class='fas fa-edit' data-toggle='tooltip' data-placement='left' data-original-title='Edit Estrategia Criterio' ></span></a> ";
+							echo "<a href='index.php?pid=" . base64_encode("ui/estrategiaCriterio/updateEstrategiaCriterio.php") . "&idEstrategiaCriterio=" . $currentEstrategiaCriterio -> getIdEstrategiaCriterio() . "'><span class='fas fa-edit' data-toggle='tooltip' data-placement='left' data-original-title='Editar Estrategia Criterio' ></span></a> ";
 						}
 						if($_SESSION['entity'] == 'Administrator') {
-							echo "<a href='index.php?pid=" . base64_encode("ui/estrategiaCriterio/selectAllEstrategiaCriterioByEstrategia.php") . "&idEstrategia=" . $_GET['idEstrategia'] . "&idEstrategiaCriterio=" . $currentEstrategiaCriterio -> getIdEstrategiaCriterio() . "&action=delete' onclick='return confirm(\"Confirm to delete Estrategia Criterio\")'> <span class='fas fa-backspace' data-toggle='tooltip' data-placement='left' data-original-title='Delete Estrategia Criterio' ></span></a> ";
+							echo "<a href='index.php?pid=" . base64_encode("ui/estrategiaCriterio/selectAllEstrategiaCriterioByEstrategia.php") . "&idEstrategia=" . $_GET['idEstrategia'] . "&idEstrategiaCriterio=" . $currentEstrategiaCriterio -> getIdEstrategiaCriterio() . "&action=delete' onclick='return confirm(\"Está seguro de eliminar el registro? \")'> <span class='fas fa-backspace' data-toggle='tooltip' data-placement='left' data-original-title='Eliminar Estrategia Criterio' ></span></a> ";
 						}
 						echo "</td>";
 						echo "</tr>";

@@ -33,7 +33,7 @@
 						echo "<a href='modalAdministrator.php?idAdministrator=" . $currentAdministrator -> getIdAdministrator() . "'  data-toggle='modal' data-target='#modalAdministrator' ><span class='fas fa-eye' data-toggle='tooltip' data-placement='left' data-original-title='View more information' ></span></a> ";
 						if($_GET['entity'] == 'Administrator') {
 							echo "<a href='index.php?pid=" . base64_encode("ui/administrator/updateAdministrator.php") . "&idAdministrator=" . $currentAdministrator -> getIdAdministrator() . "'><span class='fas fa-edit' data-toggle='tooltip' data-placement='left' data-original-title='Edit Administrator' ></span></a> ";
-							echo "<a href='index.php?pid=" . base64_encode("ui/administrator/updatePictureAdministrator.php") . "&idAdministrator=" . $currentAdministrator -> getIdAdministrator() . "&attribute=picture'><span class='fas fa-camera' data-toggle='tooltip' data-placement='left' data-original-title='Edit picture'></span></a> ";
+							echo "<a href='index.php?pid=" . base64_encode("ui/administrator/updatePictureAdministrator.php") . "&idAdministrator=" . $currentAdministrator -> getIdAdministrator() . "&attribute=picture'><span class='fas fa-camera' data-toggle='tooltip' data-placement='left' data-original-title='Editar foto'></span></a> ";
 						}
 						echo "</td>";
 			echo "</tr>";

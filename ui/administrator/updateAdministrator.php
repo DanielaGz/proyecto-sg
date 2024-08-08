@@ -48,11 +48,11 @@ if(isset($_POST['update'])){
 		$browser = "Safari";
 	}
 	if($_SESSION['entity'] == 'Administrator'){
-		$logAdministrator = new LogAdministrator("","Edit Administrator", "Name: " . $name . "; Last Name: " . $lastName . "; Email: " . $email . "; Phone: " . $phone . "; Mobile: " . $mobile . "; State: " . $state, date("Y-m-d"), date("H:i:s"), $user_ip, PHP_OS, $browser, $_SESSION['id']);
+		$logAdministrator = new LogAdministrator("","Editar Administrador", "Name: " . $name . "; Last Name: " . $lastName . "; Email: " . $email . "; Phone: " . $phone . "; Mobile: " . $mobile . "; State: " . $state, date("Y-m-d"), date("H:i:s"), $user_ip, PHP_OS, $browser, $_SESSION['id']);
 		$logAdministrator -> insert();
 	}
 	else if($_SESSION['entity'] == 'Usuario'){
-		$logUsuario = new LogUsuario("","Edit Administrator", "Name: " . $name . "; Last Name: " . $lastName . "; Email: " . $email . "; Phone: " . $phone . "; Mobile: " . $mobile . "; State: " . $state, date("Y-m-d"), date("H:i:s"), $user_ip, PHP_OS, $browser, $_SESSION['id']);
+		$logUsuario = new LogUsuario("","Editar Administrador", "Name: " . $name . "; Last Name: " . $lastName . "; Email: " . $email . "; Phone: " . $phone . "; Mobile: " . $mobile . "; State: " . $state, date("Y-m-d"), date("H:i:s"), $user_ip, PHP_OS, $browser, $_SESSION['id']);
 		$logUsuario -> insert();
 	}
 	$processed=true;
@@ -64,11 +64,11 @@ if(isset($_POST['update'])){
 		<div class="col-md-8">
 			<div class="card">
 				<div class="card-header">
-					<h4 class="card-title">Edit Administrator</h4>
+					<h4 class="card-title">Editar Administrador</h4>
 				</div>
 				<div class="card-body">
 					<?php if($processed){ ?>
-					<div class="alert alert-success" >Data Edited
+					<div class="alert alert-success" >Información almacenada
 						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
@@ -76,37 +76,37 @@ if(isset($_POST['update'])){
 					<?php } ?>
 					<form id="form" method="post" action="index.php?pid=<?php echo base64_encode("ui/administrator/updateAdministrator.php") . "&idAdministrator=" . $idAdministrator ?>" class="bootstrap-form needs-validation"   >
 						<div class="form-group">
-							<label>Name*</label>
+							<label>Nombre*</label>
 							<input type="text" class="form-control" name="name" value="<?php echo $updateAdministrator -> getName() ?>" required />
 						</div>
 						<div class="form-group">
-							<label>Last Name*</label>
+							<label>Apellido*</label>
 							<input type="text" class="form-control" name="lastName" value="<?php echo $updateAdministrator -> getLastName() ?>" required />
 						</div>
 						<div class="form-group">
-							<label>Email*</label>
+							<label>Correo*</label>
 							<input type="email" class="form-control" name="email" value="<?php echo $updateAdministrator -> getEmail() ?>"  required />
 						</div>
 						<div class="form-group">
-							<label>Phone</label>
+							<label>Teléfono</label>
 							<input type="text" class="form-control" name="phone" value="<?php echo $updateAdministrator -> getPhone() ?>"/>
 						</div>
 						<div class="form-group">
-							<label>Mobile</label>
+							<label>Celular</label>
 							<input type="text" class="form-control" name="mobile" value="<?php echo $updateAdministrator -> getMobile() ?>"/>
 						</div>
 						<div class="form-group">
-							<label>State*</label>
+							<label>Estado*</label>
 						<div class="form-check">
 							<input type="radio" class="form-check-input" name="state" value="1" <?php echo ($updateAdministrator -> getState()==1)?"checked":"" ?>/>
-							<label class="form-check-label">Enabled</label>
+							<label class="form-check-label">Activo</label>
 						</div>
 						<div class="form-check form-check-inline">
 							<input type="radio" class="form-check-input" name="state" value="0" <?php echo ($updateAdministrator -> getState()==0)?"checked":"" ?>/>
-							<label class="form-check-label" >Disabled</label>
+							<label class="form-check-label" >Desactivado</label>
 						</div>
 						</div>
-						<button type="submit" class="btn btn-info" name="update">Edit</button>
+						<button type="submit" class="btn btn-info" name="update">Editar</button>
 					</form>
 				</div>
 			</div>

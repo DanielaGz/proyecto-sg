@@ -4,6 +4,9 @@ $usuario -> select();
 ?>
 <div class="container">
 	<div class="card mb-lg-0 m-4 border-0 round h-full">
+		<div class="card-header">
+			<h3>Tu perfil</h3>
+		</div>
 		<div class="card-body">
 			<div class="row">
 				<div class="col-md-3">
@@ -40,6 +43,9 @@ $usuario -> select();
 					</div>
 				</div>
 			</div>
+		</div>
+		<div class="card-footer">
+		<p><?php echo "Tu rol es: Usuario"; ?></p>
 		</div>
 	</div>
 </div>

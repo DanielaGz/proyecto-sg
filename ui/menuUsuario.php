@@ -23,6 +23,7 @@ $usuario -> select();
 				<div class="dropdown-menu">
 					<a class="dropdown-item" href="index.php?pid=<?php echo base64_encode('ui/general.php') ?>">General</a>
 					<a class="dropdown-item" href="index.php?pid=<?php echo base64_encode('ui/categoriaRa/dashboardCategoria.php') ?>">Categorias</a>
+					<a class="dropdown-item" href="index.php?pid=<?php echo base64_encode('ui/resultadoAprendizaje/raDashboard.php') ?>">Resultado de aprendizaje</a>
 					<a class="dropdown-item" href="index.php?pid=<?php echo base64_encode('ui/dashboard/dashboardCustom.php') ?>">Personalizado</a>
 				</div>
 			</li>
@@ -31,9 +32,9 @@ $usuario -> select();
 			<li class="nav-item dropdown">
 				<a class="nav-link dropdown-toggle" href="#"  data-toggle="dropdown">Usuario: <?php echo $usuario -> getName() . " " . $usuario -> getLastName() ?><span class="caret"></span></a>
 				<div class="dropdown-menu" >
-					<a class="dropdown-item" href="index.php?pid=<?php echo base64_encode("ui/usuario/updateProfileUsuario.php") ?>">Edit Profile</a>
-					<a class="dropdown-item" href="index.php?pid=<?php echo base64_encode("ui/usuario/updatePasswordUsuario.php") ?>">Edit Password</a>
-					<a class="dropdown-item" href="index.php?pid=<?php echo base64_encode("ui/usuario/updateProfilePictureUsuario.php") ?>">Edit Picture</a>
+					<a class="dropdown-item" href="index.php?pid=<?php echo base64_encode("ui/usuario/updateProfileUsuario.php") ?>">Editar Perfil</a>
+					<a class="dropdown-item" href="index.php?pid=<?php echo base64_encode("ui/usuario/updatePasswordUsuario.php") ?>">Editar Contraseña</a>
+					<a class="dropdown-item" href="index.php?pid=<?php echo base64_encode("ui/usuario/updateProfilePictureUsuario.php") ?>">Editar Foto</a>
 				</div>
 			</li>
 			<li class="nav-item">

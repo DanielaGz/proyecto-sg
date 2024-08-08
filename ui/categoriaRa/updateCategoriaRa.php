@@ -28,11 +28,11 @@ if(isset($_POST['update'])){
 		$browser = "Safari";
 	}
 	if($_SESSION['entity'] == 'Administrator'){
-		$logAdministrator = new LogAdministrator("","Edit Categoria Ra", "Nombre: " . $nombre, date("Y-m-d"), date("H:i:s"), $user_ip, PHP_OS, $browser, $_SESSION['id']);
+		$logAdministrator = new LogAdministrator("","Editar Categoria Ra", "Nombre: " . $nombre, date("Y-m-d"), date("H:i:s"), $user_ip, PHP_OS, $browser, $_SESSION['id']);
 		$logAdministrator -> insert();
 	}
 	else if($_SESSION['entity'] == 'Usuario'){
-		$logUsuario = new LogUsuario("","Edit Categoria Ra", "Nombre: " . $nombre, date("Y-m-d"), date("H:i:s"), $user_ip, PHP_OS, $browser, $_SESSION['id']);
+		$logUsuario = new LogUsuario("","Editar Categoria Ra", "Nombre: " . $nombre, date("Y-m-d"), date("H:i:s"), $user_ip, PHP_OS, $browser, $_SESSION['id']);
 		$logUsuario -> insert();
 	}
 	$processed=true;
@@ -44,11 +44,11 @@ if(isset($_POST['update'])){
 		<div class="col-md-8">
 			<div class="card">
 				<div class="card-header">
-					<h4 class="card-title">Edit Categoria Ra</h4>
+					<h4 class="card-title">Editar Categoría Ra</h4>
 				</div>
 				<div class="card-body">
 					<?php if($processed){ ?>
-					<div class="alert alert-success" >Data Edited
+					<div class="alert alert-success" >Información actualizada
 						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
@@ -59,7 +59,7 @@ if(isset($_POST['update'])){
 							<label>Nombre*</label>
 							<input type="text" class="form-control" name="nombre" value="<?php echo $updateCategoriaRa -> getNombre() ?>" required />
 						</div>
-						<button type="submit" class="btn btn-info" name="update">Edit</button>
+						<button type="submit" class="btn btn-info" name="update">Editar</button>
 					</form>
 				</div>
 			</div>

@@ -29,11 +29,11 @@ if(isset($_GET['action']) && $_GET['action']=="delete"){
 			$browser = "Safari";
 		}
 		if($_SESSION['entity'] == 'Administrator'){
-			$logAdministrator = new LogAdministrator("","Delete Categoria Ra", "Nombre: " . $deleteCategoriaRa -> getNombre(), date("Y-m-d"), date("H:i:s"), $user_ip, PHP_OS, $browser, $_SESSION['id']);
+			$logAdministrator = new LogAdministrator("","Eliminar Categoria Ra", "Nombre: " . $deleteCategoriaRa -> getNombre(), date("Y-m-d"), date("H:i:s"), $user_ip, PHP_OS, $browser, $_SESSION['id']);
 			$logAdministrator -> insert();
 		}
 		else if($_SESSION['entity'] == 'Usuario'){
-			$logUsuario = new LogUsuario("","Delete Categoria Ra", "Nombre: " . $deleteCategoriaRa -> getNombre(), date("Y-m-d"), date("H:i:s"), $user_ip, PHP_OS, $browser, $_SESSION['id']);
+			$logUsuario = new LogUsuario("","Eliminar Categoria Ra", "Nombre: " . $deleteCategoriaRa -> getNombre(), date("Y-m-d"), date("H:i:s"), $user_ip, PHP_OS, $browser, $_SESSION['id']);
 			$logUsuario -> insert();
 		}
 	}else{
@@ -44,7 +44,7 @@ if(isset($_GET['action']) && $_GET['action']=="delete"){
 <div class="container">
 	<div class="card round">
 		<div class="card-body">
-		<h3 class="card-title">Categorías</h3>
+		<h3 class="card-title">Categorías de Resultados de aprendizaje</h3>
 		<?php if(isset($_GET['action']) && $_GET['action']=="delete"){ ?>
 			<?php if($error == 0){ ?>
 				<div class="alert alert-success" >The registry was succesfully deleted.
@@ -69,13 +69,13 @@ if(isset($_GET['action']) && $_GET['action']=="delete"){
 							<span class='fas fa-sort-up'></span>
 						<?php } else { ?>
 							<a href='index.php?pid=<?php echo base64_encode("ui/categoriaRa/selectAllCategoriaRa.php") ?>&order=nombre&dir=asc'>
-							<span class='fas fa-sort-amount-up' data-toggle='tooltip' data-placement='right' data-original-title='Sort Ascending' ></span></a>
+							<span class='fas fa-sort-amount-up' data-toggle='tooltip' data-placement='right' data-original-title='Orden ascendente' ></span></a>
 						<?php } ?>
 						<?php if($order=="nombre" && $dir=="desc") { ?>
 							<span class='fas fa-sort-down'></span>
 						<?php } else { ?>
 							<a href='index.php?pid=<?php echo base64_encode("ui/categoriaRa/selectAllCategoriaRa.php") ?>&order=nombre&dir=desc'>
-							<span class='fas fa-sort-amount-down' data-toggle='tooltip' data-placement='right' data-original-title='Sort Descending' ></span></a>
+							<span class='fas fa-sort-amount-down' data-toggle='tooltip' data-placement='right' data-original-title='Orden descendente' ></span></a>
 						<?php } ?>
 						</th>
 						<th nowrap></th>
@@ -95,14 +95,14 @@ if(isset($_GET['action']) && $_GET['action']=="delete"){
 						echo "<td>" . $currentCategoriaRa -> getNombre() . "</td>";
 						echo "<td class='text-right' nowrap>";
 						if($_SESSION['entity'] == 'Administrator') {
-							echo "<a href='index.php?pid=" . base64_encode("ui/categoriaRa/updateCategoriaRa.php") . "&idCategoriaRa=" . $currentCategoriaRa -> getIdCategoriaRa() . "'><span class='fas fa-edit' data-toggle='tooltip' data-placement='left' data-original-title='Edit Categoria Ra' ></span></a> ";
+							echo "<a href='index.php?pid=" . base64_encode("ui/categoriaRa/updateCategoriaRa.php") . "&idCategoriaRa=" . $currentCategoriaRa -> getIdCategoriaRa() . "'><span class='fas fa-edit' data-toggle='tooltip' data-placement='left' data-original-title='Editar Categoria Ra' ></span></a> ";
 						}
 						if($_SESSION['entity'] == 'Administrator') {
-							echo "<a href='index.php?pid=" . base64_encode("ui/categoriaRa/selectAllCategoriaRa.php") . "&idCategoriaRa=" . $currentCategoriaRa -> getIdCategoriaRa() . "&action=delete' onclick='return confirm(\"Confirm to delete Categoria Ra: " . $currentCategoriaRa -> getNombre() . "\")'><span class='fas fa-backspace' data-toggle='tooltip' data-placement='left' data-original-title='Delete Categoria Ra' ></span></a> ";
+							echo "<a href='index.php?pid=" . base64_encode("ui/categoriaRa/selectAllCategoriaRa.php") . "&idCategoriaRa=" . $currentCategoriaRa -> getIdCategoriaRa() . "&action=delete' onclick='return confirm(\"Confirm to delete Categoria Ra: " . $currentCategoriaRa -> getNombre() . "\")'><span class='fas fa-backspace' data-toggle='tooltip' data-placement='left' data-original-title='Eliminar Categoría Ra' ></span></a> ";
 						}
-						echo "<a href='index.php?pid=" . base64_encode("ui/resultadoAprendizaje/selectAllResultadoAprendizajeByCategoriaRa.php") . "&idCategoriaRa=" . $currentCategoriaRa -> getIdCategoriaRa() . "'><span class='fas fa-search-plus' data-toggle='tooltip' data-placement='left' data-original-title='Get All Resultado Aprendizaje' ></span></a> ";
+						echo "<a href='index.php?pid=" . base64_encode("ui/resultadoAprendizaje/selectAllResultadoAprendizajeByCategoriaRa.php") . "&idCategoriaRa=" . $currentCategoriaRa -> getIdCategoriaRa() . "'><span class='fas fa-search-plus' data-toggle='tooltip' data-placement='left' data-original-title='Obtener Resultado Aprendizaje' ></span></a> ";
 						if($_SESSION['entity'] == 'Administrator') {
-							echo "<a href='index.php?pid=" . base64_encode("ui/resultadoAprendizaje/insertResultadoAprendizaje.php") . "&idCategoriaRa=" . $currentCategoriaRa -> getIdCategoriaRa() . "'><span class='fas fa-pen' data-toggle='tooltip' data-placement='left' data-original-title='Create Resultado Aprendizaje' ></span></a> ";
+							echo "<a href='index.php?pid=" . base64_encode("ui/resultadoAprendizaje/insertResultadoAprendizaje.php") . "&idCategoriaRa=" . $currentCategoriaRa -> getIdCategoriaRa() . "'><span class='fas fa-pen' data-toggle='tooltip' data-placement='left' data-original-title='Crear Resultado Aprendizaje' ></span></a> ";
 						}
 						echo "</td>";
 						echo "</tr>";

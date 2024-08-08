@@ -1,7 +1,7 @@
 <div class="container-fluid">
 	<div class="card">
 		<div class="card-header">
-			<h4 class="card-title">Search Log Usuario</h4>
+			<h4 class="card-title">Log Usuario</h4>
 		</div>
 		<div class="card-body">
 			<div class="container">

@@ -29,11 +29,11 @@ if(isset($_GET['action']) && $_GET['action']=="delete"){
 			$browser = "Safari";
 		}
 		if($_SESSION['entity'] == 'Administrator'){
-			$logAdministrator = new LogAdministrator("","Delete Usuario", "Name: " . $deleteUsuario -> getName() . ";; Last Name: " . $deleteUsuario -> getLastName() . ";; Email: " . $deleteUsuario -> getEmail() . ";; Password: " . $deleteUsuario -> getPassword() . ";; Phone: " . $deleteUsuario -> getPhone() . ";; Mobile: " . $deleteUsuario -> getMobile() . ";; State: " . $deleteUsuario -> getState(), date("Y-m-d"), date("H:i:s"), $user_ip, PHP_OS, $browser, $_SESSION['id']);
+			$logAdministrator = new LogAdministrator("","Eliminar Usuario", "Name: " . $deleteUsuario -> getName() . ";; Last Name: " . $deleteUsuario -> getLastName() . ";; Email: " . $deleteUsuario -> getEmail() . ";; Password: " . $deleteUsuario -> getPassword() . ";; Phone: " . $deleteUsuario -> getPhone() . ";; Mobile: " . $deleteUsuario -> getMobile() . ";; State: " . $deleteUsuario -> getState(), date("Y-m-d"), date("H:i:s"), $user_ip, PHP_OS, $browser, $_SESSION['id']);
 			$logAdministrator -> insert();
 		}
 		else if($_SESSION['entity'] == 'Usuario'){
-			$logUsuario = new LogUsuario("","Delete Usuario", "Name: " . $deleteUsuario -> getName() . ";; Last Name: " . $deleteUsuario -> getLastName() . ";; Email: " . $deleteUsuario -> getEmail() . ";; Password: " . $deleteUsuario -> getPassword() . ";; Phone: " . $deleteUsuario -> getPhone() . ";; Mobile: " . $deleteUsuario -> getMobile() . ";; State: " . $deleteUsuario -> getState(), date("Y-m-d"), date("H:i:s"), $user_ip, PHP_OS, $browser, $_SESSION['id']);
+			$logUsuario = new LogUsuario("","Eliminar Usuario", "Name: " . $deleteUsuario -> getName() . ";; Last Name: " . $deleteUsuario -> getLastName() . ";; Email: " . $deleteUsuario -> getEmail() . ";; Password: " . $deleteUsuario -> getPassword() . ";; Phone: " . $deleteUsuario -> getPhone() . ";; Mobile: " . $deleteUsuario -> getMobile() . ";; State: " . $deleteUsuario -> getState(), date("Y-m-d"), date("H:i:s"), $user_ip, PHP_OS, $browser, $_SESSION['id']);
 			$logUsuario -> insert();
 		}
 	}else{
@@ -41,21 +41,21 @@ if(isset($_GET['action']) && $_GET['action']=="delete"){
 	}
 }
 ?>
-<div class="container-fluid">
+<div class="container">
 	<div class="card">
 		<div class="card-header">
-			<h4 class="card-title">Get All Usuario</h4>
+			<h4 class="card-title">Consultar Usuario</h4>
 		</div>
 		<div class="card-body">
 		<?php if(isset($_GET['action']) && $_GET['action']=="delete"){ ?>
 			<?php if($error == 0){ ?>
-				<div class="alert alert-success" >The registry was succesfully deleted.
+				<div class="alert alert-success" >Registro eliminado.
 					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
 				<?php } else { ?>
-				<div class="alert alert-danger" >The registry was not deleted. Check it does not have related information
+				<div class="alert alert-danger" >Error.
 					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
@@ -66,88 +66,88 @@ if(isset($_GET['action']) && $_GET['action']=="delete"){
 			<table class="table table-striped table-hover">
 				<thead>
 					<tr><th></th>
-						<th nowrap>Name 
+						<th nowrap>Nombre 
 						<?php if($order=="name" && $dir=="asc") { ?>
 							<span class='fas fa-sort-up'></span>
 						<?php } else { ?>
 							<a href='index.php?pid=<?php echo base64_encode("ui/usuario/selectAllUsuario.php") ?>&order=name&dir=asc'>
-							<span class='fas fa-sort-amount-up' data-toggle='tooltip' data-placement='right' data-original-title='Sort Ascending' ></span></a>
+							<span class='fas fa-sort-amount-up' data-toggle='tooltip' data-placement='right' data-original-title='Orden ascendente' ></span></a>
 						<?php } ?>
 						<?php if($order=="name" && $dir=="desc") { ?>
 							<span class='fas fa-sort-down'></span>
 						<?php } else { ?>
 							<a href='index.php?pid=<?php echo base64_encode("ui/usuario/selectAllUsuario.php") ?>&order=name&dir=desc'>
-							<span class='fas fa-sort-amount-down' data-toggle='tooltip' data-placement='right' data-original-title='Sort Descending' ></span></a>
+							<span class='fas fa-sort-amount-down' data-toggle='tooltip' data-placement='right' data-original-title='Orden descendente' ></span></a>
 						<?php } ?>
 						</th>
-						<th nowrap>Last Name 
+						<th nowrap>Apellido 
 						<?php if($order=="lastName" && $dir=="asc") { ?>
 							<span class='fas fa-sort-up'></span>
 						<?php } else { ?>
 							<a href='index.php?pid=<?php echo base64_encode("ui/usuario/selectAllUsuario.php") ?>&order=lastName&dir=asc'>
-							<span class='fas fa-sort-amount-up' data-toggle='tooltip' data-placement='right' data-original-title='Sort Ascending' ></span></a>
+							<span class='fas fa-sort-amount-up' data-toggle='tooltip' data-placement='right' data-original-title='Orden ascendente' ></span></a>
 						<?php } ?>
 						<?php if($order=="lastName" && $dir=="desc") { ?>
 							<span class='fas fa-sort-down'></span>
 						<?php } else { ?>
 							<a href='index.php?pid=<?php echo base64_encode("ui/usuario/selectAllUsuario.php") ?>&order=lastName&dir=desc'>
-							<span class='fas fa-sort-amount-down' data-toggle='tooltip' data-placement='right' data-original-title='Sort Descending' ></span></a>
+							<span class='fas fa-sort-amount-down' data-toggle='tooltip' data-placement='right' data-original-title='Orden descendente' ></span></a>
 						<?php } ?>
 						</th>
-						<th nowrap>Email 
+						<th nowrap>Correo 
 						<?php if($order=="email" && $dir=="asc") { ?>
 							<span class='fas fa-sort-up'></span>
 						<?php } else { ?>
 							<a href='index.php?pid=<?php echo base64_encode("ui/usuario/selectAllUsuario.php") ?>&order=email&dir=asc'>
-							<span class='fas fa-sort-amount-up' data-toggle='tooltip' data-placement='right' data-original-title='Sort Ascending' ></span></a>
+							<span class='fas fa-sort-amount-up' data-toggle='tooltip' data-placement='right' data-original-title='Orden ascendente' ></span></a>
 						<?php } ?>
 						<?php if($order=="email" && $dir=="desc") { ?>
 							<span class='fas fa-sort-down'></span>
 						<?php } else { ?>
 							<a href='index.php?pid=<?php echo base64_encode("ui/usuario/selectAllUsuario.php") ?>&order=email&dir=desc'>
-							<span class='fas fa-sort-amount-down' data-toggle='tooltip' data-placement='right' data-original-title='Sort Descending' ></span></a>
+							<span class='fas fa-sort-amount-down' data-toggle='tooltip' data-placement='right' data-original-title='Orden descendente' ></span></a>
 						<?php } ?>
 						</th>
-						<th nowrap>Phone 
+						<th nowrap>Teléfono 
 						<?php if($order=="phone" && $dir=="asc") { ?>
 							<span class='fas fa-sort-up'></span>
 						<?php } else { ?>
 							<a href='index.php?pid=<?php echo base64_encode("ui/usuario/selectAllUsuario.php") ?>&order=phone&dir=asc'>
-							<span class='fas fa-sort-amount-up' data-toggle='tooltip' data-placement='right' data-original-title='Sort Ascending' ></span></a>
+							<span class='fas fa-sort-amount-up' data-toggle='tooltip' data-placement='right' data-original-title='Orden ascendente' ></span></a>
 						<?php } ?>
 						<?php if($order=="phone" && $dir=="desc") { ?>
 							<span class='fas fa-sort-down'></span>
 						<?php } else { ?>
 							<a href='index.php?pid=<?php echo base64_encode("ui/usuario/selectAllUsuario.php") ?>&order=phone&dir=desc'>
-							<span class='fas fa-sort-amount-down' data-toggle='tooltip' data-placement='right' data-original-title='Sort Descending' ></span></a>
+							<span class='fas fa-sort-amount-down' data-toggle='tooltip' data-placement='right' data-original-title='Orden descendente' ></span></a>
 						<?php } ?>
 						</th>
-						<th nowrap>Mobile 
+						<th nowrap>Celular 
 						<?php if($order=="mobile" && $dir=="asc") { ?>
 							<span class='fas fa-sort-up'></span>
 						<?php } else { ?>
 							<a href='index.php?pid=<?php echo base64_encode("ui/usuario/selectAllUsuario.php") ?>&order=mobile&dir=asc'>
-							<span class='fas fa-sort-amount-up' data-toggle='tooltip' data-placement='right' data-original-title='Sort Ascending' ></span></a>
+							<span class='fas fa-sort-amount-up' data-toggle='tooltip' data-placement='right' data-original-title='Orden ascendente' ></span></a>
 						<?php } ?>
 						<?php if($order=="mobile" && $dir=="desc") { ?>
 							<span class='fas fa-sort-down'></span>
 						<?php } else { ?>
 							<a href='index.php?pid=<?php echo base64_encode("ui/usuario/selectAllUsuario.php") ?>&order=mobile&dir=desc'>
-							<span class='fas fa-sort-amount-down' data-toggle='tooltip' data-placement='right' data-original-title='Sort Descending' ></span></a>
+							<span class='fas fa-sort-amount-down' data-toggle='tooltip' data-placement='right' data-original-title='Orden descendente' ></span></a>
 						<?php } ?>
 						</th>
-						<th nowrap>State 
+						<th nowrap>Estado 
 						<?php if($order=="state" && $dir=="asc") { ?>
 							<span class='fas fa-sort-up'></span>
 						<?php } else { ?>
 							<a href='index.php?pid=<?php echo base64_encode("ui/usuario/selectAllUsuario.php") ?>&order=state&dir=asc'>
-							<span class='fas fa-sort-amount-up' data-toggle='tooltip' data-placement='right' data-original-title='Sort Ascending' ></span></a>
+							<span class='fas fa-sort-amount-up' data-toggle='tooltip' data-placement='right' data-original-title='Orden ascendente' ></span></a>
 						<?php } ?>
 						<?php if($order=="state" && $dir=="desc") { ?>
 							<span class='fas fa-sort-down'></span>
 						<?php } else { ?>
 							<a href='index.php?pid=<?php echo base64_encode("ui/usuario/selectAllUsuario.php") ?>&order=state&dir=desc'>
-							<span class='fas fa-sort-amount-down' data-toggle='tooltip' data-placement='right' data-original-title='Sort Descending' ></span></a>
+							<span class='fas fa-sort-amount-down' data-toggle='tooltip' data-placement='right' data-original-title='Orden descendente' ></span></a>
 						<?php } ?>
 						</th>
 						<th nowrap></th>
@@ -171,18 +171,16 @@ if(isset($_GET['action']) && $_GET['action']=="delete"){
 						echo "<td>" . $currentUsuario -> getMobile() . "</td>";
 						echo "<td>" . ($currentUsuario -> getState()==1?"Enabled":"Disabled") . "</td>";
 						echo "<td class='text-right' nowrap>";
-						echo "<a href='modalUsuario.php?idUsuario=" . $currentUsuario -> getIdUsuario() . "'  data-toggle='modal' data-target='#modalUsuario' ><span class='fas fa-eye' data-toggle='tooltip' data-placement='left' data-original-title='View more information' ></span></a> ";
+						echo "<a href='modalUsuario.php?idUsuario=" . $currentUsuario -> getIdUsuario() . "'  data-toggle='modal' data-target='#modalUsuario' ><span class='fas fa-eye' data-toggle='tooltip' data-placement='left' data-original-title='Ver más información' ></span></a> ";
 						if($_SESSION['entity'] == 'Administrator') {
-							echo "<a href='index.php?pid=" . base64_encode("ui/usuario/updateUsuario.php") . "&idUsuario=" . $currentUsuario -> getIdUsuario() . "'><span class='fas fa-edit' data-toggle='tooltip' data-placement='left' data-original-title='Edit Usuario' ></span></a> ";
-							echo "<a href='index.php?pid=" . base64_encode("ui/usuario/updatePictureUsuario.php") . "&idUsuario=" . $currentUsuario -> getIdUsuario() . "&attribute=picture'><span class='fas fa-camera' data-toggle='tooltip' data-placement='left' data-original-title='Edit picture'></span></a> ";
+							echo "<a href='index.php?pid=" . base64_encode("ui/usuario/updateUsuario.php") . "&idUsuario=" . $currentUsuario -> getIdUsuario() . "'><span class='fas fa-edit' data-toggle='tooltip' data-placement='left' data-original-title='Editar Usuario' ></span></a> ";
+							echo "<a href='index.php?pid=" . base64_encode("ui/usuario/updatePictureUsuario.php") . "&idUsuario=" . $currentUsuario -> getIdUsuario() . "&attribute=picture'><span class='fas fa-camera' data-toggle='tooltip' data-placement='left' data-original-title='Editar foto'></span></a> ";
 						}
 						if($_SESSION['entity'] == 'Administrator') {
-							echo "<a href='index.php?pid=" . base64_encode("ui/usuario/selectAllUsuario.php") . "&idUsuario=" . $currentUsuario -> getIdUsuario() . "&action=delete' onclick='return confirm(\"Confirm to delete Usuario: " . $currentUsuario -> getName() . " " . $currentUsuario -> getLastName() . "\")'><span class='fas fa-backspace' data-toggle='tooltip' data-placement='left' data-original-title='Delete Usuario' ></span></a> ";
+							echo "<a href='index.php?pid=" . base64_encode("ui/usuario/selectAllUsuario.php") . "&idUsuario=" . $currentUsuario -> getIdUsuario() . "&action=delete' onclick='return confirm(\"Confirm to delete Usuario: " . $currentUsuario -> getName() . " " . $currentUsuario -> getLastName() . "\")'><span class='fas fa-backspace' data-toggle='tooltip' data-placement='left' data-original-title='Eliminar Usuario' ></span></a> ";
 						}
-						echo "<a href='index.php?pid=" . base64_encode("ui/usuarioDashboard/selectAllUsuarioDashboardByUsuario.php") . "&idUsuario=" . $currentUsuario -> getIdUsuario() . "'><span class='fas fa-search-plus' data-toggle='tooltip' data-placement='left' data-original-title='Get All Usuario Dashboard' ></span></a> ";
-						if($_SESSION['entity'] == 'Administrator') {
-							echo "<a href='index.php?pid=" . base64_encode("ui/usuarioDashboard/insertUsuarioDashboard.php") . "&idUsuario=" . $currentUsuario -> getIdUsuario() . "'><span class='fas fa-pen' data-toggle='tooltip' data-placement='left' data-original-title='Create Usuario Dashboard' ></span></a> ";
-						}
+						echo "<a href='index.php?pid=" . base64_encode("ui/usuarioDashboard/selectAllUsuarioDashboardByUsuario.php") . "&idUsuario=" . $currentUsuario -> getIdUsuario() . "'><span class='fas fa-search-plus' data-toggle='tooltip' data-placement='left' data-original-title='Consultar tableros del usuario' ></span></a> ";
+						
 						echo "</td>";
 						echo "</tr>";
 						$counter++;

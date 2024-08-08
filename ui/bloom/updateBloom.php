@@ -19,9 +19,6 @@ if(isset($_POST['update'])){
 	$updateBloom = new Bloom($idBloom, $nombre, $detalle, $resultadoAprendizaje);
 	$updateBloom -> update();
 	$updateBloom -> select();
-	$objResultadoAprendizaje = new ResultadoAprendizaje($resultadoAprendizaje);
-	$objResultadoAprendizaje -> select();
-	$nameResultadoAprendizaje = $objResultadoAprendizaje -> getNombre() ;
 	$user_ip = getenv('REMOTE_ADDR');
 	$agent = $_SERVER["HTTP_USER_AGENT"];
 	$browser = "-";
@@ -39,11 +36,11 @@ if(isset($_POST['update'])){
 		$browser = "Safari";
 	}
 	if($_SESSION['entity'] == 'Administrator'){
-		$logAdministrator = new LogAdministrator("","Edit Bloom", "Nombre: " . $nombre . "; Detalle: " . $detalle . "; Resultado Aprendizaje: " . $nameResultadoAprendizaje , date("Y-m-d"), date("H:i:s"), $user_ip, PHP_OS, $browser, $_SESSION['id']);
+		$logAdministrator = new LogAdministrator("","Editar Bloom", "Nombre: " . $nombre . "; Detalle: " . $detalle , date("Y-m-d"), date("H:i:s"), $user_ip, PHP_OS, $browser, $_SESSION['id']);
 		$logAdministrator -> insert();
 	}
 	else if($_SESSION['entity'] == 'Usuario'){
-		$logUsuario = new LogUsuario("","Edit Bloom", "Nombre: " . $nombre . "; Detalle: " . $detalle . "; Resultado Aprendizaje: " . $nameResultadoAprendizaje , date("Y-m-d"), date("H:i:s"), $user_ip, PHP_OS, $browser, $_SESSION['id']);
+		$logUsuario = new LogUsuario("","Editar Bloom", "Nombre: " . $nombre . "; Detalle: " . $detalle , date("Y-m-d"), date("H:i:s"), $user_ip, PHP_OS, $browser, $_SESSION['id']);
 		$logUsuario -> insert();
 	}
 	$processed=true;
@@ -55,11 +52,11 @@ if(isset($_POST['update'])){
 		<div class="col-md-8">
 			<div class="card">
 				<div class="card-header">
-					<h4 class="card-title">Edit Bloom</h4>
+					<h4 class="card-title">Editar Bloom</h4>
 				</div>
 				<div class="card-body">
 					<?php if($processed){ ?>
-					<div class="alert alert-success" >Data Edited
+					<div class="alert alert-success" >Información actualizada
 						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
@@ -74,23 +71,7 @@ if(isset($_POST['update'])){
 							<label>Detalle</label>
 							<input type="text" class="form-control" name="detalle" value="<?php echo $updateBloom -> getDetalle() ?>"/>
 						</div>
-						<div class="form-group">
-							<label>Resultado Aprendizaje*</label>
-							<select class="form-control" name="resultadoAprendizaje">
-								<?php
-								$objResultadoAprendizaje = new ResultadoAprendizaje();
-								$resultadoAprendizajes = $objResultadoAprendizaje -> selectAllOrder("nombre", "asc");
-								foreach($resultadoAprendizajes as $currentResultadoAprendizaje){
-									echo "<option value='" . $currentResultadoAprendizaje -> getIdResultadoAprendizaje() . "'";
-									if($currentResultadoAprendizaje -> getIdResultadoAprendizaje() == $updateBloom -> getResultadoAprendizaje() -> getIdResultadoAprendizaje()){
-										echo " selected";
-									}
-									echo ">" . $currentResultadoAprendizaje -> getNombre() . "</option>";
-								}
-								?>
-							</select>
-						</div>
-						<button type="submit" class="btn btn-info" name="update">Edit</button>
+						<button type="submit" class="btn btn-info" name="update">Editar</button>
 					</form>
 				</div>
 			</div>

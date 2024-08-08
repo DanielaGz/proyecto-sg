@@ -38,11 +38,11 @@ if(isset($_POST['insert'])){
 		$browser = "Safari";
 	}
 	if($_SESSION['entity'] == 'Administrator'){
-		$logAdministrator = new LogAdministrator("","Create Calificacion", "Nivel: " . $nivel . "; Detalle: " . $detalle . "; Criterio: " . $nameCriterio , date("Y-m-d"), date("H:i:s"), $user_ip, PHP_OS, $browser, $_SESSION['id']);
+		$logAdministrator = new LogAdministrator("","Crear calificación", "Nivel: " . $nivel . "; Detalle: " . $detalle . "; Criterio: " . $nameCriterio , date("Y-m-d"), date("H:i:s"), $user_ip, PHP_OS, $browser, $_SESSION['id']);
 		$logAdministrator -> insert();
 	}
 	else if($_SESSION['entity'] == 'Usuario'){
-		$logUsuario = new LogUsuario("","Create Calificacion", "Nivel: " . $nivel . "; Detalle: " . $detalle . "; Criterio: " . $nameCriterio , date("Y-m-d"), date("H:i:s"), $user_ip, PHP_OS, $browser, $_SESSION['id']);
+		$logUsuario = new LogUsuario("","Crear calificación", "Nivel: " . $nivel . "; Detalle: " . $detalle . "; Criterio: " . $nameCriterio , date("Y-m-d"), date("H:i:s"), $user_ip, PHP_OS, $browser, $_SESSION['id']);
 		$logUsuario -> insert();
 	}
 	$processed=true;
@@ -54,11 +54,11 @@ if(isset($_POST['insert'])){
 		<div class="col-md-8">
 			<div class="card">
 				<div class="card-header">
-					<h4 class="card-title">Create Calificacion</h4>
+					<h4 class="card-title">Crear calificación</h4>
 				</div>
 				<div class="card-body">
 					<?php if($processed){ ?>
-					<div class="alert alert-success" >Data Entered
+					<div class="alert alert-success" >Información actualizada
 						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
@@ -89,7 +89,7 @@ if(isset($_POST['insert'])){
 								?>
 							</select>
 						</div>
-						<button type="submit" class="btn btn-info" name="insert">Create</button>
+						<button type="submit" class="btn btn-info" name="insert">Crear</button>
 					</form>
 				</div>
 			</div>

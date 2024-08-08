@@ -33,7 +33,7 @@
 						echo "<a href='modalUsuario.php?idUsuario=" . $currentUsuario -> getIdUsuario() . "'  data-toggle='modal' data-target='#modalUsuario' ><span class='fas fa-eye' data-toggle='tooltip' data-placement='left' data-original-title='View more information' ></span></a> ";
 						if($_GET['entity'] == 'Administrator') {
 							echo "<a href='index.php?pid=" . base64_encode("ui/usuario/updateUsuario.php") . "&idUsuario=" . $currentUsuario -> getIdUsuario() . "'><span class='fas fa-edit' data-toggle='tooltip' data-placement='left' data-original-title='Edit Usuario' ></span></a> ";
-							echo "<a href='index.php?pid=" . base64_encode("ui/usuario/updatePictureUsuario.php") . "&idUsuario=" . $currentUsuario -> getIdUsuario() . "&attribute=picture'><span class='fas fa-camera' data-toggle='tooltip' data-placement='left' data-original-title='Edit picture'></span></a> ";
+							echo "<a href='index.php?pid=" . base64_encode("ui/usuario/updatePictureUsuario.php") . "&idUsuario=" . $currentUsuario -> getIdUsuario() . "&attribute=picture'><span class='fas fa-camera' data-toggle='tooltip' data-placement='left' data-original-title='Editar foto'></span></a> ";
 						}
 						if($_GET['entity'] == 'Administrator') {
 							echo "<a href='index.php?pid=" . base64_encode("ui/usuario/selectAllUsuario.php") . "&idUsuario=" . $currentUsuario -> getIdUsuario() . "&action=delete' onclick='return confirm(\"Confirm to delete Usuario: " . $currentUsuario -> getName() . " " . $currentUsuario -> getLastName() . "\")'><span class='fas fa-backspace' data-toggle='tooltip' data-placement='left' data-original-title='Delete Usuario' ></span></a> ";

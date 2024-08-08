@@ -8,8 +8,15 @@ $detalle="";
 if(isset($_POST['detalle'])){
 	$detalle=$_POST['detalle'];
 }
+$resultadoAprendizaje="";
+if(isset($_POST['resultadoAprendizaje'])){
+	$resultadoAprendizaje=$_POST['resultadoAprendizaje'];
+}
+if(isset($_GET['idResultadoAprendizaje'])){
+	$resultadoAprendizaje=$_GET['idResultadoAprendizaje'];
+}
 if(isset($_POST['insert'])){
-	$newCriterio = new Criterio("", $nombre, $detalle);
+	$newCriterio = new Criterio("", $nombre, $detalle, $resultadoAprendizaje);
 	$newCriterio -> insert();
 	$user_ip = getenv('REMOTE_ADDR');
 	$agent = $_SERVER["HTTP_USER_AGENT"];
@@ -28,11 +35,11 @@ if(isset($_POST['insert'])){
 		$browser = "Safari";
 	}
 	if($_SESSION['entity'] == 'Administrator'){
-		$logAdministrator = new LogAdministrator("","Create Criterio", "Nombre: " . $nombre . "; Detalle: " . $detalle, date("Y-m-d"), date("H:i:s"), $user_ip, PHP_OS, $browser, $_SESSION['id']);
+		$logAdministrator = new LogAdministrator("","Crear Criterio", "Nombre: " . $nombre . "; Detalle: " . $detalle, date("Y-m-d"), date("H:i:s"), $user_ip, PHP_OS, $browser, $_SESSION['id']);
 		$logAdministrator -> insert();
 	}
 	else if($_SESSION['entity'] == 'Usuario'){
-		$logUsuario = new LogUsuario("","Create Criterio", "Nombre: " . $nombre . "; Detalle: " . $detalle, date("Y-m-d"), date("H:i:s"), $user_ip, PHP_OS, $browser, $_SESSION['id']);
+		$logUsuario = new LogUsuario("","Crear Criterio", "Nombre: " . $nombre . "; Detalle: " . $detalle, date("Y-m-d"), date("H:i:s"), $user_ip, PHP_OS, $browser, $_SESSION['id']);
 		$logUsuario -> insert();
 	}
 	$processed=true;
@@ -40,15 +47,15 @@ if(isset($_POST['insert'])){
 ?>
 <div class="container">
 	<div class="row">
-		<div class="col-md-2"></div>
+		<div class="col-md-2"></div> 
 		<div class="col-md-8">
 			<div class="card">
 				<div class="card-header">
-					<h4 class="card-title">Create Criterio</h4>
+					<h4 class="card-title">Crear Criterio</h4>
 				</div>
 				<div class="card-body">
 					<?php if($processed){ ?>
-					<div class="alert alert-success" >Data Entered
+					<div class="alert alert-success" >Información almacenada
 						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
@@ -63,7 +70,23 @@ if(isset($_POST['insert'])){
 							<label>Detalle</label>
 							<input type="text" class="form-control" name="detalle" value="<?php echo $detalle ?>"/>
 						</div>
-						<button type="submit" class="btn btn-info" name="insert">Create</button>
+						<div class="form-group">
+							<label>Resultado Aprendizaje*</label>
+							<select class="form-control" name="resultadoAprendizaje">
+								<?php
+								$objResultadoAprendizaje = new ResultadoAprendizaje();
+								$resultadoAprendizajes = $objResultadoAprendizaje -> selectAllOrder("nombre", "asc");
+								foreach($resultadoAprendizajes as $currentResultadoAprendizaje){
+									echo "<option value='" . $currentResultadoAprendizaje -> getIdResultadoAprendizaje() . "'";
+									if($currentResultadoAprendizaje -> getIdResultadoAprendizaje() == $resultadoAprendizaje){
+										echo " selected";
+									}
+									echo ">" . $currentResultadoAprendizaje -> getNombre() . "</option>";
+								}
+								?>
+							</select>
+						</div>
+						<button type="submit" class="btn btn-info" name="insert">Crear</button>
 					</form>
 				</div>
 			</div>

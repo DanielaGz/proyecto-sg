@@ -6,6 +6,7 @@ class Criterio {
 	private $idCriterio;
 	private $nombre;
 	private $detalle;
+	private $resultadoAprendizaje;
 	private $criterioDAO;
 	private $connection;
 
@@ -33,13 +34,22 @@ class Criterio {
 		$this -> detalle = $pDetalle;
 	}
 
-	function __construct($pIdCriterio = "", $pNombre = "", $pDetalle = ""){
+	function getResultadoAprendizaje() {
+		return $this -> resultadoAprendizaje;
+	}
+
+	function setResultadoAprendizaje($pResultadoAprendizaje) {
+		$this -> resultadoAprendizaje = $pResultadoAprendizaje;
+	}
+
+	function __construct($pIdCriterio = "", $pNombre = "", $pDetalle = "", $pResultadoAprendizaje = ""){
 		$this -> idCriterio = $pIdCriterio;
 		$this -> nombre = $pNombre;
 		$this -> detalle = $pDetalle;
-		$this -> criterioDAO = new CriterioDAO($this -> idCriterio, $this -> nombre, $this -> detalle);
+		$this -> resultadoAprendizaje = $pResultadoAprendizaje;
+		$this -> criterioDAO = new CriterioDAO($this -> idCriterio, $this -> nombre, $this -> detalle, $this -> resultadoAprendizaje);
 		$this -> connection = new Connection();
-	}
+	} 
 
 	function insert(){
 		$this -> connection -> open();
@@ -63,6 +73,9 @@ class Criterio {
 		$this -> idCriterio = $result[0];
 		$this -> nombre = $result[1];
 		$this -> detalle = $result[2];
+		$resultadoAprendizaje = new ResultadoAprendizaje($result[3]);
+		$resultadoAprendizaje -> select();
+		$this -> resultadoAprendizaje = $resultadoAprendizaje;
 	}
 
 	function selectAll(){
@@ -74,6 +87,19 @@ class Criterio {
 		}
 		$this -> connection -> close();
 		return $criterios;
+	}
+
+	function selectAllByResultadoAprendizaje(){
+		$this -> connection -> open();
+		$this -> connection -> run($this -> criterioDAO -> selectAllByResultadoAprendizaje());
+		$estrategias = array();
+		while ($result = $this -> connection -> fetchRow()){
+			$resultadoAprendizaje = new ResultadoAprendizaje($result[3]);
+			$resultadoAprendizaje -> select();
+			array_push($estrategias, new Criterio($result[0], $result[1], $result[2], $resultadoAprendizaje));
+		}
+		$this -> connection -> close();
+		return $estrategias;
 	}
 
 	function selectAllOrder($order, $dir){

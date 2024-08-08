@@ -8,98 +8,98 @@ if(isset($_GET['dir'])){
 	$dir = $_GET['dir'];
 }
 ?>
-<div class="container-fluid">
+<div class="container">
 	<div class="card">
 		<div class="card-header">
-			<h4 class="card-title">Get All Administrator</h4>
+			<h4 class="card-title">Consultar Administrador</h4>
 		</div>
 		<div class="card-body">
 		<div class="table-responsive">
 			<table class="table table-striped table-hover">
 				<thead>
 					<tr><th></th>
-						<th nowrap>Name 
+						<th nowrap>Nombre 
 						<?php if($order=="name" && $dir=="asc") { ?>
 							<span class='fas fa-sort-up'></span>
 						<?php } else { ?>
 							<a href='index.php?pid=<?php echo base64_encode("ui/administrator/selectAllAdministrator.php") ?>&order=name&dir=asc'>
-							<span class='fas fa-sort-amount-up' data-toggle='tooltip' data-placement='right' data-original-title='Sort Ascending' ></span></a>
+							<span class='fas fa-sort-amount-up' data-toggle='tooltip' data-placement='right' data-original-title='Orden ascendente' ></span></a>
 						<?php } ?>
 						<?php if($order=="name" && $dir=="desc") { ?>
 							<span class='fas fa-sort-down'></span>
 						<?php } else { ?>
 							<a href='index.php?pid=<?php echo base64_encode("ui/administrator/selectAllAdministrator.php") ?>&order=name&dir=desc'>
-							<span class='fas fa-sort-amount-down' data-toggle='tooltip' data-placement='right' data-original-title='Sort Descending' ></span></a>
+							<span class='fas fa-sort-amount-down' data-toggle='tooltip' data-placement='right' data-original-title='Orden descendente' ></span></a>
 						<?php } ?>
 						</th>
-						<th nowrap>Last Name 
+						<th nowrap>Apellido 
 						<?php if($order=="lastName" && $dir=="asc") { ?>
 							<span class='fas fa-sort-up'></span>
 						<?php } else { ?>
 							<a href='index.php?pid=<?php echo base64_encode("ui/administrator/selectAllAdministrator.php") ?>&order=lastName&dir=asc'>
-							<span class='fas fa-sort-amount-up' data-toggle='tooltip' data-placement='right' data-original-title='Sort Ascending' ></span></a>
+							<span class='fas fa-sort-amount-up' data-toggle='tooltip' data-placement='right' data-original-title='Orden ascendente' ></span></a>
 						<?php } ?>
 						<?php if($order=="lastName" && $dir=="desc") { ?>
 							<span class='fas fa-sort-down'></span>
 						<?php } else { ?>
 							<a href='index.php?pid=<?php echo base64_encode("ui/administrator/selectAllAdministrator.php") ?>&order=lastName&dir=desc'>
-							<span class='fas fa-sort-amount-down' data-toggle='tooltip' data-placement='right' data-original-title='Sort Descending' ></span></a>
+							<span class='fas fa-sort-amount-down' data-toggle='tooltip' data-placement='right' data-original-title='Orden descendente' ></span></a>
 						<?php } ?>
 						</th>
-						<th nowrap>Email 
+						<th nowrap>Correo 
 						<?php if($order=="email" && $dir=="asc") { ?>
 							<span class='fas fa-sort-up'></span>
 						<?php } else { ?>
 							<a href='index.php?pid=<?php echo base64_encode("ui/administrator/selectAllAdministrator.php") ?>&order=email&dir=asc'>
-							<span class='fas fa-sort-amount-up' data-toggle='tooltip' data-placement='right' data-original-title='Sort Ascending' ></span></a>
+							<span class='fas fa-sort-amount-up' data-toggle='tooltip' data-placement='right' data-original-title='Orden ascendente' ></span></a>
 						<?php } ?>
 						<?php if($order=="email" && $dir=="desc") { ?>
 							<span class='fas fa-sort-down'></span>
 						<?php } else { ?>
 							<a href='index.php?pid=<?php echo base64_encode("ui/administrator/selectAllAdministrator.php") ?>&order=email&dir=desc'>
-							<span class='fas fa-sort-amount-down' data-toggle='tooltip' data-placement='right' data-original-title='Sort Descending' ></span></a>
+							<span class='fas fa-sort-amount-down' data-toggle='tooltip' data-placement='right' data-original-title='Orden descendente' ></span></a>
 						<?php } ?>
 						</th>
-						<th nowrap>Phone 
+						<th nowrap>Teléfono 
 						<?php if($order=="phone" && $dir=="asc") { ?>
 							<span class='fas fa-sort-up'></span>
 						<?php } else { ?>
 							<a href='index.php?pid=<?php echo base64_encode("ui/administrator/selectAllAdministrator.php") ?>&order=phone&dir=asc'>
-							<span class='fas fa-sort-amount-up' data-toggle='tooltip' data-placement='right' data-original-title='Sort Ascending' ></span></a>
+							<span class='fas fa-sort-amount-up' data-toggle='tooltip' data-placement='right' data-original-title='Orden ascendente' ></span></a>
 						<?php } ?>
 						<?php if($order=="phone" && $dir=="desc") { ?>
 							<span class='fas fa-sort-down'></span>
 						<?php } else { ?>
 							<a href='index.php?pid=<?php echo base64_encode("ui/administrator/selectAllAdministrator.php") ?>&order=phone&dir=desc'>
-							<span class='fas fa-sort-amount-down' data-toggle='tooltip' data-placement='right' data-original-title='Sort Descending' ></span></a>
+							<span class='fas fa-sort-amount-down' data-toggle='tooltip' data-placement='right' data-original-title='Orden descendente' ></span></a>
 						<?php } ?>
 						</th>
-						<th nowrap>Mobile 
+						<th nowrap>Celular 
 						<?php if($order=="mobile" && $dir=="asc") { ?>
 							<span class='fas fa-sort-up'></span>
 						<?php } else { ?>
 							<a href='index.php?pid=<?php echo base64_encode("ui/administrator/selectAllAdministrator.php") ?>&order=mobile&dir=asc'>
-							<span class='fas fa-sort-amount-up' data-toggle='tooltip' data-placement='right' data-original-title='Sort Ascending' ></span></a>
+							<span class='fas fa-sort-amount-up' data-toggle='tooltip' data-placement='right' data-original-title='Orden ascendente' ></span></a>
 						<?php } ?>
 						<?php if($order=="mobile" && $dir=="desc") { ?>
 							<span class='fas fa-sort-down'></span>
 						<?php } else { ?>
 							<a href='index.php?pid=<?php echo base64_encode("ui/administrator/selectAllAdministrator.php") ?>&order=mobile&dir=desc'>
-							<span class='fas fa-sort-amount-down' data-toggle='tooltip' data-placement='right' data-original-title='Sort Descending' ></span></a>
+							<span class='fas fa-sort-amount-down' data-toggle='tooltip' data-placement='right' data-original-title='Orden descendente' ></span></a>
 						<?php } ?>
 						</th>
-						<th nowrap>State 
+						<th nowrap>Estado 
 						<?php if($order=="state" && $dir=="asc") { ?>
 							<span class='fas fa-sort-up'></span>
 						<?php } else { ?>
 							<a href='index.php?pid=<?php echo base64_encode("ui/administrator/selectAllAdministrator.php") ?>&order=state&dir=asc'>
-							<span class='fas fa-sort-amount-up' data-toggle='tooltip' data-placement='right' data-original-title='Sort Ascending' ></span></a>
+							<span class='fas fa-sort-amount-up' data-toggle='tooltip' data-placement='right' data-original-title='Orden ascendente' ></span></a>
 						<?php } ?>
 						<?php if($order=="state" && $dir=="desc") { ?>
 							<span class='fas fa-sort-down'></span>
 						<?php } else { ?>
 							<a href='index.php?pid=<?php echo base64_encode("ui/administrator/selectAllAdministrator.php") ?>&order=state&dir=desc'>
-							<span class='fas fa-sort-amount-down' data-toggle='tooltip' data-placement='right' data-original-title='Sort Descending' ></span></a>
+							<span class='fas fa-sort-amount-down' data-toggle='tooltip' data-placement='right' data-original-title='Orden descendente' ></span></a>
 						<?php } ?>
 						</th>
 						<th nowrap></th>
@@ -123,10 +123,10 @@ if(isset($_GET['dir'])){
 						echo "<td>" . $currentAdministrator -> getMobile() . "</td>";
 						echo "<td>" . ($currentAdministrator -> getState()==1?"Enabled":"Disabled") . "</td>";
 						echo "<td class='text-right' nowrap>";
-						echo "<a href='modalAdministrator.php?idAdministrator=" . $currentAdministrator -> getIdAdministrator() . "'  data-toggle='modal' data-target='#modalAdministrator' ><span class='fas fa-eye' data-toggle='tooltip' data-placement='left' data-original-title='View more information' ></span></a> ";
+						echo "<a href='modalAdministrator.php?idAdministrator=" . $currentAdministrator -> getIdAdministrator() . "'  data-toggle='modal' data-target='#modalAdministrator' ><span class='fas fa-eye' data-toggle='tooltip' data-placement='left' data-original-title='Ver más información' ></span></a> ";
 						if($_SESSION['entity'] == 'Administrator') {
-							echo "<a href='index.php?pid=" . base64_encode("ui/administrator/updateAdministrator.php") . "&idAdministrator=" . $currentAdministrator -> getIdAdministrator() . "'><span class='fas fa-edit' data-toggle='tooltip' data-placement='left' data-original-title='Edit Administrator' ></span></a> ";
-							echo "<a href='index.php?pid=" . base64_encode("ui/administrator/updatePictureAdministrator.php") . "&idAdministrator=" . $currentAdministrator -> getIdAdministrator() . "&attribute=picture'><span class='fas fa-camera' data-toggle='tooltip' data-placement='left' data-original-title='Edit picture'></span></a> ";
+							echo "<a href='index.php?pid=" . base64_encode("ui/administrator/updateAdministrator.php") . "&idAdministrator=" . $currentAdministrator -> getIdAdministrator() . "'><span class='fas fa-edit' data-toggle='tooltip' data-placement='left' data-original-title='Editar Administrador' ></span></a> ";
+							echo "<a href='index.php?pid=" . base64_encode("ui/administrator/updatePictureAdministrator.php") . "&idAdministrator=" . $currentAdministrator -> getIdAdministrator() . "&attribute=picture'><span class='fas fa-camera' data-toggle='tooltip' data-placement='left' data-original-title='Editar foto'></span></a> ";
 						}
 						echo "</td>";
 						echo "</tr>";

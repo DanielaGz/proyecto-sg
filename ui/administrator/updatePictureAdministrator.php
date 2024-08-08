@@ -34,11 +34,11 @@ if(isset($_POST['update'])){
 			$browser = "Safari";
 		}
 		if($_SESSION['entity'] == 'Administrator'){
-			$logAdministrator = new LogAdministrator("","Edit picture in Administrator", "Picture: " . $serverPath, date("Y-m-d"), date("H:i:s"), $user_ip, PHP_OS, $browser, $_SESSION['id']);
+			$logAdministrator = new LogAdministrator("","Editar foto Administrador", "Picture: " . $serverPath, date("Y-m-d"), date("H:i:s"), $user_ip, PHP_OS, $browser, $_SESSION['id']);
 			$logAdministrator -> insert();
 		}
 		else if($_SESSION['entity'] == 'Usuario'){
-			$logUsuario = new LogUsuario("","Edit picture in Administrator", "Picture: " . $serverPath, date("Y-m-d"), date("H:i:s"), $user_ip, PHP_OS, $browser, $_SESSION['id']);
+			$logUsuario = new LogUsuario("","Editar foto Administrador", "Picture: " . $serverPath, date("Y-m-d"), date("H:i:s"), $user_ip, PHP_OS, $browser, $_SESSION['id']);
 			$logUsuario -> insert();
 		}
 		$processed = true;
@@ -51,17 +51,17 @@ if(isset($_POST['update'])){
 		<div class="col-md-8">
 			<div class="card">
 				<div class="card-header">
-					<h4 class="card-title">Edit <i>picture</i> of Administrator</h4>
+					<h4 class="card-title">Editar <i>foto</i></h4>
 				</div>
 				<div class="card-body">
 					<?php if($processed){ ?>
-					<div class="alert alert-success" >Image Edited
+					<div class="alert alert-success" >Imagen editada 
 						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
 					</div>
 					<?php } else if($error == 1) { ?>
-					<div class="alert alert-danger" >Error. The image must be png, jpg or jpeg
+					<div class="alert alert-danger" >Error. La imagen debe ser png, jpg o jpeg
 						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
@@ -69,10 +69,10 @@ if(isset($_POST['update'])){
 					<?php } ?>
 					<form id="form" method="post" action="index.php?pid=<?php echo base64_encode("ui/administrator/updatePictureAdministrator.php") ?>&idAdministrator=<?php echo $idAdministrator ?>&attribute=<?php echo $attribute ?>" class="bootstrap-form needs-validation" enctype="multipart/form-data"   >
 						<div class="form-group">
-							<label>Picture*</label>
+							<label>Foto*</label>
 							<input type="file" class="form-control-file" name="image" required />
 						</div>
-						<button type="submit" class="btn btn-info" name="update">Edit</button>
+						<button type="submit" class="btn btn-info" name="update">Editar</button>
 					</form>
 				</div>
 			</div>

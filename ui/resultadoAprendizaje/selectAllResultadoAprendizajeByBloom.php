@@ -33,11 +33,11 @@ if(!empty($_GET['action']) && $_GET['action']=="delete"){
 			$browser = "Safari";
 		}
 		if($_SESSION['entity'] == 'Administrator'){
-			$logAdministrator = new LogAdministrator("","Delete Resultado Aprendizaje", "Nombre: " . $deleteResultadoAprendizaje -> getNombre() . ";; Detalle: " . $deleteResultadoAprendizaje -> getDetalle() . ";; Bloom: " . $nameBloom . ";; Categoria Ra: " . $nameCategoriaRa, date("Y-m-d"), date("H:i:s"), $user_ip, PHP_OS, $browser, $_SESSION['id']);
+			$logAdministrator = new LogAdministrator("","Eliminar Resultado Aprendizaje", "Nombre: " . $deleteResultadoAprendizaje -> getNombre() . ";; Detalle: " . $deleteResultadoAprendizaje -> getDetalle() . ";; Bloom: " . $nameBloom . ";; Categoria Ra: " . $nameCategoriaRa, date("Y-m-d"), date("H:i:s"), $user_ip, PHP_OS, $browser, $_SESSION['id']);
 			$logAdministrator -> insert();
 		}
 		else if($_SESSION['entity'] == 'Usuario'){
-			$logUsuario = new LogUsuario("","Delete Resultado Aprendizaje", "Nombre: " . $deleteResultadoAprendizaje -> getNombre() . ";; Detalle: " . $deleteResultadoAprendizaje -> getDetalle() . ";; Bloom: " . $nameBloom . ";; Categoria Ra: " . $nameCategoriaRa, date("Y-m-d"), date("H:i:s"), $user_ip, PHP_OS, $browser, $_SESSION['id']);
+			$logUsuario = new LogUsuario("","Eliminar Resultado Aprendizaje", "Nombre: " . $deleteResultadoAprendizaje -> getNombre() . ";; Detalle: " . $deleteResultadoAprendizaje -> getDetalle() . ";; Bloom: " . $nameBloom . ";; Categoria Ra: " . $nameCategoriaRa, date("Y-m-d"), date("H:i:s"), $user_ip, PHP_OS, $browser, $_SESSION['id']);
 			$logUsuario -> insert();
 		}
 	}else{
@@ -120,14 +120,14 @@ if(!empty($_GET['action']) && $_GET['action']=="delete"){
 						echo "<td><a href='modalCategoriaRa.php?idCategoriaRa=" . $currentResultadoAprendizaje -> getCategoriaRa() -> getIdCategoriaRa() . "' data-toggle='modal' data-target='#modalResultadoAprendizaje' >" . $currentResultadoAprendizaje -> getCategoriaRa() -> getNombre() . "</a></td>";
 						echo "<td class='text-right' nowrap>";
 						if($_SESSION['entity'] == 'Administrator') {
-							echo "<a href='index.php?pid=" . base64_encode("ui/resultadoAprendizaje/updateResultadoAprendizaje.php") . "&idResultadoAprendizaje=" . $currentResultadoAprendizaje -> getIdResultadoAprendizaje() . "'><span class='fas fa-edit' data-toggle='tooltip' data-placement='left' data-original-title='Edit Resultado Aprendizaje' ></span></a> ";
+							echo "<a href='index.php?pid=" . base64_encode("ui/resultadoAprendizaje/updateResultadoAprendizaje.php") . "&idResultadoAprendizaje=" . $currentResultadoAprendizaje -> getIdResultadoAprendizaje() . "'><span class='fas fa-edit' data-toggle='tooltip' data-placement='left' data-original-title='Editar Resultado Aprendizaje' ></span></a> ";
 						}
 						if($_SESSION['entity'] == 'Administrator') {
-							echo "<a href='index.php?pid=" . base64_encode("ui/resultadoAprendizaje/selectAllResultadoAprendizajeByBloom.php") . "&idBloom=" . $_GET['idBloom'] . "&idResultadoAprendizaje=" . $currentResultadoAprendizaje -> getIdResultadoAprendizaje() . "&action=delete' onclick='return confirm(\"Confirm to delete Resultado Aprendizaje: " . $currentResultadoAprendizaje -> getNombre() . "\")'> <span class='fas fa-backspace' data-toggle='tooltip' data-placement='left' data-original-title='Delete Resultado Aprendizaje' ></span></a> ";
+							echo "<a href='index.php?pid=" . base64_encode("ui/resultadoAprendizaje/selectAllResultadoAprendizajeByBloom.php") . "&idBloom=" . $_GET['idBloom'] . "&idResultadoAprendizaje=" . $currentResultadoAprendizaje -> getIdResultadoAprendizaje() . "&action=delete' onclick='return confirm(\"Está seguro de eliminar el registro: " . $currentResultadoAprendizaje -> getNombre() . "\")'> <span class='fas fa-backspace' data-toggle='tooltip' data-placement='left' data-original-title='Eliminar Resultado Aprendizaje' ></span></a> ";
 						}
-						echo "<a href='index.php?pid=" . base64_encode("ui/estrategia/selectAllEstrategiaByResultadoAprendizaje.php") . "&idResultadoAprendizaje=" . $currentResultadoAprendizaje -> getIdResultadoAprendizaje() . "'><span class='fas fa-search-plus' data-toggle='tooltip' data-placement='left' data-original-title='Get All Estrategia' ></span></a> ";
+						echo "<a href='index.php?pid=" . base64_encode("ui/estrategia/selectAllEstrategiaByResultadoAprendizaje.php") . "&idResultadoAprendizaje=" . $currentResultadoAprendizaje -> getIdResultadoAprendizaje() . "'><span class='fas fa-search-plus' data-toggle='tooltip' data-placement='left' data-original-title='Consultar Estrategias' ></span></a> ";
 						if($_SESSION['entity'] == 'Administrator') {
-							echo "<a href='index.php?pid=" . base64_encode("ui/estrategia/insertEstrategia.php") . "&idResultadoAprendizaje=" . $currentResultadoAprendizaje -> getIdResultadoAprendizaje() . "'><span class='fas fa-pen' data-toggle='tooltip' data-placement='left' data-original-title='Create Estrategia' ></span></a> ";
+							echo "<a href='index.php?pid=" . base64_encode("ui/estrategia/insertEstrategia.php") . "&idResultadoAprendizaje=" . $currentResultadoAprendizaje -> getIdResultadoAprendizaje() . "'><span class='fas fa-pen' data-toggle='tooltip' data-placement='left' data-original-title='Crear Estrategia' ></span></a> ";
 						}
 						echo "</td>";
 						echo "</tr>";

@@ -273,19 +273,8 @@ $nivelPie .= "]";
         )
     );
 
-    /* document.getElementById('export-png').addEventListener('click', () => {
-        Highcharts.exportCharts(graphics);
-    }); */
-
-   /*  document.getElementById('export-pdf').addEventListener('click', () => {
-        Highcharts.exportCharts(graphics, {
-            type: 'application/pdf'
-        });
-    }); */
-
-    // Función para generar el PDF
     document.getElementById('export-pdf').addEventListener('click', function() {
-        generatePDF('pdf');
+        generatePDF('pdf','general');
     });
 
 </script>

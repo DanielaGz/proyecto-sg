@@ -30,11 +30,11 @@ if(isset($_GET['action']) && $_GET['action']=="delete"){
 			$browser = "Safari";
 		}
 		if($_SESSION['entity'] == 'Administrator'){
-			$logAdministrator = new LogAdministrator("","Delete Grafica", "Nombre: " . $deleteGrafica -> getNombre() . ";; Detalle: " . $deleteGrafica -> getDetalle() . ";; Config: " . $deleteGrafica -> getConfig() . ";; Fila: " . $deleteGrafica -> getFila() . ";; Posicion: " . $deleteGrafica -> getPosicion() . ";; Tam: " . $deleteGrafica -> getTam() . ";; Dashboard: " . $nameDashboard, date("Y-m-d"), date("H:i:s"), $user_ip, PHP_OS, $browser, $_SESSION['id']);
+			$logAdministrator = new LogAdministrator("","Eliminar gráfica", "Nombre: " . $deleteGrafica -> getNombre() . ";; Detalle: " . $deleteGrafica -> getDetalle() . ";; Config: " . $deleteGrafica -> getConfig() . ";; Fila: " . $deleteGrafica -> getFila() . ";; Posicion: " . $deleteGrafica -> getPosicion() . ";; Tam: " . $deleteGrafica -> getTam() . ";; Dashboard: " . $nameDashboard, date("Y-m-d"), date("H:i:s"), $user_ip, PHP_OS, $browser, $_SESSION['id']);
 			$logAdministrator -> insert();
 		}
 		else if($_SESSION['entity'] == 'Usuario'){
-			$logUsuario = new LogUsuario("","Delete Grafica", "Nombre: " . $deleteGrafica -> getNombre() . ";; Detalle: " . $deleteGrafica -> getDetalle() . ";; Config: " . $deleteGrafica -> getConfig() . ";; Fila: " . $deleteGrafica -> getFila() . ";; Posicion: " . $deleteGrafica -> getPosicion() . ";; Tam: " . $deleteGrafica -> getTam() . ";; Dashboard: " . $nameDashboard, date("Y-m-d"), date("H:i:s"), $user_ip, PHP_OS, $browser, $_SESSION['id']);
+			$logUsuario = new LogUsuario("","Eliminar gráfica", "Nombre: " . $deleteGrafica -> getNombre() . ";; Detalle: " . $deleteGrafica -> getDetalle() . ";; Config: " . $deleteGrafica -> getConfig() . ";; Fila: " . $deleteGrafica -> getFila() . ";; Posicion: " . $deleteGrafica -> getPosicion() . ";; Tam: " . $deleteGrafica -> getTam() . ";; Dashboard: " . $nameDashboard, date("Y-m-d"), date("H:i:s"), $user_ip, PHP_OS, $browser, $_SESSION['id']);
 			$logUsuario -> insert();
 		}
 	}else{
@@ -42,21 +42,21 @@ if(isset($_GET['action']) && $_GET['action']=="delete"){
 	}
 }
 ?>
-<div class="container-fluid">
+<div class="container">
 	<div class="card">
 		<div class="card-header">
-			<h4 class="card-title">Get All Grafica</h4>
+			<h4 class="card-title">Consultar gráficas</h4>
 		</div>
 		<div class="card-body">
 		<?php if(isset($_GET['action']) && $_GET['action']=="delete"){ ?>
 			<?php if($error == 0){ ?>
-				<div class="alert alert-success" >The registry was succesfully deleted.
+				<div class="alert alert-success" >Registro eliminado.
 					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
 				<?php } else { ?>
-				<div class="alert alert-danger" >The registry was not deleted. Check it does not have related information
+				<div class="alert alert-danger" >Error.
 					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
@@ -95,7 +95,7 @@ if(isset($_GET['action']) && $_GET['action']=="delete"){
 							<span class='fas fa-sort-amount-down' data-toggle='tooltip' data-placement='right' data-original-title='Sort Descending' ></span></a>
 						<?php } ?>
 						</th>
-						<th nowrap>Config 
+						<th nowrap>Configuración
 						<?php if($order=="config" && $dir=="asc") { ?>
 							<span class='fas fa-sort-up'></span>
 						<?php } else { ?>
@@ -137,7 +137,7 @@ if(isset($_GET['action']) && $_GET['action']=="delete"){
 							<span class='fas fa-sort-amount-down' data-toggle='tooltip' data-placement='right' data-original-title='Sort Descending' ></span></a>
 						<?php } ?>
 						</th>
-						<th nowrap>Tam 
+						<th nowrap>Tamaño 
 						<?php if($order=="tam" && $dir=="asc") { ?>
 							<span class='fas fa-sort-up'></span>
 						<?php } else { ?>
@@ -151,7 +151,7 @@ if(isset($_GET['action']) && $_GET['action']=="delete"){
 							<span class='fas fa-sort-amount-down' data-toggle='tooltip' data-placement='right' data-original-title='Sort Descending' ></span></a>
 						<?php } ?>
 						</th>
-						<th>Dashboard</th>
+						<th>Tablero</th>
 						<th nowrap></th>
 					</tr>
 				</thead>
@@ -175,10 +175,10 @@ if(isset($_GET['action']) && $_GET['action']=="delete"){
 						echo "<td><a href='modalDashboard.php?idDashboard=" . $currentGrafica -> getDashboard() -> getIdDashboard() . "' data-toggle='modal' data-target='#modalGrafica' >" . $currentGrafica -> getDashboard() -> getNombre() . "</a></td>";
 						echo "<td class='text-right' nowrap>";
 						if($_SESSION['entity'] == 'Administrator') {
-							echo "<a href='index.php?pid=" . base64_encode("ui/grafica/updateGrafica.php") . "&idGrafica=" . $currentGrafica -> getIdGrafica() . "'><span class='fas fa-edit' data-toggle='tooltip' data-placement='left' data-original-title='Edit Grafica' ></span></a> ";
+							echo "<a href='index.php?pid=" . base64_encode("ui/grafica/updateGrafica.php") . "&idGrafica=" . $currentGrafica -> getIdGrafica() . "'><span class='fas fa-edit' data-toggle='tooltip' data-placement='left' data-original-title='Editar gráfica' ></span></a> ";
 						}
 						if($_SESSION['entity'] == 'Administrator') {
-							echo "<a href='index.php?pid=" . base64_encode("ui/grafica/selectAllGrafica.php") . "&idGrafica=" . $currentGrafica -> getIdGrafica() . "&action=delete' onclick='return confirm(\"Confirm to delete Grafica: " . $currentGrafica -> getNombre() . "\")'><span class='fas fa-backspace' data-toggle='tooltip' data-placement='left' data-original-title='Delete Grafica' ></span></a> ";
+							echo "<a href='index.php?pid=" . base64_encode("ui/grafica/selectAllGrafica.php") . "&idGrafica=" . $currentGrafica -> getIdGrafica() . "&action=delete' onclick='return confirm(\"Está seguro de eliminar el registro? " . $currentGrafica -> getNombre() . "\")'><span class='fas fa-backspace' data-toggle='tooltip' data-placement='left' data-original-title='Eliminar gráfica' ></span></a> ";
 						}
 						echo "</td>";
 						echo "</tr>";

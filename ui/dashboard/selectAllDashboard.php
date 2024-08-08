@@ -44,18 +44,18 @@ if(isset($_GET['action']) && $_GET['action']=="delete"){
 <div class="container-fluid">
 	<div class="card">
 		<div class="card-header">
-			<h4 class="card-title">Get All Dashboard</h4>
+			<h4 class="card-title">Consultar tableros</h4>
 		</div>
 		<div class="card-body">
 		<?php if(isset($_GET['action']) && $_GET['action']=="delete"){ ?>
 			<?php if($error == 0){ ?>
-				<div class="alert alert-success" >The registry was succesfully deleted.
+				<div class="alert alert-success" >Registro eliminado.
 					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
 				<?php } else { ?>
-				<div class="alert alert-danger" >The registry was not deleted. Check it does not have related information
+				<div class="alert alert-danger" >Error, información dependiente.
 					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
@@ -112,19 +112,15 @@ if(isset($_GET['action']) && $_GET['action']=="delete"){
 						echo "<td>" . $currentDashboard -> getDetalle() . "</td>";
 						echo "<td class='text-right' nowrap>";
 						if($_SESSION['entity'] == 'Administrator') {
-							echo "<a href='index.php?pid=" . base64_encode("ui/dashboard/updateDashboard.php") . "&idDashboard=" . $currentDashboard -> getIdDashboard() . "'><span class='fas fa-edit' data-toggle='tooltip' data-placement='left' data-original-title='Edit Dashboard' ></span></a> ";
+							echo "<a href='index.php?pid=" . base64_encode("ui/dashboard/updateDashboard.php") . "&idDashboard=" . $currentDashboard -> getIdDashboard() . "'><span class='fas fa-edit' data-toggle='tooltip' data-placement='left' data-original-title='Editar tablero' ></span></a> ";
 						}
 						if($_SESSION['entity'] == 'Administrator') {
-							echo "<a href='index.php?pid=" . base64_encode("ui/dashboard/selectAllDashboard.php") . "&idDashboard=" . $currentDashboard -> getIdDashboard() . "&action=delete' onclick='return confirm(\"Confirm to delete Dashboard: " . $currentDashboard -> getNombre() . "\")'><span class='fas fa-backspace' data-toggle='tooltip' data-placement='left' data-original-title='Delete Dashboard' ></span></a> ";
+							echo "<a href='index.php?pid=" . base64_encode("ui/dashboard/selectAllDashboard.php") . "&idDashboard=" . $currentDashboard -> getIdDashboard() . "&action=delete' onclick='return confirm(\"Esta seguro de eliminar el registro? " . $currentDashboard -> getNombre() . "\")'><span class='fas fa-backspace' data-toggle='tooltip' data-placement='left' data-original-title='Eliminar tablero' ></span></a> ";
 						}
-						echo "<a href='index.php?pid=" . base64_encode("ui/usuarioDashboard/selectAllUsuarioDashboardByDashboard.php") . "&idDashboard=" . $currentDashboard -> getIdDashboard() . "'><span class='fas fa-search-plus' data-toggle='tooltip' data-placement='left' data-original-title='Get All Usuario Dashboard' ></span></a> ";
-						if($_SESSION['entity'] == 'Administrator') {
-							echo "<a href='index.php?pid=" . base64_encode("ui/usuarioDashboard/insertUsuarioDashboard.php") . "&idDashboard=" . $currentDashboard -> getIdDashboard() . "'><span class='fas fa-pen' data-toggle='tooltip' data-placement='left' data-original-title='Create Usuario Dashboard' ></span></a> ";
-						}
-						echo "<a href='index.php?pid=" . base64_encode("ui/grafica/selectAllGraficaByDashboard.php") . "&idDashboard=" . $currentDashboard -> getIdDashboard() . "'><span class='fas fa-search-plus' data-toggle='tooltip' data-placement='left' data-original-title='Get All Grafica' ></span></a> ";
-						if($_SESSION['entity'] == 'Administrator') {
-							echo "<a href='index.php?pid=" . base64_encode("ui/grafica/insertGrafica.php") . "&idDashboard=" . $currentDashboard -> getIdDashboard() . "'><span class='fas fa-pen' data-toggle='tooltip' data-placement='left' data-original-title='Create Grafica' ></span></a> ";
-						}
+						echo "<a href='index.php?pid=" . base64_encode("ui/grafica/selectAllGraficaByDashboard.php") . "&idDashboard=" . $currentDashboard -> getIdDashboard() . "'><span class='fas fa-search-plus' data-toggle='tooltip' data-placement='left' data-original-title='Consultar gráficas' ></span></a> ";
+						/* if($_SESSION['entity'] == 'Administrator') {
+							echo "<a href='index.php?pid=" . base64_encode("ui/grafica/insertGrafica.php") . "&idDashboard=" . $currentDashboard -> getIdDashboard() . "'><span class='fas fa-pen' data-toggle='tooltip' data-placement='left' data-original-title='Crear gráfica' ></span></a> ";
+						} */
 						echo "</td>";
 						echo "</tr>";
 						$counter++;

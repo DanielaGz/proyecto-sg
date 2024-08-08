@@ -276,7 +276,8 @@ Highcharts.setOptions({
 });
 
 
-function generatePDF(id){
+function generatePDF(id, name='document'){
+  $("#loader").fadeIn(); // Mostrar indicador de carga
   html2canvas(document.getElementById(id), {
     scrollY: -window.scrollY, // Captura todo el contenido, incluido el que está fuera de la vista
     logging: true, // Activa los registros para ver posibles problemas
@@ -304,7 +305,8 @@ function generatePDF(id){
     }
     
     // Guarda el documento PDF
-    pdf.save('document.pdf');
+    pdf.save(name+'.pdf');
+    $("#loader").fadeOut(); // Ocultar indicador de carga después de cargar el contenido
 });
 }
 

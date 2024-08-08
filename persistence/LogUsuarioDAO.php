@@ -73,7 +73,9 @@ class LogUsuarioDAO{
 	function search($search) {
 		return "select idLogUsuario, action, information, date, time, ip, os, browser, usuario_idUsuario
 				from LogUsuario
+				join Usuario on LogUsuario.usuario_idusuario = Usuario.idUsuario
 				where action like '%" . $search . "%' or date like '%" . $search . "%' or time like '%" . $search . "%' or ip like '%" . $search . "%' or os like '%" . $search . "%' or browser like '%" . $search . "%'
+				or Usuario.name like '%" . $search . "%'
 				order by date desc, time desc";
 	}
 }

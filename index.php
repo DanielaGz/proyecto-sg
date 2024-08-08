@@ -72,6 +72,7 @@ $webPages = array(
 	'ui/resultadoAprendizaje/updateResultadoAprendizaje.php',
 	'ui/resultadoAprendizaje/selectAllResultadoAprendizaje.php',
 	'ui/resultadoAprendizaje/searchResultadoAprendizaje.php',
+	'ui/resultadoAprendizaje/raDashboard.php',
 	'ui/estrategia/selectAllEstrategiaByResultadoAprendizaje.php',
 	'ui/estrategia/insertEstrategia.php',
 	'ui/estrategia/updateEstrategia.php',
@@ -197,6 +198,10 @@ if(isset($_GET['logOut'])){
 				border-radius: 20px 20px 0px 0px !important;
 			}
 
+			.card-footer{
+				border-radius: 0px 0px 20px 20px !important;
+			}
+
 			input, button, select, .card {
 				border-radius: 20px !important;
 			}
@@ -236,5 +241,15 @@ if(isset($_GET['logOut'])){
 		}
 		?>
 		<!-- <div class="text-center text-muted">ITI &copy; <?php echo date("Y")?></div> -->
+		<div id="loader">
+        	<?php include("ui/loader.php") ?>
+    	</div>
 	</body>
 </html>
+
+<script>
+$(document).ready(function(){
+    $("#loader").fadeOut(0);
+});
+
+</script>

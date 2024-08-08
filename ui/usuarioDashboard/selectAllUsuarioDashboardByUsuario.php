@@ -11,7 +11,7 @@ $usuario = new Usuario($_GET['idUsuario']);
 $usuario -> select();
 $error = 0;
 if(!empty($_GET['action']) && $_GET['action']=="delete"){
-	$deleteUsuarioDashboard = new UsuarioDashboard($_GET['idUsuarioDashboard']);
+	$deleteUsuarioDashboard = new Dashboard($_GET['idUsuarioDashboard']);
 	$deleteUsuarioDashboard -> select();
 	if($deleteUsuarioDashboard -> delete()){
 		$nameUsuario = $deleteUsuarioDashboard -> getUsuario() -> getName() . " " . $deleteUsuarioDashboard -> getUsuario() -> getLastName();
@@ -33,11 +33,11 @@ if(!empty($_GET['action']) && $_GET['action']=="delete"){
 			$browser = "Safari";
 		}
 		if($_SESSION['entity'] == 'Administrator'){
-			$logAdministrator = new LogAdministrator("","Delete Usuario Dashboard", "Usuario: " . $nameUsuario . ";; Dashboard: " . $nameDashboard, date("Y-m-d"), date("H:i:s"), $user_ip, PHP_OS, $browser, $_SESSION['id']);
+			$logAdministrator = new LogAdministrator("","Eimina tablero", "Usuario: " . $nameUsuario . ";; Dashboard: " . $nameDashboard, date("Y-m-d"), date("H:i:s"), $user_ip, PHP_OS, $browser, $_SESSION['id']);
 			$logAdministrator -> insert();
 		}
 		else if($_SESSION['entity'] == 'Usuario'){
-			$logUsuario = new LogUsuario("","Delete Usuario Dashboard", "Usuario: " . $nameUsuario . ";; Dashboard: " . $nameDashboard, date("Y-m-d"), date("H:i:s"), $user_ip, PHP_OS, $browser, $_SESSION['id']);
+			$logUsuario = new LogUsuario("","Eimina tablero", "Usuario: " . $nameUsuario . ";; Dashboard: " . $nameDashboard, date("Y-m-d"), date("H:i:s"), $user_ip, PHP_OS, $browser, $_SESSION['id']);
 			$logUsuario -> insert();
 		}
 	}else{
@@ -45,10 +45,10 @@ if(!empty($_GET['action']) && $_GET['action']=="delete"){
 	}
 }
 ?>
-<div class="container-fluid">
+<div class="container">
 	<div class="card">
 		<div class="card-header">
-			<h4 class="card-title">Get All Usuario Dashboard of Usuario: <em><?php echo $usuario -> getName() . " " . $usuario -> getLastName() ?></em></h4>
+			<h4 class="card-title">Consultar tableros del usuario: <em><?php echo $usuario -> getName() . " " . $usuario -> getLastName() ?></em></h4>
 		</div>
 		<div class="card-body">
 		<?php if(isset($_GET['action']) && $_GET['action']=="delete"){ ?>
@@ -77,23 +77,19 @@ if(!empty($_GET['action']) && $_GET['action']=="delete"){
 				</thead>
 				</tbody>
 					<?php
-					$usuarioDashboard = new UsuarioDashboard("", $_GET['idUsuario'], "");
-					if($order!="" && $dir!="") {
-						$usuarioDashboards = $usuarioDashboard -> selectAllByUsuarioOrder($order, $dir);
-					} else {
-						$usuarioDashboards = $usuarioDashboard -> selectAllByUsuario();
-					}
+					$usuarioDashboard = new Dashboard("","","", $_GET['idUsuario'], "");
+					$usuarioDashboards = $usuarioDashboard -> selectAllByUsuario();
 					$counter = 1;
 					foreach ($usuarioDashboards as $currentUsuarioDashboard) {
 						echo "<tr><td>" . $counter . "</td>";
 						echo "<td><a href='modalUsuario.php?idUsuario=" . $currentUsuarioDashboard -> getUsuario() -> getIdUsuario() . "' data-toggle='modal' data-target='#modalUsuarioDashboard' >" . $currentUsuarioDashboard -> getUsuario() -> getName() . " " . $currentUsuarioDashboard -> getUsuario() -> getLastName() . "</a></td>";
-						echo "<td><a href='modalDashboard.php?idDashboard=" . $currentUsuarioDashboard -> getDashboard() -> getIdDashboard() . "' data-toggle='modal' data-target='#modalUsuarioDashboard' >" . $currentUsuarioDashboard -> getDashboard() -> getNombre() . "</a></td>";
+						echo "<td><a href='modalDashboard.php?idDashboard=" . $currentUsuarioDashboard -> getIdDashboard() . "' data-toggle='modal' data-target='#modalUsuarioDashboard' >" . $currentUsuarioDashboard -> getNombre() . "</a></td>";
 						echo "<td class='text-right' nowrap>";
 						if($_SESSION['entity'] == 'Administrator') {
-							echo "<a href='index.php?pid=" . base64_encode("ui/usuarioDashboard/updateUsuarioDashboard.php") . "&idUsuarioDashboard=" . $currentUsuarioDashboard -> getIdUsuarioDashboard() . "'><span class='fas fa-edit' data-toggle='tooltip' data-placement='left' data-original-title='Edit Usuario Dashboard' ></span></a> ";
+							echo "<a href='index.php?pid=" . base64_encode("ui/usuarioDashboard/updateUsuarioDashboard.php") . "&idUsuarioDashboard=" . $currentUsuarioDashboard -> getUsuario() -> getIdUsuario() . "'><span class='fas fa-edit' data-toggle='tooltip' data-placement='left' data-original-title='Editar tablero' ></span></a> ";
 						}
 						if($_SESSION['entity'] == 'Administrator') {
-							echo "<a href='index.php?pid=" . base64_encode("ui/usuarioDashboard/selectAllUsuarioDashboardByUsuario.php") . "&idUsuario=" . $_GET['idUsuario'] . "&idUsuarioDashboard=" . $currentUsuarioDashboard -> getIdUsuarioDashboard() . "&action=delete' onclick='return confirm(\"Confirm to delete Usuario Dashboard\")'> <span class='fas fa-backspace' data-toggle='tooltip' data-placement='left' data-original-title='Delete Usuario Dashboard' ></span></a> ";
+							echo "<a href='index.php?pid=" . base64_encode("ui/usuarioDashboard/selectAllUsuarioDashboardByUsuario.php") . "&idUsuario=" . $_GET['idUsuario'] . "&idUsuarioDashboard=" . $currentUsuarioDashboard -> getIdDashboard() . "&action=delete' onclick='return confirm(\"Desea eliminar el tablero?\")'> <span class='fas fa-backspace' data-toggle='tooltip' data-placement='left' data-original-title='Eliminar tablero' ></span></a> ";
 						}
 						echo "</td>";
 						echo "</tr>";

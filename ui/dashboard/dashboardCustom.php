@@ -16,14 +16,10 @@ $dashboards = $dashboard -> selectAllByUsuario();
                     ?>
                 </select>
             </div>
-            <a id="updateDash" class="btn btn-info round mr-1" href="#" role="button"><span class='fas fa-pen'></span></a>
+            <a id="updateDash" class="btn btn-info round mr-1 d-none" href="#" role="button"><span class='fas fa-pen'></span></a>
             <a class="btn btn-info round mr-1" href="<?php echo("index.php?pid=" . base64_encode('ui/dashboard/insertDashboard.php').'&usuario='.$_SESSION['id']); ?>" role="button"><span class='fas fa-plus'></span></a>
         </div>
     </div>
-</div>
-
-<div id="loader">
-<?php include("ui/loader.php") ?>
 </div>
 <div id="dashboard"></div>
 
@@ -48,9 +44,6 @@ $dashboards = $dashboard -> selectAllByUsuario();
 
 
     $(document).ready(function(){
-
-        $("#loader").fadeOut(0);
-        
         $('body').on('hidden.bs.modal', function (e) {
             $("#modalContent").empty();
             if (change){
@@ -75,6 +68,7 @@ $dashboards = $dashboard -> selectAllByUsuario();
                     $("#dashboard").fadeIn(300); // Mostrar nuevo contenido con transición
                     $("#loader").fadeOut(300);
                 });
+                $("#updateDash").removeClass('d-none'); 
                 $("#updateDash").attr('href', "<?php echo("index.php?pid=" . base64_encode('ui/dashboard/updateDashboard.php') . '&idDashboard='); ?>"+$("#select").val());
             });
         });

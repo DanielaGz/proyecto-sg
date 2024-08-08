@@ -46,11 +46,11 @@ if(isset($_POST['update'])){
 		$browser = "Safari";
 	}
 	if($_SESSION['entity'] == 'Administrator'){
-		$logAdministrator = new LogAdministrator("","Edit Resultado Aprendizaje", "Nombre: " . $nombre . "; Detalle: " . $detalle . "; Bloom: " . $nameBloom . ";; Categoria Ra: " . $nameCategoriaRa , date("Y-m-d"), date("H:i:s"), $user_ip, PHP_OS, $browser, $_SESSION['id']);
+		$logAdministrator = new LogAdministrator("","Editar Resultado Aprendizaje", "Nombre: " . $nombre . "; Detalle: " . $detalle . "; Bloom: " . $nameBloom . ";; Categoria Ra: " . $nameCategoriaRa , date("Y-m-d"), date("H:i:s"), $user_ip, PHP_OS, $browser, $_SESSION['id']);
 		$logAdministrator -> insert();
 	}
 	else if($_SESSION['entity'] == 'Usuario'){
-		$logUsuario = new LogUsuario("","Edit Resultado Aprendizaje", "Nombre: " . $nombre . "; Detalle: " . $detalle . "; Bloom: " . $nameBloom . ";; Categoria Ra: " . $nameCategoriaRa , date("Y-m-d"), date("H:i:s"), $user_ip, PHP_OS, $browser, $_SESSION['id']);
+		$logUsuario = new LogUsuario("","Editar Resultado Aprendizaje", "Nombre: " . $nombre . "; Detalle: " . $detalle . "; Bloom: " . $nameBloom . ";; Categoria Ra: " . $nameCategoriaRa , date("Y-m-d"), date("H:i:s"), $user_ip, PHP_OS, $browser, $_SESSION['id']);
 		$logUsuario -> insert();
 	}
 	$processed=true;
@@ -62,11 +62,11 @@ if(isset($_POST['update'])){
 		<div class="col-md-8">
 			<div class="card">
 				<div class="card-header">
-					<h4 class="card-title">Edit Resultado Aprendizaje</h4>
+					<h4 class="card-title">Editar Resultado Aprendizaje</h4>
 				</div>
 				<div class="card-body">
 					<?php if($processed){ ?>
-					<div class="alert alert-success" >Data Edited
+					<div class="alert alert-success" >Información actualizada
 						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
@@ -113,7 +113,7 @@ if(isset($_POST['update'])){
 								?>
 							</select>
 						</div>
-						<button type="submit" class="btn btn-info" name="update">Edit</button>
+						<button type="submit" class="btn btn-info" name="update">Editar</button>
 					</form>
 				</div>
 			</div>
