@@ -97,7 +97,7 @@ if(isset($_POST['update'])){
 								?>
 							</select>
 						</div>
-						<button type="submit" class="btn btn-info" name="update">Edit</button>
+						<button type="submit" class="btn btn-secondary" name="update">Edit</button>
 					</form>
 				</div>
 			</div>

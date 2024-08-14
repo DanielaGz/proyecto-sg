@@ -99,28 +99,28 @@ const typeCharts = {
       "detalle": "",
       "config": "generalbar",
       "posicion": 1,
-      "tam": 6,
+      "tam": 8,
     },
     'generalnetworkgraph': {
       'nombre': "Resultados de aprendizaje",
       "detalle": "",
       "config": "generalnetworkgraph",
       "posicion": 1,
-      "tam": 6,
+      "tam": 12,
     },
     'generalpackedbubble': {
       'nombre': "Resultados de aprendizaje por categoría",
       "detalle": "",
       "config": "generalpackedbubble",
       "posicion": 1,
-      "tam": 6,
+      "tam": 12,
     },
     'generalcolumn-line': {
       'nombre': "Resultados de aprendizaje por bloom",
       "detalle": "",
       "config": "generalcolumn-line",
       "posicion": 1,
-      "tam": 6,
+      "tam": 8,
     }
   },
   'category': {
@@ -136,7 +136,7 @@ const typeCharts = {
       "detalle": "",
       "config": "categorybar",
       "posicion": 1,
-      "tam": 6,
+      "tam": 8,
     },
     'categorysolidgauge': {
       'nombre': "Porcentaje de niveles por RA",
@@ -144,6 +144,13 @@ const typeCharts = {
       "config": "categorysolidgauge",
       "posicion": 1,
       "tam": 6,
+    },
+    'categorypackedbubble': {
+      'nombre': "Estrategias por RA",
+      "detalle": "",
+      "config": "categorypackedbubble",
+      "posicion": 1,
+      "tam": 12,
     }
   }
 }
@@ -295,7 +302,7 @@ function generatePDF(id, name='document'){
         /* if (yOffset !== 0) {
             pdf.addPage();
         } */
-        pdf.setFillColor('#e9ecef');
+        pdf.setFillColor('#e1e1e1');
         pdf.rect(0, 0, imgWidth, pageHeight, 'F');
         pdf.addImage(imgData, 'PNG', 0, -yOffset, imgWidth, imgHeight);
         yOffset += pageHeight;

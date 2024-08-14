@@ -70,7 +70,7 @@ if(isset($_POST['update'])){
 							<label>Foto*</label>
 							<input type="file" class="form-control-file" name="image" required />
 						</div>
-						<button type="submit" class="btn btn-info" name="update">Editar</button>
+						<button type="submit" class="btn btn-secondary" name="update">Editar</button>
 					</form>
 				</div>
 			</div>

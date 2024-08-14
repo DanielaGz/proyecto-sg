@@ -15,13 +15,13 @@ style="
         top: 50%;
         left: 45%;">
         <div class="d-flex justify-content-center">
-            <div class="spinner-grow text-info m-2" role="status">
+            <div class="spinner-grow m-2" role="status" style="color: #eb971c !important;">
                 <span class="sr-only">Loading...</span>
             </div>
-            <div class="spinner-grow text-info m-2" role="status">
+            <div class="spinner-grow m-2" role="status" style="color: #eb971c !important;">
                 <span class="sr-only">Loading...</span>
             </div>
-            <div class="spinner-grow text-info m-2" role="status">
+            <div class="spinner-grow m-2" role="status" style="color: #eb971c !important;">
                 <span class="sr-only">Loading...</span>
             </div>
         </div>

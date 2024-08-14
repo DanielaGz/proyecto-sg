@@ -92,9 +92,7 @@ class Bloom {
 		$this -> connection -> run($this -> bloomDAO -> selectAllByResultadoAprendizajeOrder($order, $dir));
 		$blooms = array();
 		while ($result = $this -> connection -> fetchRow()){
-			$resultadoAprendizaje = new ResultadoAprendizaje($result[3]);
-			$resultadoAprendizaje -> select();
-			array_push($blooms, new Bloom($result[0], $result[1], $result[2], $resultadoAprendizaje));
+			array_push($blooms, new Bloom($result[0], $result[1], $result[2]));
 		}
 		$this -> connection -> close();
 		return $blooms;
@@ -104,6 +102,9 @@ class Bloom {
 		$this -> connection -> open();
 		$this -> connection -> run($this -> bloomDAO -> search($search));
 		$blooms = array();
+		while ($result = $this -> connection -> fetchRow()){
+			array_push($blooms, new Bloom($result[0], $result[1], $result[2]));
+		}
 		$this -> connection -> close();
 		return $blooms;
 	}

@@ -7,7 +7,7 @@ $criterio = new Criterio("", "", "",$_GET['ra']);
 $criterios = $criterio -> selectAllByResultadoAprendizaje();
 ?>
 <div class="container">
-    <div id="content" style="background-color: #e9ecef;">
+    <div id="content" style="background-color: #e1e1e1;">
         <section>
             <h2><?php echo strtoupper("Resultado de aprendizaje"); ?></h2>
             <p>

@@ -16,28 +16,26 @@ $usuario -> select();
 					<div class="table-responsive-sm">
 						<table class="table table-striped table-hover">
 							<tr>
-								<th>Name</th>
+								<th>
+									Nombre
+								</th>
 								<td><?php echo $usuario -> getName() ?></td>
 							</tr>
 							<tr>
-								<th>Last Name</th>
+								<th>Apellido</th>
 								<td><?php echo $usuario -> getLastName() ?></td>
 							</tr>
 							<tr>
-								<th>Email</th>
+								<th>Correo</th>
 								<td><?php echo $usuario -> getEmail() ?></td>
 							</tr>
 							<tr>
-								<th>Phone</th>
+								<th>Teléfono</th>
 								<td><?php echo $usuario -> getPhone() ?></td>
 							</tr>
 							<tr>
-								<th>Mobile</th>
+								<th>Celular</th>
 								<td><?php echo $usuario -> getMobile() ?></td>
-							</tr>
-							<tr>
-								<th>State</th>
-								<td><?php echo ($usuario -> getState()==1)?"Habilitado":"Deshabilitado"; ?></td>
 							</tr>
 						</table>
 					</div>

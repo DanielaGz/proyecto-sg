@@ -9,7 +9,6 @@
 		<tr><th></th>
 			<th nowrap>Nombre</th>
 			<th nowrap>Detalle</th>
-			<th>Resultado Aprendizaje</th>
 			<th nowrap></th>
 		</tr>
 	</thead>
@@ -22,13 +21,12 @@
 			echo "<tr><td>" . $counter . "</td>";
 			echo "<td>" . str_ireplace($_GET['search'], "<mark>" . $_GET['search'] . "</mark>", $currentBloom -> getNombre()) . "</td>";
 			echo "<td>" . str_ireplace($_GET['search'], "<mark>" . $_GET['search'] . "</mark>", $currentBloom -> getDetalle()) . "</td>";
-			echo "<td>" . $currentBloom -> getResultadoAprendizaje() -> getNombre() . "</td>";
 						echo "<td class='text-right' nowrap>";
 						if($_GET['entity'] == 'Administrator') {
-							echo "<a href='index.php?pid=" . base64_encode("ui/bloom/updateBloom.php") . "&idBloom=" . $currentBloom -> getIdBloom() . "'><span class='fas fa-edit' data-toggle='tooltip' data-placement='left' data-original-title='Edit Bloom' ></span></a> ";
+							echo "<a href='index.php?pid=" . base64_encode("ui/bloom/updateBloom.php") . "&idBloom=" . $currentBloom -> getIdBloom() . "'><span class='fas fa-edit' data-toggle='tooltip' data-placement='left' data-original-title='Editar Bloom' ></span></a> ";
 						}
 						if($_GET['entity'] == 'Administrator') {
-							echo "<a href='index.php?pid=" . base64_encode("ui/bloom/selectAllBloom.php") . "&idBloom=" . $currentBloom -> getIdBloom() . "&action=delete' onclick='return confirm(\"Confirm to delete Bloom: " . $currentBloom -> getNombre() . "\")'><span class='fas fa-backspace' data-toggle='tooltip' data-placement='left' data-original-title='Delete Bloom' ></span></a> ";
+							echo "<a href='index.php?pid=" . base64_encode("ui/bloom/selectAllBloom.php") . "&idBloom=" . $currentBloom -> getIdBloom() . "&action=delete' onclick='return confirm(\"Desea eliminar bloom: " . $currentBloom -> getNombre() . "\")'><span class='fas fa-backspace' data-toggle='tooltip' data-placement='left' data-original-title='Eliminar Bloom' ></span></a> ";
 						}
 						echo "</td>";
 			echo "</tr>";

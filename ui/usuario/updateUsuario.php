@@ -106,7 +106,7 @@ if(isset($_POST['update'])){
 							<label class="form-check-label" >Desactivado</label>
 						</div>
 						</div>
-						<button type="submit" class="btn btn-info" name="update">Editar</button>
+						<button type="submit" class="btn btn-secondary" name="update">Editar</button>
 					</form>
 				</div>
 			</div>

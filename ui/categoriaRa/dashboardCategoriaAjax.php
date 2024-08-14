@@ -4,15 +4,17 @@ $resultadoA = new ResultadoAprendizaje("","","","",$category);
 $resultadoAs = $resultadoA -> selectAllByCategoriaRa();
 $countEstrategias = 0;
 $buble = "[";
+$count = 1;
 foreach ($resultadoAs as $currentResultadoAs) {
     $estrategia = new Estrategia("","","", $currentResultadoAs -> getIdResultadoAprendizaje());
     $estrategias = $estrategia -> selectAllByResultadoAprendizaje();
     $buble .= "{name: '".$currentResultadoAs -> getNombre()."', data: [";
     foreach ($estrategias as $currentEstrategia) {
-        $buble .= "{ name: '".$currentEstrategia -> getNombre()."', value: 200 },";
+        $buble .= "{ name: 'E".$count."', value: 200 },";
+        $count++;
     }
     $buble .= "]},";
-    $countEstrategias += count($estrategias);
+    $countEstrategias += count($estrategias);    
 }
 $buble .= "]";
 $categoria = new CategoriaRa($category);
@@ -175,6 +177,33 @@ $colors = [
             <div class="card drag-item cursor-move mb-lg-0 mb-4 border-0 round h-full">
 				<div class="card-body text-center">
                     <div id="packedbubble"></div>    
+                    <table class="table text-center">
+                        <thead>
+                            <tr>
+                            <th scope="col">Identificador</th>
+                            <th scope="col">Estrategia</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <?php 
+                            $count = 1;
+                            $countC = 0;
+                            foreach ($resultadoAs as $currentResultadoAs) {
+                                $estrategia = new Estrategia("","","", $currentResultadoAs -> getIdResultadoAprendizaje());
+                                $estrategias = $estrategia -> selectAllByResultadoAprendizaje();
+                                foreach ($estrategias as $currentEstrategia) {
+                                    echo "<tr>";
+                                    echo "<td style='display: flex; justify-content: center; align-items: center;'>E".$count." <div class='m-1' style='background-color: ".$colors[$countC]."; width: 15px; height: 15px;'>   </div></td>";
+                                    echo "<td>".$currentEstrategia -> getNombre()."</td>";
+                                    echo "</tr>";
+                                    $count++;
+                                }
+                                $countC++;
+                                
+                            }
+                        ?>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>

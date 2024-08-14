@@ -49,42 +49,57 @@ if(isset($_POST['logIn'])){
 	}
 }
 ?>
-<div align="center">
-	<?php include("ui/header.php"); ?>
-</div>
+
+<div class="login">
 <div class="container">
 	<div class="row">
 		<div class="col-md-3">
 		</div>
 		<div class="col-md-6">
-			<div class="card">
-				<div class="card-header">
-					<h4><strong>Incia sesión</strong></h4>
-				</div>
-				<div class="card-body">
-					<form id="form" method="post" action="index.php" class="bootstrap-form needs-validation"  >
-						<div class="form-group">
-							<div class="input-group" >
-								<input type="email" class="form-control" name="email" placeholder="Email" autocomplete="off" required />
+			<div class="card shadow mb-5 p-0">
+				<!-- <div class="card-header text-center">
+					<h4><strong>Sistema web para la visualización científica de información sobre estrategias de enseñanza y su relación con los resultados de aprendizaje</strong></h4>
+				</div> -->
+				<div class="card-body p-0">
+					<div class="row">
+						<div class="col-6 d-none d-lg-block p-0">
+							<img src="img/login.jpeg" alt="login.jpeg" class="figure-img img-fluid round-left m-0">
+						</div>
+						<div class="col-12 col-lg-6 d-block d-lg-flex p-5 align-items-center">
+							<div class="text-center">
+							<h4>Iniciar sesión</h4>
+							<form id="form" method="post" action="index.php" class="bootstrap-form needs-validation"  >
+								<div class="form-group">
+									<div class="input-group" >
+										<input type="email" class="form-control" name="email" placeholder="Email" autocomplete="off" required />
+									</div>
+								</div>
+								<div class="form-group">
+									<input type="password" class="form-control" name="password" placeholder="Password" required />
+								</div>
+								<?php if($enabledError){
+									echo "<div class='alert alert-danger' >User disabled</div>";
+								} else if ($logInError){
+									echo "<div class='alert alert-danger' >Wrong email or password</div>";
+								} ?>
+								<div class="form-group">
+									<a href="index.php?pid=<?php echo base64_encode("ui/recoverPassword.php") ?>">Recuperar contraseña</a>
+								</div>
+								<div class="form-group">
+									<button type="submit" class="btn btn-secondary w-100" name="logIn">Iniciar sesión</button>
+								</div>
+							</form>
+							<hr>
+							<p>
+							¿No tienes una cuenta? <a href="index.php?pid=<?php echo base64_encode("ui/register.php") ?>">Registrarse</a>
+							</p>
 							</div>
 						</div>
-						<div class="form-group">
-							<input type="password" class="form-control" name="password" placeholder="Password" required />
-						</div>
-						<?php if($enabledError){
-							echo "<div class='alert alert-danger' >User disabled</div>";
-						} else if ($logInError){
-							echo "<div class='alert alert-danger' >Wrong email or password</div>";
-						} ?>
-						<div class="form-group">
-							<a href="index.php?pid=<?php echo base64_encode("ui/recoverPassword.php") ?>">Recuperar contraseña</a>
-						</div>
-						<div class="form-group">
-							<button type="submit" class="btn btn-info" name="logIn">Iniciar sesión</button>
-						</div>
-					</form>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
+</div>
+

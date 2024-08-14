@@ -55,7 +55,7 @@ if(isset($_POST['insert'])){
 							<label>Nombre*</label>
 							<input type="text" class="form-control" name="nombre" value="<?php echo $nombre ?>" required />
 						</div>
-						<button type="submit" class="btn btn-info" name="insert">Crear</button>
+						<button type="submit" class="btn btn-secondary" name="insert">Crear</button>
 					</form>
 				</div>
 			</div>

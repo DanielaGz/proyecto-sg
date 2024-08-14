@@ -19,12 +19,23 @@ $usuario -> select();
 				</div>
 			</li>
 			<li class="nav-item dropdown">
-				<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Tablero</a>
+				<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Buscar</a>
+				<div class="dropdown-menu">
+					<a class="dropdown-item" href="index.php?pid=<?php echo base64_encode("ui/categoriaRa/searchCategoriaRa.php") ?>">Categoría Ra</a>
+					<a class="dropdown-item" href="index.php?pid=<?php echo base64_encode("ui/bloom/searchBloom.php") ?>">Bloom</a>
+					<a class="dropdown-item" href="index.php?pid=<?php echo base64_encode("ui/resultadoAprendizaje/searchResultadoAprendizaje.php") ?>">Resultado Aprendizaje</a>
+					<a class="dropdown-item" href="index.php?pid=<?php echo base64_encode("ui/estrategia/searchEstrategia.php") ?>">Estrategia</a>
+					<a class="dropdown-item" href="index.php?pid=<?php echo base64_encode("ui/criterio/searchCriterio.php") ?>">Criterio</a>
+					<a class="dropdown-item" href="index.php?pid=<?php echo base64_encode("ui/calificacion/searchCalificacion.php") ?>">Calificación</a>
+				</div>
+			</li>
+			<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Tableros</a>
 				<div class="dropdown-menu">
 					<a class="dropdown-item" href="index.php?pid=<?php echo base64_encode('ui/general.php') ?>">General</a>
 					<a class="dropdown-item" href="index.php?pid=<?php echo base64_encode('ui/categoriaRa/dashboardCategoria.php') ?>">Categorias</a>
-					<a class="dropdown-item" href="index.php?pid=<?php echo base64_encode('ui/resultadoAprendizaje/raDashboard.php') ?>">Resultado de aprendizaje</a>
-					<a class="dropdown-item" href="index.php?pid=<?php echo base64_encode('ui/dashboard/dashboardCustom.php') ?>">Personalizado</a>
+					<a class="dropdown-item" href="index.php?pid=<?php echo base64_encode('ui/resultadoAprendizaje/raDashboard.php') ?>">Resultados de aprendizaje</a>
+					<a class="dropdown-item" href="index.php?pid=<?php echo base64_encode('ui/dashboard/dashboardCustom.php') ?>">Mis tableros</a>
 				</div>
 			</li>
 		</ul>

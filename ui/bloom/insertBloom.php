@@ -63,7 +63,7 @@ if(isset($_POST['insert'])){
 							<label>Detalle</label>
 							<input type="text" class="form-control" name="detalle" value="<?php echo $detalle ?>"/>
 						</div>
-						<button type="submit" class="btn btn-info" name="insert">Crear</button>
+						<button type="submit" class="btn btn-secondary" name="insert">Crear</button>
 					</form>
 				</div>
 			</div>

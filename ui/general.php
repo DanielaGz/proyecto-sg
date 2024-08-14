@@ -71,16 +71,16 @@ $nivelPie .= "]";
 <div class="container">
 	<div class="">
         <div class="d-flex flex-row-reverse bd-highlight">
-            <button type="button" id="export-pdf" class="btn btn-info m-2 round">
+            <button type="button" id="export-pdf" class="btn btn-secondary m-2 round">
                 Descargar PDF
                 <span class="fas fa-file-pdf" aria-hidden="true"></span>
             </button>
-            <!-- <button type="button" id="export-png" class="btn btn-info m-2 round">
+            <!-- <button type="button" id="export-png" class="btn btn-secondary m-2 round">
                 Descargar PNG
                 <span class="fas fa-file-image" aria-hidden="true"></span>
             </button> -->
         </div>
-		<div class="card-body" id="pdf" style="background-color: #e9ecef;">
+		<div class="card-body" id="pdf" style="background-color: #e1e1e1;">
             <h2><?php echo strtoupper("Resultados de aprendizaje"); ?></h2>
 			<div class="row">
             <div class="col-lg-4 col-md-4 col-sm-12 p-3">
@@ -207,6 +207,26 @@ $nivelPie .= "]";
 				<div class="card drag-item cursor-move mb-lg-0 mb-4 border-0 round h-full">
 				<div class="card-body text-center">
                 <div id="column-line"></div>
+                <table class="table text-center">
+                    <thead>
+                        <tr>
+                        <th scope="col">Nivel</th>
+                        <th scope="col">Descripción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <?php 
+                    $blom = new Bloom();
+                    $bloms = $blom -> selectAll();
+                    foreach ($bloms as $currentBlom) {
+                        echo "<tr>";
+                        echo "<td>".$currentBlom -> getNombre()."</td>";
+                        echo "<td>".$currentBlom -> getDetalle()."</td>";
+                        echo "</tr>";
+                    }
+                    ?>
+                    </tbody>
+                </table>
 				</div>
 				</div>
 			</div>

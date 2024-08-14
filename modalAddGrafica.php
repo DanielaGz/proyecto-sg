@@ -70,8 +70,8 @@ added = <?php echo json_encode($array_added); ?>;
     ?>
 for (let [key, value] of Object.entries(typeCharts['<?php echo $category; ?>'])) {
     if(!added.includes(key)){
-        /* $("#grapichs").append('<div class="card round m-1"><div id="'+value.config+'"></div><div class="d-flex justify-content-end m-1"><button type="button" class="btn btn-info round mr-1" data-toggle="tooltip" data-placement="bottom" title="Agregar" onclick="Agregar('+"'"+value.config+"'"+')">Seleccionar <span class="fas fa-plus"></span></button></div></div>'); */
-        $("#grapichs").append('<div class="card round m-1"><div id="'+value.config+'"></div><div class="d-flex justify-content-end m-1"><button type="button" class="btn btn-info round mr-1" data-toggle="tooltip" data-placement="bottom" title="Agregar" onclick="Agregar('+"'"+value.config+"'"+')">Seleccionar <span class="fas fa-plus"></span></button></div></div>');
+        /* $("#grapichs").append('<div class="card round m-1"><div id="'+value.config+'"></div><div class="d-flex justify-content-end m-1"><button type="button" class="btn btn-secondary round mr-1" data-toggle="tooltip" data-placement="bottom" title="Agregar" onclick="Agregar('+"'"+value.config+"'"+')">Seleccionar <span class="fas fa-plus"></span></button></div></div>'); */
+        $("#grapichs").append('<div class="card round m-1"><div id="'+value.config+'"></div><div class="d-flex justify-content-end m-1"><button type="button" class="btn btn-secondary round mr-1" data-toggle="tooltip" data-placement="bottom" title="Agregar" onclick="Agregar('+"'"+value.config+"'"+')">Seleccionar <span class="fas fa-plus"></span></button></div></div>');
     }
 }
 /* if(Object.keys(typeCharts['<?php echo $category; ?>']).length === added.length){
@@ -102,7 +102,6 @@ function Agregar(cat){
 }
 $("#selectcat").change(function(){
     idA = $("#selectcat").val();
-    console.log(idA)
     if(idA !== ''){
         $("#modalContent").empty();
         $("#modalContent").load('modalAddGrafica.php?id=<?php echo $id;?>'+'&category='+idA);

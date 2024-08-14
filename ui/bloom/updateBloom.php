@@ -71,7 +71,7 @@ if(isset($_POST['update'])){
 							<label>Detalle</label>
 							<input type="text" class="form-control" name="detalle" value="<?php echo $updateBloom -> getDetalle() ?>"/>
 						</div>
-						<button type="submit" class="btn btn-info" name="update">Editar</button>
+						<button type="submit" class="btn btn-secondary" name="update">Editar</button>
 					</form>
 				</div>
 			</div>

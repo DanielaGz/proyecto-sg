@@ -99,7 +99,7 @@ if(isset($_POST['insert'])){
 								?>
 							</select>
 						</div>
-						<button type="submit" class="btn btn-info" name="insert">Create</button>
+						<button type="submit" class="btn btn-secondary" name="insert">Create</button>
 					</form>
 				</div>
 			</div>

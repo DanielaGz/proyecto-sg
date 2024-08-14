@@ -59,7 +59,7 @@ if(isset($_POST['update'])){
 							<label>Nombre*</label>
 							<input type="text" class="form-control" name="nombre" value="<?php echo $updateCategoriaRa -> getNombre() ?>" required />
 						</div>
-						<button type="submit" class="btn btn-info" name="update">Editar</button>
+						<button type="submit" class="btn btn-secondary" name="update">Editar</button>
 					</form>
 				</div>
 			</div>

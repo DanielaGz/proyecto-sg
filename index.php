@@ -18,6 +18,7 @@ ini_set("display_errors","1");
 date_default_timezone_set("America/Bogota");
 $webPagesNoAuthentication = array(
 	'ui/recoverPassword.php',
+	'ui/register.php',
 );
 $webPages = array(
 	'ui/sessionAdministrator.php',
@@ -142,7 +143,7 @@ if(isset($_GET['logOut'])){
 		</script>
 		<style>
 			body{
-				background-color: #e9ecef;
+				background-color: #e1e1e1;
 			}
 
 			.round{
@@ -178,7 +179,7 @@ if(isset($_GET['logOut'])){
 			}
 
 			.tilt {
-				animation: tilt 0.15s infinite alternate;
+				animation: tilt 0.4s infinite alternate;
 			}
 
 			@keyframes tilt {
@@ -210,6 +211,44 @@ if(isset($_GET['logOut'])){
 				position: sticky;
 				z-index: 10;
 				top: 4rem;
+			}
+
+			.login {
+				background: radial-gradient(circle, rgba(237,211,4,1) 0%, rgba(226,121,29,1) 47%, rgba(194,101,34,1) 100%);
+				height: 100vh;
+				display: flex;
+    			align-items: center;
+			}
+
+			.bg-dark {
+				background: radial-gradient(circle, rgba(237,211,4,1) 0%, rgba(226,121,29,1) 47%, rgba(194,101,34,1) 100%);
+				border: none;
+			}
+
+			.btn-secondary{
+				background: #eb971c;
+				border: none;
+			}
+
+			.btn-secondary:hover, .btn-secondary:onclick{
+				background: #d96621;
+				border: none;
+			}
+
+			a{
+				color: #eb971c;
+			}
+			a:hover{
+				color: #d96621;
+			}
+
+			.card {
+				border: none;
+			}
+
+			.img-fluid {
+				max-width: 100%;
+				height: 100%;
 			}
 		</style>
 	</head>

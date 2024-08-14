@@ -7,7 +7,9 @@ $graficas = $grafica -> selectAllByDashboardOrder('posicion','asc');
 $categoriaRa = new CategoriaRa();
 $categoriaRas = $categoriaRa -> selectAll();
 $category = $_GET['category'] ? $_GET['category'] : 1;
-$_SESSION['category']=$category;
+$_SESSION['category']=(int)$category;
+$resultadoA = new ResultadoAprendizaje("","","","",$_SESSION['category']);
+$resultadoAs = $resultadoA -> selectAllByCategoriaRa();
 $colors = [
     "#E6999A", // Darkened Light Pink
     "#E6C5A3", // Darkened Peach
@@ -38,15 +40,15 @@ $colors = [
             Categoría: <?php echo $dashboard -> getCategory() ;?>
         </div>
         <div class="d-flex justify-content-end bd-highlight">
-            <a class="btn btn-info round m-2 round " href='modalAddGrafica.php?id=<?php echo $id;?>' data-toggle='modal' data-target='#modalAddGra' role="button">
+            <a class="btn btn-secondary round m-2 round " href='modalAddGrafica.php?id=<?php echo $id;?>' data-toggle='modal' data-target='#modalAddGra' role="button">
                 Agregar gráfico
                 <span class='fas fa-plus'></span>
             </a>
-            <button type="button" id="move" class="btn btn-info m-2 round">
+            <button type="button" id="move" class="btn btn-secondary m-2 round">
                 <span id="save-button">Mover</span>
                 <span class="fas fa-pen" aria-hidden="true"></span>
             </button>
-            <button type="button" id="pdf" class="btn btn-info m-2 round">
+            <button type="button" id="pdf" class="btn btn-secondary m-2 round">
                 Descargar
                 <span class="fas fa-file-pdf" aria-hidden="true"></span>
             </button>
@@ -71,7 +73,7 @@ $colors = [
 </div>
 
 
-<div class="container mt-3" id="pdf-document" style="background-color: #e9ecef;">
+<div class="container mt-3" id="pdf-document" style="background-color: #e1e1e1;">
 <h3>
     <?php echo strtoupper($dashboard -> getNombre()); ?>
 </h3>
@@ -88,10 +90,10 @@ $colors = [
             <div class="card drag-item cursor-move mb-lg-0 mb-4 border-0 round h-full">
             <div class="card-body text-center">
                 <div class="justify-content-end tools d-none">
-                    <button type="button" onclick="updateGraph(<?php echo $currentGrafica -> getIdGrafica();?>, '-');" class="btn btn-info round mr-1" data-toggle="tooltip" data-placement="bottom" title="Disminuir tamaño">
+                    <button type="button" onclick="updateGraph(<?php echo $currentGrafica -> getIdGrafica();?>, '-');" class="btn btn-secondary round mr-1" data-toggle="tooltip" data-placement="bottom" title="Disminuir tamaño">
                         <span class='fas fa-minus'></span>
                     </button>
-                    <button type="button" onclick="updateGraph(<?php echo $currentGrafica -> getIdGrafica();?>, '+');" class="btn btn-info round mr-1" data-toggle="tooltip" data-placement="bottom" title="Aumentar tamaño">
+                    <button type="button" onclick="updateGraph(<?php echo $currentGrafica -> getIdGrafica();?>, '+');" class="btn btn-secondary round mr-1" data-toggle="tooltip" data-placement="bottom" title="Aumentar tamaño">
                         <span class='fas fa-plus'></span>
                     </button>
                     <button type="button" onclick="del(<?php echo $currentGrafica -> getIdGrafica();?>);" class="btn btn-danger round" data-toggle="tooltip" data-placement="bottom" title="Eliminar">
@@ -201,6 +203,62 @@ $colors = [
                 </table>
                 <?php
                 }
+                if($currentGrafica -> getConfig() === 'categorypackedbubble'){
+                ?>
+                <table class="table text-center">
+                        <thead>
+                            <tr>
+                            <th scope="col">Identificador</th>
+                            <th scope="col">Estrategia</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <?php 
+                            $count = 1;
+                            $countC = 0;
+                            foreach ($resultadoAs as $currentResultadoAs) {
+                                $estrategia = new Estrategia("","","", $currentResultadoAs -> getIdResultadoAprendizaje());
+                                $estrategias = $estrategia -> selectAllByResultadoAprendizaje();
+                                foreach ($estrategias as $currentEstrategia) {
+                                    echo "<tr>";
+                                    echo "<td style='display: flex; justify-content: center; align-items: center;'>E".$count." <div class='m-1' style='background-color: ".$colors[$countC]."; width: 15px; height: 15px;'>   </div></td>";
+                                    echo "<td>".$currentEstrategia -> getNombre()."</td>";
+                                    echo "</tr>";
+                                    $count++;
+                                }
+                                $countC++;
+                                
+                            }
+                        ?>
+                        </tbody>
+                    </table>
+                <?php
+                }
+                if($currentGrafica -> getConfig() === 'generalcolumn-line'){
+                ?>
+                <table class="table text-center">
+                    <thead>
+                        <tr>
+                        <th scope="col">Nivel</th>
+                        <th scope="col">Descripción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <?php 
+                    $blom = new Bloom();
+                    $bloms = $blom -> selectAll();
+                    foreach ($bloms as $currentBlom) {
+                        echo "<tr>";
+                        echo "<td>".$currentBlom -> getNombre()."</td>";
+                        echo "<td>".$currentBlom -> getDetalle()."</td>";
+                        echo "</tr>";
+                    }
+                    ?>
+                    </tbody>
+                </table>
+                <?php
+                }
+                
                 ?>
                 </div>
             </div>
@@ -245,12 +303,10 @@ var sortable = Sortable.create(demoGrid, {
 
 $("#selectc").change(function(){
     idS = $("#selectc").val();
-    console.log(idS)
     $("#loader").fadeIn(0);
     $("#dashboard").fadeOut(300, function() { // Desvanecer el contenido actual
         $("#dashboard").empty();
         var path = "indexAjax.php?pid=<?php echo base64_encode("ui/dashboard/dashboardCustomAjax.php").'&id='.$_GET['id']; ?>&category="+idS;
-        console.log(path);
         $("#dashboard").load(path, function() {
             $("#dashboard").fadeIn(300); // Mostrar nuevo contenido con transición
             $("#loader").fadeOut(300);
@@ -298,7 +354,7 @@ function savePositions(id, posicion){
             'update': true
         },
         success: function(response) {
-            console.log('ci')
+            console.log(response)
         },
         error: function(jqXHR, textStatus, errorThrown) {
             console.error(textStatus, errorThrown, jqXHR);

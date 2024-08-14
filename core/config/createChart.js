@@ -4,6 +4,7 @@ const default_config = {
     plotBorderWidth: null,
     plotShadow: false,
     type: "",
+    "animation": false
   },
   colors: colors,
   credits: {
@@ -342,7 +343,7 @@ function createPackedBubble(default_chart, data, yAxis= []){
     }
   ]
 
-  */          
+  */         
   return {
       ...default_chart,
         tooltip: {
@@ -360,7 +361,8 @@ function createPackedBubble(default_chart, data, yAxis= []){
                     splitSeries: true,
                     seriesInteraction: false,
                     dragBetweenSeries: false,
-                    parentNodeLimit: false
+                    parentNodeLimit: false,
+                    enableSimulation: true
                 },
                 dataLabels: {
                     enabled: true,
@@ -397,6 +399,7 @@ function createNetwork (default_chart, data){
               },
               dataLabels: {
                   enabled: true,
+                  animation: false,
               linkFormat: '',
               style: {
                   fontSize: '12px'
@@ -420,6 +423,7 @@ function createNetwork (default_chart, data){
           dataLabels: {
               enabled: true,
               linkFormat: '',
+              animation: false,
               style: {
                   fontSize: '0.9em',
                   fontWeight: 'normal'

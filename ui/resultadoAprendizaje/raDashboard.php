@@ -15,14 +15,14 @@ $ras = $ra -> selectAll();
                     ?>
                 </select>
             </div>
-            <button type="button" id="export-pdf" class="btn btn-info m-2 round w-25 d-none">
+            <button type="button" id="export-pdf" class="btn btn-secondary m-2 round w-25 d-none">
                 Descargar PDF
                 <span class="fas fa-file-pdf" aria-hidden="true"></span>
             </button>
         </div>
     </div>
 
-    <div id="content" style="background-color: #e9ecef;">
+    <div id="content" style="background-color: #e1e1e1;">
 
     </div>
 </div>

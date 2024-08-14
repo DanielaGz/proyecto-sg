@@ -16,8 +16,8 @@ $dashboards = $dashboard -> selectAllByUsuario();
                     ?>
                 </select>
             </div>
-            <a id="updateDash" class="btn btn-info round mr-1 d-none" href="#" role="button"><span class='fas fa-pen'></span></a>
-            <a class="btn btn-info round mr-1" href="<?php echo("index.php?pid=" . base64_encode('ui/dashboard/insertDashboard.php').'&usuario='.$_SESSION['id']); ?>" role="button"><span class='fas fa-plus'></span></a>
+            <a id="updateDash" class="btn btn-secondary round mr-1 d-none" href="#" role="button"><span class='fas fa-pen'></span></a>
+            <a class="btn btn-secondary round mr-1" href="<?php echo("index.php?pid=" . base64_encode('ui/dashboard/insertDashboard.php').'&usuario='.$_SESSION['id']); ?>" role="button"><span class='fas fa-plus'></span></a>
         </div>
     </div>
 </div>

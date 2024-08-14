@@ -89,3 +89,13 @@ if ($("#categorysolidgauge").length) {
     )
   );
 }
+
+if ($("#categorypackedbubble").length) {
+  Highcharts.chart('categorypackedbubble', 
+    createChart(
+        "Estretegias por RA", 
+        "packedbubble",
+        grapich["categorypackedbubble"])
+  );
+}
+

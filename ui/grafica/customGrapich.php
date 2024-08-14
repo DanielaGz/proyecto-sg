@@ -32,7 +32,7 @@ $colors = [
 $resultadoA = new ResultadoAprendizaje("","","","",$category);
 $resultadoAs = $resultadoA -> selectAllByCategoriaRa();
 $buble = '[';
-foreach ($categoriaRas as $currentCategoriaRa) {
+foreach ($categoriaRas as $currentCategoriaRa) { 
 	$resultadoAp = new resultadoAprendizaje("","","","",$currentCategoriaRa -> getIdCategoriaRa());
 	$resultadoAps = $resultadoAp -> selectAllByCategoriaRa();
     $countRa += count($resultadoAps);
@@ -46,6 +46,21 @@ foreach ($categoriaRas as $currentCategoriaRa) {
 }
 $pie .= "]";
 $nivelBar .= "]";
+
+$bublecategory = "[";
+$count = 1;
+foreach ($resultadoAs as $currentResultadoAs) {
+    $estrategia = new Estrategia("","","", $currentResultadoAs -> getIdResultadoAprendizaje());
+    $estrategias = $estrategia -> selectAllByResultadoAprendizaje();
+    $bublecategory .= "{name: '".$currentResultadoAs -> getNombre()."', data: [";
+    foreach ($estrategias as $currentEstrategia) {
+        $bublecategory .= "{ name: 'E".$count."', value: 200 },";
+        $count++;
+    }
+    $bublecategory .= "]},";
+    $countEstrategias += count($estrategias);    
+}
+$bublecategory .= "]";
 
 $blom = new Bloom();
 $bloms = $blom -> selectAll();
@@ -121,7 +136,7 @@ grapich['categories'] = <?php echo ($categories); ?>;
 grapich['nivel'] = <?php echo ($nivel); ?>;
 grapich['solidgaugeBack'] = <?php echo ($solidgaugeBack); ?>;
 grapich['solidgauge'] = <?php echo ($solidgauge); ?>;
-console.log(grapich)
+grapich['categorypackedbubble'] = <?php echo ($bublecategory); ?>;
 
 
 $(document).ready(function(){

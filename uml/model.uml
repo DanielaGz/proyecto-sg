@@ -914,7 +914,7 @@
 		<generalization xmi:id="_0.6558448994010402" general="_496749369useCaseManage"/>
 		<extend xmi:id="_0.05902895238712913" extendedCase="_496749369useCaseSelectAll"/>
 	</packagedElement>
-	<packagedElement xmi:type="uml:UseCase" xmi:id="_496749369useCaseSearch" name="Search Bloom">
+	<packagedElement xmi:type="uml:UseCase" xmi:id="_496749369useCaseSearch" name="Buscar Bloom">
 		<generalization xmi:id="_0.13917746736652825" general="_496749369useCaseManage"/>
 	</packagedElement>
 	<packagedElement xmi:type="uml:UseCase" xmi:id="_496749369useCaseUpdate" name="Update Bloom">

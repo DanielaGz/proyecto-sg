@@ -67,7 +67,7 @@ if(isset($_POST['update'])){
 							<label>Detalle</label>
 							<input type="text" class="form-control" name="detalle" value="<?php echo $updateDashboard -> getDetalle() ?>"/>
 						</div>
-						<button type="submit" class="btn btn-info m-2 round" name="update">Actualizar</button>
+						<button type="submit" class="btn btn-secondary m-2 round" name="update">Actualizar</button>
 					</form>
 				</div>
 			</div>

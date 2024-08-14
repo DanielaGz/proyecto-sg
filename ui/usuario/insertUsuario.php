@@ -110,7 +110,7 @@ if(isset($_POST['insert'])){
 							<label class="form-check-label" >Desactivado</label>
 						</div>
 						</div>
-						<button type="submit" class="btn btn-info" name="insert">Crear</button>
+						<button type="submit" class="btn btn-secondary" name="insert">Crear</button>
 					</form>
 				</div>
 			</div>
