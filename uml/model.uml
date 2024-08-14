@@ -664,7 +664,7 @@
 		<extend xmi:id="_0.292400151643767" extendedCase="_359810650useCaseInsert"/>
 		<extend xmi:id="_0.4222742594292874" extendedCase="_359810650useCaseUpdate"/>
 	</packagedElement>
-	<packagedElement xmi:type="uml:UseCase" xmi:id="_574178712useCaseSearch" name="Search Log Administrator">
+	<packagedElement xmi:type="uml:UseCase" xmi:id="_574178712useCaseSearch" name="Buscar Log Administrador">
 		<generalization xmi:id="_0.4660156380430761" general="_574178712useCaseManage"/>
 	</packagedElement>
 	<packagedElement xmi:type="uml:Association" xmi:id="_201917117actor_574178712useCaseSearch" memberEnd="_201917117actorSource _574178712useCaseSearchTarget">

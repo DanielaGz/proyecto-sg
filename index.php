@@ -143,7 +143,7 @@ if(isset($_GET['logOut'])){
 		</script>
 		<style>
 			body{
-				background-color: #e1e1e1;
+				background-color: #ecebe9;
 			}
 
 			.round{
@@ -214,7 +214,7 @@ if(isset($_GET['logOut'])){
 			}
 
 			.login {
-				background: radial-gradient(circle, rgba(237,211,4,1) 0%, rgba(226,121,29,1) 47%, rgba(194,101,34,1) 100%);
+				background: radial-gradient(circle, rgba(237,211,4,1) 0%, rgba(226,121,29,1) 65%, rgba(194,101,34,1) 100%);
 				height: 100vh;
 				display: flex;
     			align-items: center;

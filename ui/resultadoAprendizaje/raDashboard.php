@@ -22,7 +22,7 @@ $ras = $ra -> selectAll();
         </div>
     </div>
 
-    <div id="content" style="background-color: #e1e1e1;">
+    <div id="content" style="background-color: #ecebe9;">
 
     </div>
 </div>

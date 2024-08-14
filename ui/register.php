@@ -68,9 +68,9 @@ if(isset($_POST['register'])){
 <div class="login">
 <div class="container">
 	<div class="row">
-		<div class="col-md-3">
+		<div class="col-md-2">
 		</div>
-		<div class="col-md-6">
+		<div class="col-md-8">
 			<div class="card shadow mb-5 p-0">
 				<!-- <div class="card-header text-center">
 					<h4><strong>Sistema web para la visualización científica de información sobre estrategias de enseñanza y su relación con los resultados de aprendizaje</strong></h4>

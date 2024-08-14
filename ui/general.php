@@ -80,7 +80,7 @@ $nivelPie .= "]";
                 <span class="fas fa-file-image" aria-hidden="true"></span>
             </button> -->
         </div>
-		<div class="card-body" id="pdf" style="background-color: #e1e1e1;">
+		<div class="card-body" id="pdf" style="background-color: #ecebe9;">
             <h2><?php echo strtoupper("Resultados de aprendizaje"); ?></h2>
 			<div class="row">
             <div class="col-lg-4 col-md-4 col-sm-12 p-3">

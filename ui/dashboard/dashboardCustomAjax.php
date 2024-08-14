@@ -73,7 +73,7 @@ $colors = [
 </div>
 
 
-<div class="container mt-3" id="pdf-document" style="background-color: #e1e1e1;">
+<div class="container mt-3" id="pdf-document" style="background-color: #ecebe9;">
 <h3>
     <?php echo strtoupper($dashboard -> getNombre()); ?>
 </h3>

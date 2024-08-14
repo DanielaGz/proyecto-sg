@@ -302,7 +302,7 @@ function generatePDF(id, name='document'){
         /* if (yOffset !== 0) {
             pdf.addPage();
         } */
-        pdf.setFillColor('#e1e1e1');
+        pdf.setFillColor('#ecebe9');
         pdf.rect(0, 0, imgWidth, pageHeight, 'F');
         pdf.addImage(imgData, 'PNG', 0, -yOffset, imgWidth, imgHeight);
         yOffset += pageHeight;

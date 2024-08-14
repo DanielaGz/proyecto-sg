@@ -33,7 +33,7 @@
 			echo "<td>" . $currentLogAdministrator -> getAdministrator() -> getName() . " " . $currentLogAdministrator -> getAdministrator() -> getLastName() . "</td>";
 			echo "<td class='text-right' nowrap>
 				<a href='modalLogAdministrator.php?idLogAdministrator=" . $currentLogAdministrator -> getIdLogAdministrator() . "'  data-toggle='modal' data-target='#modalLogAdministrator' >
-					<span class='fas fa-eye' data-toggle='tooltip' data-placement='left' data-original-title='View more information' ></span>
+					<span class='fas fa-eye' data-toggle='tooltip' data-placement='left' data-original-title='Ver más información' ></span>
 				</a>
 				</td>";
 			echo "</tr>";
