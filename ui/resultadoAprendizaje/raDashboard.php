@@ -7,7 +7,7 @@ $ras = $ra -> selectAll();
         <div class="d-flex justify-content-between bd-highlight">
             <div class="input-group m-2">
                 <select id="select" class="custom-select round" id="inputGroupSelect01">
-                    <option selected>Seleccione una categoría...</option>
+                    <option selected>Seleccione un ra...</option>
                     <?php 
                     foreach ($ras as $currentRa) {
                         echo "<option value=".$currentRa -> getIdResultadoAprendizaje().">".$currentRa -> getNombre()."</option>";

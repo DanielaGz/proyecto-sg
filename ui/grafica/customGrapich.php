@@ -4,6 +4,7 @@ $categoriaRa = new CategoriaRa();
 $categoriaRas = $categoriaRa -> selectAll();
 $pie = "[";
 $categories = []; 
+$categoriesP = "["; 
 $nivelBar = "[";
 $countRa = 0 ; 
 $network = [];
@@ -37,6 +38,7 @@ foreach ($categoriaRas as $currentCategoriaRa) {
 	$resultadoAps = $resultadoAp -> selectAllByCategoriaRa();
     $countRa += count($resultadoAps);
 	array_push($categories,$currentCategoriaRa -> getNombre());
+    $categoriesP .= "'".$currentCategoriaRa -> getNombre()."',";
     array_push($network,['RESULTADOS APRENDIZAJE', $currentCategoriaRa -> getNombre()]);
     foreach ($resultadoAps as $currentresultadoAp) {
         array_push($network,[$currentCategoriaRa -> getNombre(), $currentresultadoAp -> getNombre()]);
@@ -46,7 +48,7 @@ foreach ($categoriaRas as $currentCategoriaRa) {
 }
 $pie .= "]";
 $nivelBar .= "]";
-
+$categoriesP .= "]";
 $bublecategory = "[";
 $count = 1;
 foreach ($resultadoAs as $currentResultadoAs) {
@@ -121,7 +123,6 @@ foreach ($resultadoAs as $currentResultadoAs) {
 }
 $categorypie .= "]";
 $categorybar .= "]";
-
 ?>
 
 <script>
@@ -132,7 +133,7 @@ grapich['generalpie'] = <?php echo ($pie); ?>;
 grapich['generalnetworkgraph'] = <?php echo json_encode($network); ?>;
 grapich['generalpackedbubble'] = <?php echo ($buble); ?>;
 grapich['generalcolumn-line'] = <?php echo ($nivelPie); ?>;
-grapich['categories'] = <?php echo ($categories); ?>;
+grapich['categories'] = <?php echo (json_encode($categories)); ?>;
 grapich['nivel'] = <?php echo ($nivel); ?>;
 grapich['solidgaugeBack'] = <?php echo ($solidgaugeBack); ?>;
 grapich['solidgauge'] = <?php echo ($solidgauge); ?>;

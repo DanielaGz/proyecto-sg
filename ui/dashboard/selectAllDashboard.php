@@ -41,7 +41,7 @@ if(isset($_GET['action']) && $_GET['action']=="delete"){
 	}
 }
 ?>
-<div class="container-fluid">
+<div class="container">
 	<div class="card">
 		<div class="card-header">
 			<h4 class="card-title">Consultar tableros</h4>

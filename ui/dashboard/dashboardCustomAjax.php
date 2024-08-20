@@ -37,7 +37,7 @@ $colors = [
 <div class="card round mt-3">
     <div class="d-lg-flex justify-content-between">
         <div class="m-3">
-            Categoría: <?php echo $dashboard -> getCategory() ;?>
+            Seleccione categoría...
         </div>
         <div class="d-flex justify-content-end bd-highlight">
             <a class="btn btn-secondary round m-2 round " href='modalAddGrafica.php?id=<?php echo $id;?>' data-toggle='modal' data-target='#modalAddGra' role="button">
@@ -54,8 +54,6 @@ $colors = [
             </button>
         </div>
     </div>
-    <?php 
-?>
 <div class="input-group p-2">
     <select id="selectc" class="custom-select round" id="inputGroupSelect01">
         <?php 
