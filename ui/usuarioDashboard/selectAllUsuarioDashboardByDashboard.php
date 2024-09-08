@@ -93,7 +93,7 @@ if(!empty($_GET['action']) && $_GET['action']=="delete"){
 							echo "<a href='index.php?pid=" . base64_encode("ui/usuarioDashboard/updateUsuarioDashboard.php") . "&idUsuarioDashboard=" . $currentUsuarioDashboard -> getIdUsuarioDashboard() . "'><span class='fas fa-edit' data-toggle='tooltip' data-placement='left' data-original-title='Edit Usuario Dashboard' ></span></a> ";
 						}
 						if($_SESSION['entity'] == 'Administrator') {
-							echo "<a href='index.php?pid=" . base64_encode("ui/usuarioDashboard/selectAllUsuarioDashboardByDashboard.php") . "&idDashboard=" . $_GET['idDashboard'] . "&idUsuarioDashboard=" . $currentUsuarioDashboard -> getIdUsuarioDashboard() . "&action=delete' onclick='return confirm(\"Confirm to delete Usuario Dashboard\")'> <span class='fas fa-backspace' data-toggle='tooltip' data-placement='left' data-original-title='Delete Usuario Dashboard' ></span></a> ";
+							echo "<a href='index.php?pid=" . base64_encode("ui/usuarioDashboard/selectAllUsuarioDashboardByDashboard.php") . "&idDashboard=" . $_GET['idDashboard'] . "&idUsuarioDashboard=" . $currentUsuarioDashboard -> getIdUsuarioDashboard() . "&action=delete' onclick='return confirm(\"Confirma eliminación de Usuario Dashboard\")'> <span class='fas fa-backspace' data-toggle='tooltip' data-placement='left' data-original-title='Delete Usuario Dashboard' ></span></a> ";
 						}
 						echo "</td>";
 						echo "</tr>";
